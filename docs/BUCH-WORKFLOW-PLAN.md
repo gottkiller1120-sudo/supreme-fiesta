@@ -169,13 +169,15 @@ Einordnung (aus einem Bild abgeleitet, nicht geprüft):
 - **Anthropic und Claude:** Die letzte Claude-Anfrage ist fehlgeschlagen. Ob der Anthropic-Zugang in OmniRoute per Abo-Anmeldung oder per Schlüssel hängt, ist unbekannt (offene Frage).
 - **Brauchbar für lange Texte laut Anzeige:** `gpt-oss-120b`, `qwen3.8-27b`, `gemma4:31b`. Ob die Qualität auf Deutsch für ein ganzes Buch reicht, zeigt nur ein **Testkapitel** im Vergleich.
 
+**Nachtrag 10.11.2026, 22:47 (Foto der Anthropic-Seite in OmniRoute):** 16 von 22 Anthropic-Modellen sind aktiv, ein Test lief gerade. Sichtbar grün: `anthropic/claude-sonnet-5`, `claude-opus-5`, `claude-fable-5`, `claude-fable-5-2`, `claude-opus-4.5`, `claude-haiku-5-5`. Die ältere Fehlermeldung (`claude-sonnet-5-5`, vor 2 Tagen) ist damit wahrscheinlich ein einmaliger Ausfall oder eine Mengengrenze gewesen. **Nicht sichtbar:** ob diese Modelle gratis sind oder über Abo-Kontingent, Schlüssel oder Guthaben laufen. Die Seite hat dafür die Filter „Nur kostenlose" und „Nur kostenpflichtige". Das Ergebnis des Filters entscheidet, wie wir die Kosten in der Vorschau anzeigen.
+
 Vorschlag zur Rollenverteilung (Modell je Rolle festnageln, vor dem Bau mit einem Testkapitel prüfen):
 | Rolle | Vorschlag |
 |---|---|
-| Planer, Redaktion | `gemma4:31b` oder `qwen3.8-27b` (schnell, günstig) |
+| Planer, Redaktion | `anthropic/claude-haiku-5-5`, `gemma4:31b` oder `qwen3.8-27b` (schnell, günstig) |
 | Rechercheur | Perplexity oder Gemini mit Google-Suche |
-| Analyst, Konzept | `gpt-oss-120b` oder Gemini; Claude, falls der Zugang läuft |
-| Schreiber | stärkstes Modell, das verlässlich läuft; per Testkapitel entscheiden |
+| Analyst, Konzept | `anthropic/claude-sonnet-5` oder `gpt-oss-120b` |
+| Schreiber | `anthropic/claude-sonnet-5` (für höchste Qualität `claude-opus-5`), per Testkapitel gegen ein zweites Modell bestätigen |
 | Faktenprüfer | anderes Modell als der Schreiber (z. B. Gemini gegen gpt-oss) |
 | Bild | `gemini-3.1-flash-image` (aktuell Fehler, prüfen) |
 

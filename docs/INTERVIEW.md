@@ -172,3 +172,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 24 (10.11.2026): OmniRoute-Screenshot
 - Auftraggeber schickte einen Screenshot der OmniRoute-Übersicht (ohne Schlüssel). Auswertung und Rollenvorschlag: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
 - Auffällig: Letzte Anfragen an `claude-sonnet-5-5` und `gemini-3.1-flash-image` sehen fehlgeschlagen aus. Offen: Wie ist Anthropic in OmniRoute verbunden (Abo-Anmeldung oder Schlüssel)?
+
+## Runde 25 (10.11.2026, 22:47): Claude-Modelle in OmniRoute grün
+- Foto der Anthropic-Seite in OmniRoute: 16 von 22 Modellen aktiv, grün u. a. `claude-sonnet-5`, `claude-opus-5`, `claude-fable-5`, `claude-fable-5-2`, `claude-haiku-5-5`. Auftraggeber: „Bei mir ist alles grün."
+- Rollenvorschlag im Plan (2f) angepasst. Offen: Sind diese Modelle gratis, per Abo oder kostenpflichtig? (Filter „Nur kostenlose" auf der Seite.)
