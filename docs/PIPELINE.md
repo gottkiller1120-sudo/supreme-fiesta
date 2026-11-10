@@ -1,6 +1,6 @@
 # Pipeline-Entwurf: vom Buchauftrag zum verkaufsfertigen Buch
 
-Status: ENTWURF zur Besprechung. Passt zu `BAUPLAN.md`. Die erste n8n-Skelettdatei dazu: `workflows/00-dirigent.skeleton.json`.
+Status: ENTWURF zur Besprechung. Passt zu `BAUPLAN.md`. Es wird noch nichts gebaut: erst Bauplan, dann Freigabe, dann Bau.
 
 ## Grundidee: parallel, wo es geht, nacheinander, wo es muss
 Nicht alles kann gleichzeitig laufen, weil manches von etwas anderem abhängt:

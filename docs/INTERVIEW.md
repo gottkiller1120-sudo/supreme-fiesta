@@ -83,3 +83,7 @@ Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und
 - Der alte Rechner ist ein **Acer Predator** (Gaming-Gerät). Genaues Modell, Arbeitsspeicher und Betriebssystem sind noch offen.
 - **Einordnung:** Leistung reicht sehr wahrscheinlich. Der Stromverbrauch im Dauerbetrieb ist hoch (grob 15–25 €/Monat, Schätzung). Optionen: nur zeitweise laufen lassen, später sparsamen Mini-PC kaufen, oder lokale KI (Ollama) nutzen, wenn eine brauchbare Grafikkarte da ist.
 - **Entscheidung:** Phase 1 bleibt auf dem Laptop. Die Server-Frage wird entschieden, wenn die Zeitsteuerung gebraucht wird.
+
+## Runde 9 (10.11.2026): Reihenfolge
+- Auftraggeber: **Erst Bauplan, bevor gebaut wird.** Das n8n-Skelett wurde daraufhin wieder entfernt (bleibt in der Git-Historie). Bis zur Freigabe des Bauplans wird nichts gebaut.
+- `docs/PIPELINE.md` bleibt als Teil des Bauplans (Entwurf, keine Umsetzung).
