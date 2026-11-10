@@ -168,3 +168,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 
 ## Runde 23 (10.11.2026): Fachprüfung
 - **Die Prüfung macht am Schluss eine KI.** Danach prüft der Auftraggeber selbst. Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2j) und `book.yaml`.
+
+## Runde 24 (10.11.2026): OmniRoute-Screenshot
+- Auftraggeber schickte einen Screenshot der OmniRoute-Übersicht (ohne Schlüssel). Auswertung und Rollenvorschlag: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
+- Auffällig: Letzte Anfragen an `claude-sonnet-5-5` und `gemini-3.1-flash-image` sehen fehlgeschlagen aus. Offen: Wie ist Anthropic in OmniRoute verbunden (Abo-Anmeldung oder Schlüssel)?

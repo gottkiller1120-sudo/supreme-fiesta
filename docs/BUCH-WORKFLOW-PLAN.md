@@ -149,6 +149,36 @@ Was offen und zu prüfen ist (ich sehe die OmniRoute-Einstellungen nicht):
 - **Mengenbegrenzungen:** Gratis- und Abo-Zugänge haben Grenzen. Ein Buch mit 40 bis 70 Seiten sollte gehen. Geschichtsbücher mit 300 Seiten stoßen eher an Grenzen.
 - **Bedingungen der Anbieter:** Ob ein Abo-Zugang über einen Router erlaubt ist, hängt vom Anbieter ab. Das sollte der Auftraggeber bei seinen Anbietern prüfen, damit Konten nicht gesperrt werden.
 
+### OmniRoute: Bestand laut Screenshot (10.11.2026, Version 3.8.50)
+Verbundene Anbieter in der Anbieter-Übersicht: Gemini (Google AI Studio), Groq, OpenRouter, OpenAI, Anthropic, Perplexity, Kimi, Ollama Cloud, Cloudflare AI Playground, NVIDIA (über g4f.space), OpenCode Free, The Old LLM (Free), UncloseAI, Felo, AI Horde, DuckDuckGo AI Chat, Chipotle Pepper AI (Free).
+
+Letzte Anfragen (alle vor 2 Tagen):
+| Modell | Ergebnis laut Anzeige |
+|---|---|
+| `openai/gpt-oss-120b` | lief, Antworttext kam an |
+| `gemma4:31b` | lief |
+| `qwen/qwen3.8-27b` | lief |
+| `aihorde/Deliberate` | ohne Text (0 Tokens) |
+| `claude-sonnet-5-5` | **rot, 0 Tokens**: sieht nach Fehlschlag aus |
+| `gemini-3.1-flash-image` | **rot, 0 Tokens**: sieht nach Fehlschlag aus |
+| `aphrodite/TheDrummer/Cydonia` | rot, 0 Tokens |
+
+Einordnung (aus einem Bild abgeleitet, nicht geprüft):
+- **Echte Anbieter mit Gratisstufe** (meines Wissens, jeweils mit Mengengrenzen): Gemini AI Studio, Groq, OpenRouter (einzelne Modelle), Ollama Cloud, Cloudflare, NVIDIA.
+- **Inoffizielle oder Community-Zugänge** (g4f.space, UncloseAI, The Old LLM, Felo, DuckDuckGo AI Chat, Chipotle Pepper, AI Horde): Das wirkt wie unzuverlässige Gratis-Wege. Qualität und Verfügbarkeit schwanken, und Texte gehen an Dritte. Für den **Schreiber nicht verwenden**, höchstens als Notreserve für unwichtige Aufgaben.
+- **Anthropic und Claude:** Die letzte Claude-Anfrage ist fehlgeschlagen. Ob der Anthropic-Zugang in OmniRoute per Abo-Anmeldung oder per Schlüssel hängt, ist unbekannt (offene Frage).
+- **Brauchbar für lange Texte laut Anzeige:** `gpt-oss-120b`, `qwen3.8-27b`, `gemma4:31b`. Ob die Qualität auf Deutsch für ein ganzes Buch reicht, zeigt nur ein **Testkapitel** im Vergleich.
+
+Vorschlag zur Rollenverteilung (Modell je Rolle festnageln, vor dem Bau mit einem Testkapitel prüfen):
+| Rolle | Vorschlag |
+|---|---|
+| Planer, Redaktion | `gemma4:31b` oder `qwen3.8-27b` (schnell, günstig) |
+| Rechercheur | Perplexity oder Gemini mit Google-Suche |
+| Analyst, Konzept | `gpt-oss-120b` oder Gemini; Claude, falls der Zugang läuft |
+| Schreiber | stärkstes Modell, das verlässlich läuft; per Testkapitel entscheiden |
+| Faktenprüfer | anderes Modell als der Schreiber (z. B. Gemini gegen gpt-oss) |
+| Bild | `gemini-3.1-flash-image` (aktuell Fehler, prüfen) |
+
 Daraus für den Plan:
 - **Gratis genügt nicht für lange Bücher.** Kleine lokale Modelle und Gratis-Kontingente taugen für Vorschau, Planer und Redaktion. Für Schreiber, Analyst und Lektor braucht es ein starkes Modell. Das kostet Geld, auch wenn wenig. Der Plan bleibt: günstig wo möglich, stark wo nötig, und jede Stufe zeigt vorher die geschätzten Kosten.
 - **Schritt zur Klärung:** den Stand der Anthropic-Rechnung prüfen und ein Bild der OmniRoute-Anbieterliste (ohne Schlüssel) ansehen, um zu wissen, was dahinter wirklich gratis läuft.
