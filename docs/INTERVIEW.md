@@ -101,3 +101,8 @@ Nur der Buch-Workflow wird zuerst geplant (nicht Werbung, Webseite, Gruppen).
 - **KI-Auswahl:** jeweils die beste KI pro Aufgabe (Claude als Schreiber, Perplexity für Recherche, Gemini für Recherche/Kontrolle), alle nutzen. Anbindung über die „Free LLMs API" auf dem Laptop oder über OmniRoute.
 
 Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
+
+## Runde 11 (10.11.2026): Endkontrolle und Ausgabe
+- Wenn Buch, Cover und alles fertig sind, kommt eine **Endkontrolle**: Cover (sitzt alles?), ganzes Buch gegen die Berichte der Analyse. Findet die KI Fehler oder Verbesserungen, werden sie **behoben und noch einmal kontrolliert**.
+- Danach **Abspeichern auf dem Laptop**, **mit Metadaten**, damit der Auftraggeber weiß, was er bei Amazon Kindle eintragen soll.
+- Umgesetzt im Plan: Abschnitte 9a (Endkontrolle, max. 3 Runden) und 9b (Ausgabeordner und `kdp-eintragen.md`).
