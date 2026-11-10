@@ -123,3 +123,9 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - **Seitenziele (Wunsch):** Geschichtsbücher 300 bis 400 Seiten, Dokumentationsbücher ca. 100, normale Taschenbücher 60 bis 100 oder 40 bis 70 Seiten. **Viele Seiten sind wichtig.**
 - Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2b, 2c) und im Pipeline-Bild.
 - Offen: Wann gilt 60–100 und wann 40–70 Seiten?
+
+## Runde 15 (10.11.2026): Malbücher
+- Malbücher sind ein weiterer Buchtyp: **Ausmalbilder**, **Malen nach Zahlen** oder **gemischt**, jeweils **20 bis 30 Seiten**.
+- Hinweis: KDP verlangt bei Taschenbüchern mindestens 24 Seiten. Geplant werden 24 bis 30.
+- Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2c Tabelle, 2d) und im Pipeline-Bild.
+- Offen: Zielgruppe Kinder oder Erwachsene?

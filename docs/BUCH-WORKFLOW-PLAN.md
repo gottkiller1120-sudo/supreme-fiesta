@@ -84,6 +84,7 @@ Vorgaben des Auftraggebers: **viele Seiten**.
 | Geschichtsbuch | 300 bis 400 und mehr | ca. 90.000 bis 120.000 |
 | Dokumentationsbuch | ca. 100 | ca. 30.000 |
 | Taschenbuch (normal) | 60 bis 100, oder 40 bis 70 (❓ welche Art wann?) | ca. 12.000 bis 30.000 |
+| Malbuch (Ausmalen, Malen nach Zahlen, gemischt) | 20 bis 30, **KDP verlangt mindestens 24** | fast nur Bilder |
 
 *Schätzung für das Format 6 × 9 Zoll, Schrift 11 Punkt, nur Text, etwa 300 Wörter pro Seite. Mit Bildern sind es weniger Wörter. Die Umrechnung macht der Formatierer pro Buch mit dem echten Format.
 
@@ -92,6 +93,17 @@ Wichtig dazu:
 - **Ein Geschichtsbuch mit 300 bis 400 Seiten ist ein großes Projekt.** Es braucht sehr viele Quellen, eine strenge Faktenprüfung und deutlich mehr KI-Aufrufe als ein 60-Seiten-Buch. Mit rein kostenlosen KI-Zugängen ist das wegen der Mengenbegrenzungen schwer. Darum: erst ein kürzeres Buch als Pilot.
 - **Mehr Seiten kosten bei KDP mehr Druckkosten.** Der Verkaufspreis muss mitwachsen, sonst bleibt kaum Gewinn.
 - KDP verlangt mindestens 24 Seiten für Taschenbücher. Ein Rückenbild oder Rückentext geht erst ab einer bestimmten Seitenzahl (meines Wissens etwa 79 Seiten, wird im Formatierer geprüft).
+
+## 2d. Sonderfall Malbuch
+Wunsch des Auftraggebers: Malbücher mit **20 bis 30 Seiten**. Inhalt: **Ausmalbilder**, **Malen nach Zahlen** oder beides **gemischt**.
+
+- **Seitenzahl:** Bei Taschenbüchern verlangt KDP mindestens 24 Seiten. Geplant werden deshalb 24 bis 30 Seiten inklusive Titelseite und Hinweisseite. Die Seiten werden einseitig bedruckt (Rückseite leer), damit Farbe nicht durchdrückt.
+- **Gemischt:** Der Anteil wird pro Buch festgelegt, zum Beispiel die Hälfte Ausmalbilder, die Hälfte Malen nach Zahlen.
+- **Ausmalbilder:** Linienzeichnungen mit gleichmäßigen Linien und geschlossenen Flächen. Bild-KIs liefern dabei oft Fehler (offene Linien, kleine Unsauberkeiten). Darum erzeugt der Bild-Beschaffer mehrere Kandidaten, ein Code-Schritt prüft (Auflösung 300 dpi, Schwarz-Weiß, Linien), und du wählst per Kontaktbogen im Telegram-Chat aus.
+- **Malen nach Zahlen:** Nummerierte Flächen und die Farbtabelle werden per **Code** aus dem Bild berechnet, nicht per KI. Nur so stimmen die Nummern verlässlich.
+- **Text:** wenig. Titel, Anleitung, Farbliste. Die Schreiber-Rolle ist klein, die Bild-Rolle groß.
+- **Regeln:** keine geschützten Figuren (Marken, Filmfiguren). KI-Angabe bei KDP. Der Preis ist niedrig, der Gewinn pro Buch klein. Das rechnet sich erst mit mehreren Titeln, die Konkurrenz ist groß.
+- ❓ **Zielgruppe:** Kinder oder Erwachsene? Das ändert Motive, Linienstärke und Schwierigkeit.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
