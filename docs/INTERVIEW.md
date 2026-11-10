@@ -129,3 +129,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Hinweis: KDP verlangt bei Taschenbüchern mindestens 24 Seiten. Geplant werden 24 bis 30.
 - Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2c Tabelle, 2d) und im Pipeline-Bild.
 - Offen: Zielgruppe Kinder oder Erwachsene?
+
+## Runde 16 (10.11.2026): Themenoffen, Anleitungsbücher mit Bauplänen
+- **Selbstverteidigung war nur ein Beispiel.** Der Workflow muss für jedes Sachbuchthema funktionieren.
+- **Anleitungsbücher** (z. B. Holzbearbeitung): brauchen **schöne Bilder, Maße und Baupläne**, sonst geht es nicht.
+- Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2e) und im Pipeline-Bild (Rolle „Bilder und Pläne").

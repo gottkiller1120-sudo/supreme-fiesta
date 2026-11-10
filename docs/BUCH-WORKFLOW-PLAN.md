@@ -105,6 +105,17 @@ Wunsch des Auftraggebers: Malbücher mit **20 bis 30 Seiten**. Inhalt: **Ausmalb
 - **Regeln:** keine geschützten Figuren (Marken, Filmfiguren). KI-Angabe bei KDP. Der Preis ist niedrig, der Gewinn pro Buch klein. Das rechnet sich erst mit mehreren Titeln, die Konkurrenz ist groß.
 - ❓ **Zielgruppe:** Kinder oder Erwachsene? Das ändert Motive, Linienstärke und Schwierigkeit.
 
+## 2e. Anleitungs-Sachbücher mit Bildern, Maßen und Bauplänen
+Der Workflow ist **themenoffen**. Selbstverteidigung war nur ein Beispiel. Ebenso gehören Anleitungsbücher dazu, zum Beispiel **Holzbearbeitung** oder Handwerk. Dort braucht das Buch **schöne Bilder, genaue Maße und Baupläne**, sonst funktioniert es nicht.
+
+- **Pläne und Maße kommen aus Code, nicht aus einer Bild-KI.** Bild-KIs zeichnen keine maßhaltigen Pläne. Der Workflow erzeugt Zeichnungen (Vorne, Seite, Oben, Explosionsansicht) aus einer Beschreibung des Projekts mit echten Maßen in Millimetern, mit Bemaßung und Maßstab.
+- **Stückliste und Zuschnittliste** werden ebenfalls per Code berechnet. Eine Prüfung vergleicht: Jedes Maß in der Zeichnung steht in der Liste, die Summen stimmen, die Teile passen aus dem angegebenen Material.
+- **Fotos:** am besten **eigene Fotos** vom gebauten Stück und von Arbeitsschritten. Freie Bilder passen selten genau zu einem bestimmten Bauvorhaben. Der Workflow liefert dir dafür eine **Fotoliste** (Schritt, was muss zu sehen sein).
+- **Schöne Bilder:** Stimmungsbilder und Titelbilder dürfen von einer Bild-KI kommen, Anleitungsbilder nicht, wenn auf ihnen ein Handgriff oder ein Detail stimmen muss.
+- **Sicherheit:** Pflichtabschnitt zu Schutzausrüstung und Werkzeug, Haftungshinweis. Ein **Probebau** oder die Prüfung durch jemanden vom Fach ist bei Bauplänen besonders sinnvoll, weil ein falsches Maß teures Material kostet.
+- **Einheiten und Schreibweise:** metrisch, einheitlich (mm oder cm, Dezimalkomma). Der Prüfer achtet darauf.
+- **Seitenmaßstab:** Pläne im Buch werden mit angegebenem Maßstab auf die Buchseite eingepasst, damit sie lesbar bleiben.
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 
@@ -184,6 +195,6 @@ Preisrechnung und Kategorien sind Vorschläge aus dem Konkurrenzbericht. Amazon 
 ## 11. Offene Fragen
 1. ❓ Welche KI-Zugänge sind wirklich da und kostenlos nutzbar (Claude, Perplexity, Gemini, OmniRoute/„Free LLMs API")?
 2. ✅ Bilder (entschieden): Der Auftraggeber macht Bilder **selbst**, oder der Workflow sucht **öffentlich erlaubte** Bilder im Netz zum jeweiligen Griff/Thema (mit Lizenzprotokoll). Der Workflow liefert dazu eine Bildliste: Welches Bild wird gebraucht, was muss darauf zu sehen sein, damit es als Aufklärungsbild stimmt.
-3. ❓ Fachprüfung bei Selbstverteidigung (Trainer oder Jurist)?
+3. ❓ Fachprüfung je Thema (z. B. Selbstverteidigung: Trainer oder Jurist; Holzarbeiten: Tischler oder Probebau)
 4. ❓ Stilvorlage: ein Textbeispiel, das der Auftraggeber „menschlich" findet.
 5. ❓ Ablauf der Freigaben im Telegram-Chat (Knöpfe oder Text)?
