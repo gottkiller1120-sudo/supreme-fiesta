@@ -332,9 +332,13 @@ Preisrechnung und Kategorien sind Vorschläge aus dem Konkurrenzbericht. Amazon 
 - Amazon verlangt bei KDP die Angabe, wenn Texte oder Bilder von KI erzeugt wurden. Der Workflow erzeugt dafür eine Angabe im KDP-Paket.
 - Kein Hochladen durch den Workflow, da Amazon keine Schnittstelle bietet. Der Auftraggeber lädt mit Checkliste hoch.
 
-## 11. Offene Fragen
-1. ❓ Welche KI-Zugänge sind wirklich da und kostenlos nutzbar (Claude, Perplexity, Gemini, OmniRoute/„Free LLMs API")?
-2. ✅ Bilder (entschieden): Der Auftraggeber macht Bilder **selbst**, oder der Workflow sucht **öffentlich erlaubte** Bilder im Netz zum jeweiligen Griff/Thema (mit Lizenzprotokoll). Der Workflow liefert dazu eine Bildliste: Welches Bild wird gebraucht, was muss darauf zu sehen sein, damit es als Aufklärungsbild stimmt.
-3. ✅ Fachprüfung (entschieden 10.11.2026): macht am Schluss eine **KI**, danach prüft der Auftraggeber selbst in der Freigabe 2. Absicherung bei Recht, Gesundheit und Sicherheit: zwei verschiedene Modelle prüfen, kritische Aussagen werden dir einzeln vorgelegt, Haftungshinweis steht im Buch.
+## 11. Offene Fragen (Stand 10.11.2026)
+1. ✅ KI-Zugänge: alles über OmniRoute, Modell pro Rolle festgelegt (siehe 2f).
+2. ✅ Bilder: eigene oder freie mit Lizenz, Pläne aus Code.
+3. ✅ Fachprüfung: KI am Schluss, danach der Auftraggeber (siehe 2j).
 4. ❓ Stilvorlage: ein Textbeispiel, das der Auftraggeber „menschlich" findet.
-5. ❓ Ablauf der Freigaben im Telegram-Chat (Knöpfe oder Text)?
+5. ✅ Freigaben im Telegram-Chat per Befehl (`/ok`, `/freigeben`), Knöpfe optional.
+6. ✅ „Free LLM API" ist OmniRoute (von Claude entschieden).
+7. ✅ Geschichtsbuch über wirkliche Geschichte: streng (von Claude entschieden).
+
+Zusammenfassung zur Freigabe: `PLAN-ZUR-FREIGABE.md`.

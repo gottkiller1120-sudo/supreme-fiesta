@@ -4,7 +4,9 @@ Neustart des Projekts. Erst der Bauplan, dann der Bau.
 
 ## Stand
 - Alle Unterlagen aus den bisherigen Projekten sind gesammelt: [`docs/sammlung/`](docs/sammlung/INVENTAR.md)
-- Der Bauplan (Entwurf, wartet auf Freigabe): [`docs/BAUPLAN.md`](docs/BAUPLAN.md)
+- **Aktueller Plan zur Freigabe:** [`docs/PLAN-ZUR-FREIGABE.md`](docs/PLAN-ZUR-FREIGABE.md)
+- Einzelheiten: [`docs/BUCH-WORKFLOW-PLAN.md`](docs/BUCH-WORKFLOW-PLAN.md), Gesprächsprotokoll [`docs/INTERVIEW.md`](docs/INTERVIEW.md)
+- Älterer allgemeiner Entwurf: [`docs/BAUPLAN.md`](docs/BAUPLAN.md)
 - Noch nichts gebaut.
 
 ## Struktur

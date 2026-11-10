@@ -1,5 +1,7 @@
 # Bauplan: Mitsch Book Design, Neustart
 
+> **Hinweis:** Älterer Entwurf. Der aktuelle Stand steht in `PLAN-ZUR-FREIGABE.md` und `BUCH-WORKFLOW-PLAN.md`.
+
 **Status: ENTWURF v2.** Es wird erst gebaut, wenn der Plan freigegeben ist. Offene Entscheidungen sind mit ❓ markiert, getroffene mit ✅.
 
 ## Getroffene Entscheidungen (10.11.2026)

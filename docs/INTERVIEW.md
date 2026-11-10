@@ -185,3 +185,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Screenshot der OmniRoute-Endpunktseite: `http://localhost:20128/v1` (OpenAI-kompatibel), Server läuft in Docker, „Cloud OmniRoute" aktiv, andere Tunnel aus. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2f).
 - Hinweis zur Sicherheit: Cloud-Zugang aktiv, im API-Manager sollte ein Schlüssel Pflicht sein.
 - Offen: Ist die „Free LLM API" dasselbe wie OmniRoute?
+
+## Runde 28 (10.11.2026): „Entscheide du"
+- Auftraggeber überlässt Claude die offenen Fragen. Entschieden: Free LLM API = OmniRoute; Geschichtsbuch über wirkliche Geschichte = streng; Modellwechsel bei Grenzen; Pilot bleibt der 34a-Schein.
+- Zusammenfassung zur Freigabe: `docs/PLAN-ZUR-FREIGABE.md`.
