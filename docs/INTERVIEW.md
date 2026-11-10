@@ -145,3 +145,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Am Schluss prüft eine **KI** das Ganze, und der **Auftraggeber selbst** auch.
 - Ablauf laut Auftraggeber: Er gibt den Befehl **„los, fertig, komplett machen"**. Dann wird **erst geprüft**. Danach schickt der Bot den **Befehl zum Freigeben**, und der Auftraggeber gibt frei.
 - Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2g) und im Pipeline-Bild. Reihenfolge jetzt: Endkontrolle → Freigabe 2 → Ausgabe → Upload.
+
+## Runde 19 (10.11.2026): Claude-Guthaben und Laptop-Zugriff
+- **Anthropic-API-Guthaben:** leer. **Claude Pro** ist vorhanden. Pro gilt für App und Claude Code, die API wird separat bezahlt. Drei Wege (A Guthaben aufladen, B Claude Code mit Pro-Abo, C nur Gratis-Modelle) stehen in `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
+- **Laptop-Ordner:** Auftraggeber fragt, was Claude mit dem Zugriff macht. Antwort im Chat: Zugriff nur auf einen freigegebenen Ordner, jetzt noch nicht nötig (Planung), später für Workflow-Dateien und Ausgabe.

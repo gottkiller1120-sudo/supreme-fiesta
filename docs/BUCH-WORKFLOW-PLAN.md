@@ -129,6 +129,13 @@ Gefunden in den Einstellungen des alten Workflows (V7.8) und in Mails. Schlüsse
 | Cheaper Inference | Mails: Konto, Test „mitsch book design" (22.09.) | Guthaben unbekannt | günstiger Claude-Zugang möglich |
 | Perplexity | nichts gefunden | unklar | Recherche mit Quellen |
 
+**Stand 10.11.2026 (Auftraggeber):** Das **API-Guthaben bei Anthropic ist leer**. Es gibt ein **Claude-Pro-Abo**. Wichtig: Das Pro-Abo gilt für die Claude-App und Claude Code, die **API** (die n8n benutzt) wird **getrennt** über Guthaben bezahlt. Der Claude-Knoten im alten Workflow läuft deshalb ohne Aufladung nicht.
+
+Wege für das Schreiben (zur Entscheidung):
+- **A. Kleines API-Guthaben aufladen** und pro Auftrag in der Vorschau die Kosten zeigen. Sauberster Weg für einen Workflow, der selbst arbeitet.
+- **B. Claude Code mit dem Pro-Abo als Schreiber auf dem Laptop.** Das spart API-Kosten, aber das Abo hat Nutzungsgrenzen, und meines Wissens darf man die Abo-Anmeldung nicht in fremden Programmen wie n8n als API verwenden. Das wird vor dem Bauen in den aktuellen Bedingungen geprüft.
+- **C. Nur Gratis-Modelle** (Gemini-Gratiskontingent, Ollama, OmniRoute). Kostet nichts, ist aber bei langen Büchern begrenzt und schwächer.
+
 Daraus für den Plan:
 - **Gratis genügt nicht für lange Bücher.** Kleine lokale Modelle und Gratis-Kontingente taugen für Vorschau, Planer und Redaktion. Für Schreiber, Analyst und Lektor braucht es ein starkes Modell. Das kostet Geld, auch wenn wenig. Der Plan bleibt: günstig wo möglich, stark wo nötig, und jede Stufe zeigt vorher die geschätzten Kosten.
 - **Schritt zur Klärung:** den Stand der Anthropic-Rechnung prüfen und ein Bild der OmniRoute-Anbieterliste (ohne Schlüssel) ansehen, um zu wissen, was dahinter wirklich gratis läuft.
