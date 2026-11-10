@@ -189,3 +189,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 28 (10.11.2026): „Entscheide du"
 - Auftraggeber überlässt Claude die offenen Fragen. Entschieden: Free LLM API = OmniRoute; Geschichtsbuch über wirkliche Geschichte = streng; Modellwechsel bei Grenzen; Pilot bleibt der 34a-Schein.
 - Zusammenfassung zur Freigabe: `docs/PLAN-ZUR-FREIGABE.md`.
+
+## Runde 29 (10.11.2026): Comic-Stilvorlagen
+- Auftraggeber schickte 5 Screenshots von Google-Bildersuchen (Marvel Comics, DC Comics, Marvel-Innenseiten, Werner, allgemein Comics) als **Stilvorlage** für Comic-Bücher.
+- Ausgewertet in `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2k (Stil, eigener Ablauf, Einschränkungen). Nur Stil, keine geschützten Figuren.
+- Offen: Richtung (Superhelden/Humor), Zielgruppe, Farbe oder Schwarz-Weiß, eigene Figuren.

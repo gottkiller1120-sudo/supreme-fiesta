@@ -256,6 +256,32 @@ Damit das möglichst verlässlich wird:
 - **Haftungshinweis** im Buch bei Themen mit Risiko (zum Beispiel Selbstverteidigung, Recht, Handwerk).
 - Ehrlich: Eine KI-Prüfung findet viele, aber nicht alle Fehler. Gleiche Fehler können beide Modelle machen. Deshalb legt der Workflow dir die unsicheren Stellen offen vor.
 
+## 2k. Comics: Stilvorlagen und eigener Ablauf
+Der Auftraggeber hat Bilder als Vorlage geschickt (Google-Bildersuche): Marvel- und DC-Titelseiten, Marvel-Innenseiten, „Werner" (Brösel), Micky-Maus-Hefte, Simpsons, Hydra, „Zeichne deine eigenen Comics". **Diese Bilder dienen nur als Stilvorlage.** Figuren, Logos und Seiten daraus werden nicht verwendet (geschützt, siehe Hinweis zu Marvel, DC und Disney).
+
+**Was den Stil ausmacht (aus den Vorlagen gelesen):**
+- **Superhelden-Titelseite:** ein Held in dynamischer Pose mitten in der Aktion, kräftige Farben, schwere Konturen, großes Titel-Logo mit dicker Umrandung, oft Figuren am Rand, Ausgabennummer und Seitenzahl in einer Ecke.
+- **Innenseiten:** Seiten aus 4 bis 8 Bildkästen in wechselnder Größe, Sprechblasen und Textkästen, Rasterpunkt-Färbung (Ben-Day-Punkte), Schallwörter („BAM", „POOF") in Zackenformen.
+- **Humor-Comics (Werner, Micky Maus):** übertriebene Figuren, dicke Linien, flache Farben, kurze Geschichten. Micky-Maus-Hefte werben mit Seitenzahl und Geschichtenzahl auf dem Titel („14 tolle Geschichten, 90 Seiten").
+- **Taschenbuch-Sammelbände:** Rücken mit durchgehendem Bild oder Logo, passend zum Wunsch nach Serien-Rücken.
+
+**Eigener Ablauf für Comics** (ersetzt Schreiber und Bild-Beschaffer):
+1. **Figurenblatt:** eigene Figuren mit Aussehen, Farben, Eigenschaften, festgelegt und freigegeben von dir.
+2. **Drehbuch:** Seite für Seite, Bildkasten für Bildkasten, mit Text.
+3. **Seitenplan:** Aufteilung der Bildkästen aus Vorlagen im Code.
+4. **Bilder:** Jedes Bild einzeln mit dem Figurenblatt als Vorgabe. **Das ist der schwerste Teil**: Bild-KIs halten Figuren über viele Bilder nicht zuverlässig gleich. Darum Figurenblatt als Referenz, mehrere Kandidaten, Auswahl durch dich per Telegram.
+5. **Beschriftung per Code:** Sprechblasen und Texte werden **nicht** von der Bild-KI gezeichnet (die verstümmelt Schrift), sondern vom Code über das Bild gelegt.
+6. **Cover, Rücken, Serie:** Titel-Logo, Cover-Bild, Rücken mit Serienbild (bei genügend Seiten).
+7. **Prüfung und Freigabe** wie sonst. Faktenmodus: **frei** (erfundene Geschichte).
+
+**Einschränkungen, ehrlich:**
+- **Marvel, DC, Disney:** Hulk, Superman, Micky Maus, Donald Duck und deren Aufmachung sind geschützt. Das nachzumachen führt zur Sperrung bei KDP. Möglich sind **eigene Helden und eigene Humor-Figuren** im Geist dieser Hefte.
+- **Farbe ist teuer:** Farbdruck bei KDP kostet mehr, bei 60 bis 100 Seiten bleibt wenig Gewinn pro Heft. Schwarz-Weiß oder höherer Preis, das rechnet die Vorschau vor.
+- **Format:** KDP bietet meines Wissens ein eigenes Comic-Format (etwa 6,625 × 10,25 Zoll). Das wird in der Formattabelle geprüft.
+- **Menge:** Ein Comicheft braucht sehr viele Einzelbilder. Das ist die aufwendigste Buchart im Plan. Darum erst nach dem Sachbuch und den Malbüchern (Phase 9).
+
+❓ Offen: Richtung (Superhelden, Humor oder beides), für Kinder oder Erwachsene, Schwarz-Weiß oder Farbe, eigene Figurenideen.
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 
