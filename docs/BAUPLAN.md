@@ -1,11 +1,17 @@
 # Bauplan: Mitsch Book Design, Neustart
 
-**Status: ENTWURF.** Es wird erst gebaut, wenn der Plan zusammen mit dem Auftraggeber freigegeben ist. Offene Entscheidungen sind mit ❓ markiert.
+**Status: ENTWURF v2.** Es wird erst gebaut, wenn der Plan freigegeben ist. Offene Entscheidungen sind mit ❓ markiert, getroffene mit ✅.
+
+## Getroffene Entscheidungen (10.11.2026)
+- ✅ **Umfang Version 1:** Bücher **und** Werbung zusammen.
+- ✅ **Technik:** n8n bleibt, aber in kleinen Teil-Workflows statt eines großen.
+- ✅ **Pilotbuch:** „Der 34a-Schein" wird neu erzeugt.
+- ✅ **Stand:** Das Buch ist noch **nicht** veröffentlicht. Der Neustart passiert also vor dem Livegang, ein sauberer Zeitpunkt.
 
 ## 1. Ziel
 Ein System, das aus einer Buchidee ein **KDP-fertiges Buch** macht (Innen-PDF, Cover, Metadaten) und anschließend **Werbematerial** dazu erzeugt. Der Mensch gibt an den wichtigen Stellen frei. Qualität vor Menge.
 
-❓ Ist das Ziel so richtig, oder soll Werbung erst in Phase 2 dazukommen?
+✅ Bücher und Werbung gehören zu Version 1. Weil das Buch noch nicht live ist, startet das Posting erst, wenn es einen Kauflink gibt (Vorbereitung vorher, Posting danach).
 
 ## 2. Was wir aus der alten Version mitnehmen
 - Die Stufen: Recherche → Konzept → Manuskript → Lektorat → Endfassung → KDP-Paket → Cover → Innen-PDF → Prüfbericht.
@@ -42,7 +48,9 @@ books/<slug>/book.yaml            Buchdaten: Titel, Zielgruppe, Umfang, Format, 
 
 Jede Stufe liest die Ausgabe der vorigen und schreibt in denselben Buchordner. Dadurch kann man jederzeit bei Stufe N neu starten.
 
-❓ **Technik:** n8n weiterverwenden (kleinere Workflows, Teil-Workflows pro Stufe) oder ein Code-Projekt (z. B. Python/Node, in diesem Repo, läuft in GitHub Actions oder lokal)?
+✅ **Technik: n8n.** Aufbau: ein **Dirigenten-Workflow** (Chat-Eingabe, Freigaben, Wiedereinstieg) ruft pro Stufe einen eigenen **Teil-Workflow** auf (Execute Workflow). Jeder Teil-Workflow hat höchstens ca. 10–15 Knoten, feste Ein- und Ausgabe-Dateien und einen eigenen Testlauf. Die Workflow-JSONs liegen versioniert in `workflows/` in diesem Repo. Schlüssel nur als n8n-Credentials.
+
+Übernommen aus V7.x: Gotenberg für PDFs, Checkpoint-Dateien, Chat-Befehle (`ab manuskript` usw.). Neu: Ein Knoten „Abnahme" am Ende jeder Stufe prüft die Kriterien aus Abschnitt 5 und bricht mit klarer Meldung ab, statt still weiterzulaufen.
 
 ## 5. Abnahmekriterien (Beispiele)
 - Manuskript: Zielumfang in Wörtern erreicht (bei Sachbuch z. B. ≥ 18.000), alle Kapitel aus der Gliederung vorhanden, kein Kapitel unter Mindestlänge.
@@ -56,8 +64,7 @@ Jede Stufe liest die Ausgabe der vorigen und schreibt in denselben Buchordner. D
 - ❓ Soll der Neustart mit einem Design-Fundament beginnen (Farben, Schriften, Cover-Raster), bevor das erste Buch entsteht?
 
 ## 7. Das erste Buch (Pilot)
-Vorschlag: **„Der 34a-Schein"** neu erzeugen. Es ist das einzige vorhandene Buch, das Material liegt vor und wir können alt gegen neu vergleichen.
-❓ Oder lieber ein neues, kleineres Buch (z. B. Malbuch), um die Pipeline schnell zu testen?
+✅ **„Der 34a-Schein"** wird neu erzeugt. Das Material liegt vor, wir vergleichen alt (ca. 12.200 Wörter) gegen neu (Ziel ≥ 18.000), und der Rechtsstand wird vor dem Livegang frisch geprüft. Erst danach folgt ein kleines Testbuch (z. B. Malbuch) für die visuellen Stufen.
 
 ## 8. Phasen
 | Phase | Inhalt | Ergebnis |
@@ -66,7 +73,7 @@ Vorschlag: **„Der 34a-Schein"** neu erzeugen. Es ist das einzige vorhandene Bu
 | 1 | Plan freigeben (dieses Dokument) und Brand-Kit | festgelegte Entscheidungen |
 | 2 | Pilotbuch durch Stufen 1–4 | geprüftes Manuskript |
 | 3 | Satz, Cover, KDP-Paket (Stufen 5–7) | Upload-fertiges Paket |
-| 4 | Werbung: Texte, Bilder, Clips, Freigabe-Workflow | erste Kampagne |
+| 4 | Werbung: Texte, Bilder, Clips und Freigabe-Workflow vorbereiten; Posting erst nach KDP-Livegang | erste Kampagne |
 | 5 | Weitere Buchtypen (Malbuch, Rätsel, Hörspiel) | breiteres Angebot |
 
 ## 9. Regeln für das Projekt
@@ -76,10 +83,10 @@ Vorschlag: **„Der 34a-Schein"** neu erzeugen. Es ist das einzige vorhandene Bu
 - Alles, was Geld kostet oder nach außen geht (Credits, Posts, KDP-Upload), wird vorher freigegeben.
 
 ## 10. Offene Fragen (Zusammenfassung)
-1. Ziel und Reichweite der ersten Version (nur Bücher, oder gleich Werbung)?
-2. Technik: n8n oder Code?
-3. Pilotbuch: „Der 34a-Schein" neu oder neues Buch?
-4. Welche Buchtypen sind in Phase 1 wirklich wichtig?
-5. Ist „Der 34a-Schein" schon auf KDP veröffentlicht, und gibt es weitere Bücher?
-6. Welche Kanäle zählen: Facebook-Seite, Instagram, YouTube, Shopify, Telegram?
-7. Brand-Kit: Farben und Schriften vorgeben oder aus dem Logo ableiten?
+1. ❓ Welche Buchtypen sind in Phase 1 wirklich wichtig (nur Sachbuch, oder gleich Malbuch/Rätsel)?
+2. ❓ Welche Kanäle zählen für die Werbung: Facebook-Seite, Instagram, YouTube, Shopify? (Telegram „Deal-Radar" ist ein anderes Projekt.)
+3. ❓ Brand-Kit: Farben und Schriften vorgeben oder aus dem Logo ableiten?
+4. ❓ Gibt es ein Autorenfoto fürs Cover, und welcher Autorenname soll erscheinen?
+5. ❓ Läuft n8n weiter lokal auf dem Windows-PC (mit Docker und Gotenberg) oder auf einem Server?
+6. ❓ Werbebudget: nur organisch (Posts) oder auch bezahlte Anzeigen (Meta Ads)?
+7. ❓ Schlüssel aus dem alten Workflow schon erneuert und Repo auf privat gestellt? (siehe `docs/sammlung/sicherheit.md`)
