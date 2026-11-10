@@ -75,3 +75,6 @@ Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und
 - **Sicherheit:** Der Server hält Schlüssel (Telegram, Facebook, KI). Deshalb: Passwort setzen, Updates, keine offenen Ports ins Internet.
 
 **Entscheidung:** Phase 1 auf dem Laptop. Der alte PC wird in Phase 4 (Werbung/Zeitsteuerung) zum Server.
+
+## Runde 7 (10.11.2026): KDP-Konto
+- Ein **Amazon-KDP-Konto (Kindle Direct Publishing) ist vorhanden.** Ob Steuerangaben und Bankverbindung vollständig sind, ist noch offen.
