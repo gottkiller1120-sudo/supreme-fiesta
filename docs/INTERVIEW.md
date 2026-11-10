@@ -30,3 +30,17 @@ Neue Anforderungen des Auftraggebers (Sprachnachricht):
 - **Rückenbild über mehrere Bücher:** Technisch machbar (ein großes Bild wird auf die Rücken der Bände aufgeteilt). KDP erlaubt Rückentext/-bild meines Wissens erst ab ca. 79 Seiten, das wird im Bauplan geprüft. Dünne Hefte scheiden damit aus, dickere Taschenbuch-Bände gehen.
 - **Farbdruck bei Comics:** Farbe ist bei KDP teuer. Mit wenig Marge pro Buch. Schwarz-Weiß oder Preis-Kalkulation nötig.
 - **Reihenfolge:** Comics sind eine spätere Phase. Zuerst bleibt das Sachbuch „Der 34a-Schein".
+
+## Runde 4 (10.11.2026): Eigene Webseite
+Wunsch: Ein eigener **Agent** baut für Mitsch Book Design eine **eigene Webseite**, die nur die Bücher zeigt. Interessenten lernen die Bücher dort kennen. Zum Kaufen werden sie zu **Amazon** weitergeleitet. Alternativ (Idee des Auftraggebers): Bestellung über Amazon und Versand an den Kunden.
+
+### Einordnung (von Claude)
+- **Empfehlung: Weiterleiten statt selbst versenden.** Bei Amazon-Kauf bekommst du die KDP-Tantiemen ohne Vorkosten, kein Lager, kein Versand. Selbst bestellen und weiterschicken heißt Geld vorstrecken (Autorenexemplare kosten Druckpreis plus Versand), Verpackung, Reklamationen und Steuerpflichten. Bei „kein Geld" nicht sinnvoll.
+- **Kosten 0 €:** Hosting über GitHub Pages (gratis, das Repo ist öffentlich), Adresse zunächst `…github.io`. Eigene Domain später, ca. 10 € im Jahr.
+- **Shopify:** Das Shopify-Abo (36 €/Monat) wird dafür nicht gebraucht, die Zahlung war zuletzt abgelehnt. Bei null Budget besser kündigen oder pausieren.
+- **Pflicht in Deutschland:** Eine geschäftliche Webseite braucht ein **Impressum mit ladbarer Anschrift** und eine **Datenschutzerklärung**. Das gilt auch bei Pseudonym. Das muss vor dem Livegang geklärt sein.
+- **Amazon-Partnerprogramm:** Mit Partnerlinks gibt es zusätzlich zur Tantieme eine kleine Provision auf Verkäufe über deine Webseite. Dafür ist ein Partnernet-Konto nötig. Details prüfe ich in der Planung.
+- **Wann:** Erst eine Seite mit Teaser und Warteliste vor dem Livegang, die Kaufen-Links kommen mit dem ersten veröffentlichten Buch.
+
+### Neue Rolle im Bauplan: Webseiten-Agent
+Aufgaben: Seite pro Buch (Titel, Klappentext, Leseprobe, Cover, Amazon-Link), Startseite, Impressum und Datenschutz als Pflichtseiten, Aktualisierung bei jedem neuen Buch, Verlinkung mit Facebook, Instagram und Telegram.

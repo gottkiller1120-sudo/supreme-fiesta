@@ -66,6 +66,9 @@ Jede Stufe liest die Ausgabe der vorigen und schreibt in denselben Buchordner. D
 ## 7. Das erste Buch (Pilot)
 ✅ **„Der 34a-Schein"** wird neu erzeugt. Das Material liegt vor, wir vergleichen alt (ca. 12.200 Wörter) gegen neu (Ziel ≥ 18.000), und der Rechtsstand wird vor dem Livegang frisch geprüft. Erst danach folgt ein kleines Testbuch (z. B. Malbuch) für die visuellen Stufen.
 
+## 7a. Webseite (Wunsch des Auftraggebers)
+Ein **Webseiten-Agent** baut und pflegt eine eigene Seite nur für die Bücher. Kauf läuft über Amazon (Weiterleitung), kein eigener Versand. Hosting kostenlos über GitHub Pages. Pflichtseiten Impressum und Datenschutz vor dem Livegang. Details: `docs/INTERVIEW.md`, Runde 4.
+
 ## 8. Phasen
 | Phase | Inhalt | Ergebnis |
 |---|---|---|
