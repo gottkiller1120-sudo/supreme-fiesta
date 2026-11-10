@@ -173,6 +173,26 @@ Wie der Workflow die Regel im Modus **streng** durchsetzt:
 
 Ehrlich dazu: Keine KI kann hundert Prozent Wahrheit garantieren. Die Regeln oben senken das Risiko stark, aber bei Rechts-, Gesundheits- und Sicherheitsthemen bleibt eine Prüfung durch einen Menschen vom Fach ratsam.
 
+## 2i. Speicherort auf dem Laptop
+Alles Erzeugte wird im bestehenden Arbeitsordner des Auftraggebers gespeichert (aus dem alten Workflow übernommen):
+
+| Wo | Pfad |
+|---|---|
+| Windows (Laptop) | `Desktop\Die Firma\Buch Ergebnisse` |
+| In Docker/n8n | `/data/firma/Buch Ergebnisse` (n8n-Dateiordner: `/home/node/.n8n-files`) |
+
+Aufbau darin, ein Unterordner pro Buch:
+```
+Buch Ergebnisse/<slug>/
+  state.json            Speicherpunkte (siehe 2b)
+  research/ concept/ manuscript/ design/ print/ marketing/
+  quellen.json          Quellenregister (siehe 2h)
+  bilder.json           Bilder mit Quelle und Lizenz
+  ausgabe/              fertige Dateien nach /freigeben, dazu kdp-eintragen.md
+```
+
+Dieses GitHub-Repo ist öffentlich. Deshalb liegen **dort nur Pläne, Workflow-Dateien und `book.yaml`**, keine fertigen Bücher, Bilder oder Schlüssel. Die Bücher bleiben auf dem Laptop (und werden dort gesichert).
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 

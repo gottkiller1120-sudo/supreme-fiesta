@@ -154,3 +154,9 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - **Grundregel:** In allen Büchern darf **nur Wahres** stehen. Erfinden ist nur bei **Fantasy bzw. erfundenen Geschichten** erlaubt.
 - Umgesetzt als Faktenmodus (streng / frei / gemischt) in `BUCH-WORKFLOW-PLAN.md` (2h), `book.yaml` und im Pipeline-Bild.
 - Annahme: Mit „Geschichtsbuch, wo Fantasy ist" waren erfundene Geschichten/Fantasy gemeint. Ein Geschichtsbuch über wirkliche Geschichte gilt als **streng**. Zur Bestätigung offen.
+
+## Runde 21 (10.11.2026): Speicherort Laptop/Docker
+- Auftraggeber: Auf dem Laptop gibt es extra einen **Ordner für Mitsch Book Design**, mit Docker. Dort soll **alles** gespeichert werden.
+- Gefunden im alten Workflow: Windows `Desktop\Die Firma\Buch Ergebnisse`, in Docker `/data/firma/Buch Ergebnisse`.
+- Stand Zugriff: Der Rechner „Mitsch" bietet Cloud-Sitzungen weiterhin nur den Ordner `backup-vor-update-2026-10-01_22-20` an (nicht nutzbar). `Die Firma` bzw. `Buch Ergebnisse` ist in der Remote-Control-Liste noch nicht freigegeben.
+- Plan: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2i.
