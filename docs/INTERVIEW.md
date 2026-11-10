@@ -44,3 +44,21 @@ Wunsch: Ein eigener **Agent** baut für Mitsch Book Design eine **eigene Webseit
 
 ### Neue Rolle im Bauplan: Webseiten-Agent
 Aufgaben: Seite pro Buch (Titel, Klappentext, Leseprobe, Cover, Amazon-Link), Startseite, Impressum und Datenschutz als Pflichtseiten, Aktualisierung bei jedem neuen Buch, Verlinkung mit Facebook, Instagram und Telegram.
+
+## Runde 5 (10.11.2026): Suche nach Gruppen und Zugängen
+Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und Projekte durchsuchen.
+
+**Durchsucht:** Gmail, Google Drive, Gemini-Chat-Export (Drive), frühere Claude-Sessions, Canva, Windsor (Facebook/Instagram), Shopify, Notion, Slack, Dropbox.
+
+**Gefunden:**
+- Telegram-Kanal **„Deal-Radar Deutschland"** (`t.me/dealradar_germany`), aber das ist das Affiliate-Projekt, kein Buch-Kanal.
+- YouTube-Kanal `@Mitsch-o4j`.
+- Ein **Amazon-PartnerNet-Konto** ist laut Gemini-Export eingerichtet (die Partner-ID steht dort, wird hier bewusst nicht abgelegt). Damit sind Partnerlinks für die Webseite möglich.
+- Pinterest-Konto wurde angelegt, Instagram-Verknüpfung dort getrennt.
+
+**Nicht gefunden:**
+- Name oder Link der Telegram-Gruppe(n) für die Bücher.
+- Name oder Link der Facebook-Gruppe.
+- Telegram-Inhalte, ChatGPT- und Gemini-Chats außerhalb des einen Exports: kein Zugriff.
+
+**Zugangsdaten:** Passwörter und Schlüssel sammle ich nicht ein und lege sie nirgends ab. Die verbundenen Dienste (Drive, Canva, Facebook, Instagram, Shopify) sind schon über Anmeldungen angebunden. Für Telegram brauchen wir später einen Bot-Token von @BotFather, den du selbst als n8n-Credential einträgst.
