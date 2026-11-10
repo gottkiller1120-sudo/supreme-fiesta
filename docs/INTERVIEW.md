@@ -110,3 +110,10 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 12 (10.11.2026): Bilder und Pipeline-Bild
 - **Bilder:** Der Auftraggeber macht sie selbst, oder der Workflow sucht öffentlich erlaubte Bilder zum Thema/Griff. Sie müssen als **Aufklärungsbild richtig** sein. Lizenz wird pro Bild protokolliert.
 - **Wunsch:** Die Pipeline als **Bild**, in dem man sieht, wer wofür zuständig ist, und in dem man **Teile verschieben** kann.
+
+## Runde 13 (10.11.2026): Telegram, Vorschau, parallele Aufteilung, Cover-Text
+- Laptop ist an, Claude darf draufschauen. **Stand:** Der Rechner „Mitsch" gibt für Cloud-Sitzungen aktuell nur einen Ordner an (`backup-vor-update-2026-10-01_22-20`), und der ist nicht nutzbar. Es muss in der Claude-Desktop-App unter Einstellungen → Claude Code → Remote Control ein normaler Arbeitsordner freigegeben werden.
+- **Telegram:** extra Bot mit Befehlen, dazu eine **Vorschau** (was er machen bzw. neu schreiben will), damit Tokens gespart werden.
+- **Cover/Buch:** Auf dem Cover soll ein **erklärender Text mit Logo** stehen.
+- **Aufteilung:** Der Planer verteilt den Auftrag gleichzeitig an Recherche/Analyse, Cover und Bilder. Alles läuft an die Sammel-KI (bündelt), danach schreibt der Schreiber.
+- Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (Abschnitt 2a) und im Pipeline-Bild.

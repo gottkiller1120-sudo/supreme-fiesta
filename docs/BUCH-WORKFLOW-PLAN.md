@@ -5,7 +5,7 @@ Status: **PLAN, nicht gebaut.** Grundlage sind die Wünsche des Auftraggebers vo
 ## 1. Bedienung: Telegram-Chat
 Der Auftraggeber schreibt dem Bot einen Auftrag, zum Beispiel: „Buch über Selbstverteidigung für Frauen". Der Bot meldet sich mit Zwischenständen und fragt bei Freigaben nach.
 
-Befehle (Vorschlag): `/neu <Thema>`, `/status`, `/freigabe`, `/aendern <Wunsch>`, `/stopp`.
+Befehle (Vorschlag): `/neu <Thema>`, `/ok` (Vorschau bestätigen oder freigeben), `/aendern <Wunsch>`, `/status`, `/stopp`.
 Technik: Telegram-Bot (Token von @BotFather) und n8n. Auf dem Laptop braucht n8n dafür einen kostenlosen Tunnel oder fragt Telegram regelmäßig selbst ab.
 
 ## 2. Die Kette der KI-Rollen
@@ -38,6 +38,24 @@ Telegram-Auftrag
 | Formatierer | Maße, PDF, Cover-Rücken | **Code, keine KI** |
 
 Über welchen Zugang die KIs laufen (freie LLM-API auf dem Laptop, OmniRoute, eigene Schlüssel), ist noch offen.
+
+## 2a. Ablauf mit Vorschau und paralleler Aufteilung (Stand 10.11.2026, ersetzt das Schema oben)
+
+**1. Vorschau zuerst (spart Tokens und Geld).** Nach dem Auftrag erzeugt der Planer mit einem günstigen Modell nur eine **Vorschau** und schickt sie per Telegram: Arbeitstitel, Zielgruppe, grobe Gliederung, ob Bilder nötig sind, geschätzte Seitenzahl, welche KI welche Aufgabe übernimmt, geschätzte Kosten (Tokens). Nichts Teures läuft, bevor du `/ok` sagst. Mit `/aendern` korrigierst du, mit `/stopp` brichst du ab. Dieselbe Regel gilt später vor dem Schreiben: erst der Kapitelplan als Vorschau, dann der Text.
+
+**2. Aufteilung in drei Stränge, gleichzeitig.** Nach deinem OK verteilt der Planer die Arbeit:
+- **Strang A:** Recherche (10 beste Bücher) → Analyse → Konzept → **Freigabe 1** durch dich.
+- **Strang B:** Bilder. Bildbedarf vorab ermitteln, Bilder suchen oder beschaffen, Lizenz notieren.
+- **Strang C:** Cover. Vorentwurf aus dem Thema.
+- Ehrlich dazu: Cover und Bilder können erst **fertig** werden, wenn Titel und Gliederung feststehen. Die Vorarbeit läuft parallel, die Endfassung kommt nach Freigabe 1.
+
+**3. Sammelstelle.** Sobald die Stränge fertig sind, geht alles an die **Redaktion**. Sie bündelt Berichte, Konzept, Bilder samt Lizenzen und Cover in ein Briefing. Erst damit schreibt der **Schreiber**.
+
+**4. Cover-Vorgabe.** Auf dem Cover steht ein **Erklärtext** (worum es im Buch geht, für wen) und das **Logo**. Vorderseite: Titel, Untertitel, kurzer Erklärtext, Logo. Rückseite: Klappentext und Logo. Rücken (nur wenn KDP ihn bei der Seitenzahl erlaubt): Titel, Autor, Logo. Logo liegt in `assets/marke/`.
+
+**5. Sparregeln.** Günstiges Modell für Planer und Redaktion, starkes nur für Analyse, Schreiben, Lektorat. Recherche einmal speichern und wiederverwenden. Nur geänderte Kapitel neu schreiben.
+
+Das Pipeline-Bild (Arbeitsfläche) zeigt diesen Ablauf.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
