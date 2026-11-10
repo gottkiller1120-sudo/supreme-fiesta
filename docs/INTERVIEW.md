@@ -78,3 +78,8 @@ Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und
 
 ## Runde 7 (10.11.2026): KDP-Konto
 - Ein **Amazon-KDP-Konto (Kindle Direct Publishing) ist vorhanden.** Ob Steuerangaben und Bankverbindung vollständig sind, ist noch offen.
+
+## Runde 8 (10.11.2026): Der alte PC
+- Der alte Rechner ist ein **Acer Predator** (Gaming-Gerät). Genaues Modell, Arbeitsspeicher und Betriebssystem sind noch offen.
+- **Einordnung:** Leistung reicht sehr wahrscheinlich. Der Stromverbrauch im Dauerbetrieb ist hoch (grob 15–25 €/Monat, Schätzung). Optionen: nur zeitweise laufen lassen, später sparsamen Mini-PC kaufen, oder lokale KI (Ollama) nutzen, wenn eine brauchbare Grafikkarte da ist.
+- **Entscheidung:** Phase 1 bleibt auf dem Laptop. Die Server-Frage wird entschieden, wenn die Zeitsteuerung gebraucht wird.
