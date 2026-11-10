@@ -140,3 +140,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - **Taschenbuch (normal):** **40 bis 70 Seiten** als Standard.
 - **KI-Zugänge:** Auftraggeber nennt OmniRoute und „alles drum und dran" und bittet um Suche in Chats und Projekten. Ergebnis der Suche: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f (Claude-API, Gemini, OmniRoute lokal, Ollama lokal, Konten bei OpenRouter und Cheaper Inference; Perplexity nicht gefunden).
 - **Offen:** Stand der Anthropic-Rechnung, Anbieter hinter OmniRoute (Bild der Anbieterliste ohne Schlüssel hilft).
+
+## Runde 18 (10.11.2026): Abschluss und Freigabe
+- Am Schluss prüft eine **KI** das Ganze, und der **Auftraggeber selbst** auch.
+- Ablauf laut Auftraggeber: Er gibt den Befehl **„los, fertig, komplett machen"**. Dann wird **erst geprüft**. Danach schickt der Bot den **Befehl zum Freigeben**, und der Auftraggeber gibt frei.
+- Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2g) und im Pipeline-Bild. Reihenfolge jetzt: Endkontrolle → Freigabe 2 → Ausgabe → Upload.

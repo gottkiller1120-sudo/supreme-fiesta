@@ -133,6 +133,17 @@ Daraus für den Plan:
 - **Gratis genügt nicht für lange Bücher.** Kleine lokale Modelle und Gratis-Kontingente taugen für Vorschau, Planer und Redaktion. Für Schreiber, Analyst und Lektor braucht es ein starkes Modell. Das kostet Geld, auch wenn wenig. Der Plan bleibt: günstig wo möglich, stark wo nötig, und jede Stufe zeigt vorher die geschätzten Kosten.
 - **Schritt zur Klärung:** den Stand der Anthropic-Rechnung prüfen und ein Bild der OmniRoute-Anbieterliste (ohne Schlüssel) ansehen, um zu wissen, was dahinter wirklich gratis läuft.
 
+## 2g. Abschluss: `/los`, Prüfung, Freigabe
+So läuft das Ende, wie vom Auftraggeber beschrieben:
+
+1. **`/los`:** Der Workflow schreibt das **komplette Buch** ab dem letzten Speicherpunkt, ohne Zwischenfragen. Du bekommst nur kurze Meldungen (Kapitel x von y).
+2. **Danach erst die Prüfung:** Eine zweite KI prüft Fakten und Lektorat, dann folgt die Endkontrolle für Buch, Cover und Format. Fehler werden behoben und neu geprüft (höchstens 3 Runden).
+3. **Du bekommst die Freigabe-Nachricht** per Telegram: kurzer Prüfbericht, Cover, Auszug als PDF, Seitenzahl, Preis und Gewinnrechnung, offene Punkte. Du prüfst selbst.
+4. **`/freigeben`:** Erst jetzt wird alles final auf dem Laptop gespeichert, samt KDP-Eintragsliste. Mit **`/aendern <Wunsch>`** gehst du gezielt zurück zum passenden Speicherpunkt, danach wird neu geprüft. Mit `/stopp` brichst du ab.
+5. **Ohne `/freigeben` geht nichts raus.**
+
+Vorschlag zur Tokenersparnis: Während des Schreibens läuft pro Kapitel nur ein **billiger Schnellcheck** (Länge, Aufbau, Quellenverweise). Die gründliche Faktenprüfung kommt einmal am Ende. Nachteil: Ein Fehler in einem frühen Kapitel kann spätere beeinflussen. Dafür ist der Schnellcheck da.
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 
@@ -189,7 +200,7 @@ Ergebnis: ein **Prüfbericht** (`kontrolle.md`) mit dem, was gefunden und behobe
 Eine letzte Sicht bleibt bei dir: Amazon hat vor dem Veröffentlichen eine eigene Vorschau (KDP-Vorschau). Die kann kein Workflow ersetzen. Die Checkliste sagt dir, worauf du dort achtest.
 
 ## 9b. Stufe 11: Ausgabe auf dem Laptop und Metadaten für Amazon
-Am Ende wird alles in einem Ordner auf dem Laptop gespeichert (`books/<slug>/ausgabe/`):
+Erst **nach deiner Freigabe 2** (`/freigeben`) wird alles in einem Ordner auf dem Laptop gespeichert (`books/<slug>/ausgabe/`):
 
 | Datei | Inhalt |
 |---|---|
