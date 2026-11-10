@@ -19,7 +19,7 @@ formate:
 preis: null                   # offen: nach Marktrecherche
 autorenname: null             # offen
 autorenfoto: null             # offen
-fachpruefung: null            # offen: wer prueft Rechtsinhalte?
+fachpruefung: ki_am_schluss   # entschieden 10.11.2026, danach Freigabe durch Auftraggeber
 kdp:
   konto: vorhanden
   steuer_und_bank_erledigt: null   # offen

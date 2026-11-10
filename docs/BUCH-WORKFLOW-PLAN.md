@@ -206,6 +206,16 @@ Buch Ergebnisse/<slug>/
 
 Dieses GitHub-Repo ist öffentlich. Deshalb liegen **dort nur Pläne, Workflow-Dateien und `book.yaml`**, keine fertigen Bücher, Bilder oder Schlüssel. Die Bücher bleiben auf dem Laptop (und werden dort gesichert).
 
+## 2j. Fachprüfung durch KI am Schluss
+Entscheidung des Auftraggebers: Die Fachprüfung am Ende übernimmt eine KI, nicht ein menschlicher Experte. Danach prüft der Auftraggeber selbst (Freigabe 2).
+
+Damit das möglichst verlässlich wird:
+- **Zwei verschiedene Modelle** prüfen unabhängig voneinander (nicht das Modell, das geschrieben hat). Weichen sie voneinander ab, wird die Stelle markiert.
+- **Prüfen gegen die Quellen** aus dem Quellenregister (siehe 2h), nicht aus dem Gedächtnis des Modells.
+- **Kritische Aussagen** (Recht, Gesundheit, Sicherheit, Maße bei Bauplänen) bekommen eine eigene Liste. Du entscheidest dort einzeln.
+- **Haftungshinweis** im Buch bei Themen mit Risiko (zum Beispiel Selbstverteidigung, Recht, Handwerk).
+- Ehrlich: Eine KI-Prüfung findet viele, aber nicht alle Fehler. Gleiche Fehler können beide Modelle machen. Deshalb legt der Workflow dir die unsicheren Stellen offen vor.
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 
@@ -285,6 +295,6 @@ Preisrechnung und Kategorien sind Vorschläge aus dem Konkurrenzbericht. Amazon 
 ## 11. Offene Fragen
 1. ❓ Welche KI-Zugänge sind wirklich da und kostenlos nutzbar (Claude, Perplexity, Gemini, OmniRoute/„Free LLMs API")?
 2. ✅ Bilder (entschieden): Der Auftraggeber macht Bilder **selbst**, oder der Workflow sucht **öffentlich erlaubte** Bilder im Netz zum jeweiligen Griff/Thema (mit Lizenzprotokoll). Der Workflow liefert dazu eine Bildliste: Welches Bild wird gebraucht, was muss darauf zu sehen sein, damit es als Aufklärungsbild stimmt.
-3. ❓ Fachprüfung je Thema (z. B. Selbstverteidigung: Trainer oder Jurist; Holzarbeiten: Tischler oder Probebau)
+3. ✅ Fachprüfung (entschieden 10.11.2026): macht am Schluss eine **KI**, danach prüft der Auftraggeber selbst in der Freigabe 2. Absicherung bei Recht, Gesundheit und Sicherheit: zwei verschiedene Modelle prüfen, kritische Aussagen werden dir einzeln vorgelegt, Haftungshinweis steht im Buch.
 4. ❓ Stilvorlage: ein Textbeispiel, das der Auftraggeber „menschlich" findet.
 5. ❓ Ablauf der Freigaben im Telegram-Chat (Knöpfe oder Text)?

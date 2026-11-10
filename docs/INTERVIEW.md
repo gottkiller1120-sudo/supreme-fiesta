@@ -165,3 +165,6 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Auftraggeber: Der Workflow läuft auch über Cloud und **OmniRoute** und funktioniert, **ohne dass Guthaben aufgeladen werden muss**.
 - **Entscheidung:** Alle KI-Aufrufe des neuen Workflows laufen über OmniRoute. Modell pro Rolle festlegen (nicht `auto`). Plan: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
 - Offen: Welche Anbieter/Modelle hängen dort, Mengengrenzen, Bedingungen der Anbieter.
+
+## Runde 23 (10.11.2026): Fachprüfung
+- **Die Prüfung macht am Schluss eine KI.** Danach prüft der Auftraggeber selbst. Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2j) und `book.yaml`.
