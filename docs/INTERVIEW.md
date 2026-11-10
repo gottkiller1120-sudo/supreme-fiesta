@@ -176,3 +176,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 25 (10.11.2026, 22:47): Claude-Modelle in OmniRoute grün
 - Foto der Anthropic-Seite in OmniRoute: 16 von 22 Modellen aktiv, grün u. a. `claude-sonnet-5`, `claude-opus-5`, `claude-fable-5`, `claude-fable-5-2`, `claude-haiku-5-5`. Auftraggeber: „Bei mir ist alles grün."
 - Rollenvorschlag im Plan (2f) angepasst. Offen: Sind diese Modelle gratis, per Abo oder kostenpflichtig? (Filter „Nur kostenlose" auf der Seite.)
+
+## Runde 26 (10.11.2026): Free LLM API
+- Auftraggeber will **auch die Free LLM API** (lokal auf dem Laptop) als Zugang nutzen. Gefunden wurde dazu nichts (Mails, Drive, Gemini-Export). Im Plan (2f) als Zusatz-Zugang vermerkt. Offen: Name, Adresse/Port, Modelle.
+- Notiz: Drive-Datei „m_6a91b33d…" ist ein ChatGPT-Export mit dem Titel „Goldene Mitch-Group-Embleme auf Schwarz", aber ohne lesbaren Chat-Text.
