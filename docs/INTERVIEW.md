@@ -134,3 +134,9 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - **Selbstverteidigung war nur ein Beispiel.** Der Workflow muss für jedes Sachbuchthema funktionieren.
 - **Anleitungsbücher** (z. B. Holzbearbeitung): brauchen **schöne Bilder, Maße und Baupläne**, sonst geht es nicht.
 - Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2e) und im Pipeline-Bild (Rolle „Bilder und Pläne").
+
+## Runde 17 (10.11.2026): Entscheidungen und KI-Zugänge
+- **Malbücher:** für Kinder **und** Erwachsene (beides).
+- **Taschenbuch (normal):** **40 bis 70 Seiten** als Standard.
+- **KI-Zugänge:** Auftraggeber nennt OmniRoute und „alles drum und dran" und bittet um Suche in Chats und Projekten. Ergebnis der Suche: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f (Claude-API, Gemini, OmniRoute lokal, Ollama lokal, Konten bei OpenRouter und Cheaper Inference; Perplexity nicht gefunden).
+- **Offen:** Stand der Anthropic-Rechnung, Anbieter hinter OmniRoute (Bild der Anbieterliste ohne Schlüssel hilft).

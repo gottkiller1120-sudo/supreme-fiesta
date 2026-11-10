@@ -83,7 +83,7 @@ Vorgaben des Auftraggebers: **viele Seiten**.
 |---|---|---|
 | Geschichtsbuch | 300 bis 400 und mehr | ca. 90.000 bis 120.000 |
 | Dokumentationsbuch | ca. 100 | ca. 30.000 |
-| Taschenbuch (normal) | 60 bis 100, oder 40 bis 70 (❓ welche Art wann?) | ca. 12.000 bis 30.000 |
+| Taschenbuch (normal) | 40 bis 70 (entschieden 10.11.2026) | ca. 12.000 bis 21.000 |
 | Malbuch (Ausmalen, Malen nach Zahlen, gemischt) | 20 bis 30, **KDP verlangt mindestens 24** | fast nur Bilder |
 
 *Schätzung für das Format 6 × 9 Zoll, Schrift 11 Punkt, nur Text, etwa 300 Wörter pro Seite. Mit Bildern sind es weniger Wörter. Die Umrechnung macht der Formatierer pro Buch mit dem echten Format.
@@ -103,7 +103,7 @@ Wunsch des Auftraggebers: Malbücher mit **20 bis 30 Seiten**. Inhalt: **Ausmalb
 - **Malen nach Zahlen:** Nummerierte Flächen und die Farbtabelle werden per **Code** aus dem Bild berechnet, nicht per KI. Nur so stimmen die Nummern verlässlich.
 - **Text:** wenig. Titel, Anleitung, Farbliste. Die Schreiber-Rolle ist klein, die Bild-Rolle groß.
 - **Regeln:** keine geschützten Figuren (Marken, Filmfiguren). KI-Angabe bei KDP. Der Preis ist niedrig, der Gewinn pro Buch klein. Das rechnet sich erst mit mehreren Titeln, die Konkurrenz ist groß.
-- ❓ **Zielgruppe:** Kinder oder Erwachsene? Das ändert Motive, Linienstärke und Schwierigkeit.
+- ✅ **Zielgruppe:** Kinder **und** Erwachsene (entschieden 10.11.2026). Pro Buch wird festgelegt, für wen es ist. Das ändert Motive, Linienstärke und Schwierigkeit.
 
 ## 2e. Anleitungs-Sachbücher mit Bildern, Maßen und Bauplänen
 Der Workflow ist **themenoffen**. Selbstverteidigung war nur ein Beispiel. Ebenso gehören Anleitungsbücher dazu, zum Beispiel **Holzbearbeitung** oder Handwerk. Dort braucht das Buch **schöne Bilder, genaue Maße und Baupläne**, sonst funktioniert es nicht.
@@ -115,6 +115,23 @@ Der Workflow ist **themenoffen**. Selbstverteidigung war nur ein Beispiel. Ebens
 - **Sicherheit:** Pflichtabschnitt zu Schutzausrüstung und Werkzeug, Haftungshinweis. Ein **Probebau** oder die Prüfung durch jemanden vom Fach ist bei Bauplänen besonders sinnvoll, weil ein falsches Maß teures Material kostet.
 - **Einheiten und Schreibweise:** metrisch, einheitlich (mm oder cm, Dezimalkomma). Der Prüfer achtet darauf.
 - **Seitenmaßstab:** Pläne im Buch werden mit angegebenem Maßstab auf die Buchseite eingepasst, damit sie lesbar bleiben.
+
+## 2f. KI-Zugänge: Bestandsaufnahme (10.11.2026)
+Gefunden in den Einstellungen des alten Workflows (V7.8) und in Mails. Schlüssel wurden nicht gelesen und stehen hier nicht.
+
+| Zugang | Fundstelle | Stand | Mögliche Rolle |
+|---|---|---|---|
+| Claude (Anthropic-API) | V7.8: Schlüssel, Workspace, Modell `claude-sonnet-5` (Hinweis im Workflow: `claude-opus-5` für mehr Qualität) | vorhanden, **kostenpflichtig**. In Mail-Zusammenfassungen taucht „Anthropic-Rechnung bezahlen" auf: prüfen, sonst kann der Zugang gesperrt sein | Analyst, Konzept, Schreiber, Lektor |
+| Gemini (Google) | V7.8: Schlüssel, Modelle `gemini-3.6-flash`, `gemini-3.5-flash-lite`, Bildmodell `gemini-3.1-flash-image` | vorhanden. Schlüssel lag im Klartext, **neu erzeugen** (siehe `sammlung/sicherheit.md`). Gratis-Kontingent mit Grenzen (meines Wissens) | Recherche mit Google-Suche, Bilder, günstige Aufgaben (Planer, Redaktion) |
+| OmniRoute (lokal) | V7.8: `http://host.docker.internal:20128`, Modell `auto`, eigener Schlüssel | läuft auf dem Laptop. **Welche Anbieter dahinter hängen, ist unbekannt** (auch ob kostenlos) | Fehlersuche, Sprachausgabe, Ausweichweg |
+| Ollama (lokal) | V7.8: `http://host.docker.internal:11434`, Modell `llama3.3`. Mails: Ollama-Konto, Hinweis „Gratis-Cloudnutzung endet" | lokale Modelle sind gratis, Qualität und Tempo hängen vom Laptop ab | Planer, Vorschau-Entwürfe (nicht für lange Bücher) |
+| OpenRouter | Mails: Konto vorhanden, Anmeldung am 05.11. | Guthaben unbekannt | Alternative zum Router |
+| Cheaper Inference | Mails: Konto, Test „mitsch book design" (22.09.) | Guthaben unbekannt | günstiger Claude-Zugang möglich |
+| Perplexity | nichts gefunden | unklar | Recherche mit Quellen |
+
+Daraus für den Plan:
+- **Gratis genügt nicht für lange Bücher.** Kleine lokale Modelle und Gratis-Kontingente taugen für Vorschau, Planer und Redaktion. Für Schreiber, Analyst und Lektor braucht es ein starkes Modell. Das kostet Geld, auch wenn wenig. Der Plan bleibt: günstig wo möglich, stark wo nötig, und jede Stufe zeigt vorher die geschätzten Kosten.
+- **Schritt zur Klärung:** den Stand der Anthropic-Rechnung prüfen und ein Bild der OmniRoute-Anbieterliste (ohne Schlüssel) ansehen, um zu wissen, was dahinter wirklich gratis läuft.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
