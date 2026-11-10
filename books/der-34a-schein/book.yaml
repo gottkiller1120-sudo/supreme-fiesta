@@ -1,0 +1,26 @@
+# Auftrag und Entscheidungen fuer dieses Buch. Einzige Wahrheit fuer die Pipeline.
+slug: der-34a-schein
+status: neustart            # neustart | konzept | manuskript | cover | kdp-paket | live
+buchtyp: sachbuch
+sprache: de
+titel_arbeitstitel: "Der 34a-Schein"
+untertitel_arbeitstitel: "Die komplette Sachkundepruefung nach § 34a GewO"
+zielgruppe: "Angehende Sicherheitskraefte (Sachkundepruefung nach § 34a GewO)"
+usp:
+  - "Erst verstehen, dann pruefen (keine reine Fragensammlung)"
+  - "Vorbereitung auf die muendliche Pruefung"
+  - "Uebungsklausuren, Karteikarten, Lernplan"
+zielumfang_woerter: 18000     # Altes Buch hatte ca. 12.200
+formate:
+  taschenbuch: true
+  ebook: true
+  hoerbuch: spaeter
+preis: null                   # offen: nach Marktrecherche
+autorenname: null             # offen
+autorenfoto: null             # offen
+fachpruefung: null            # offen: wer prueft Rechtsinhalte?
+kdp:
+  konto: vorhanden
+  steuer_und_bank_erledigt: null   # offen
+amazon_link: null             # erst nach Livegang
+quellen_pflicht: true         # Rechtsstoff nur mit offizieller Quelle
