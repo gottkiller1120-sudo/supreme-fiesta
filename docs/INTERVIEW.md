@@ -106,3 +106,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Wenn Buch, Cover und alles fertig sind, kommt eine **Endkontrolle**: Cover (sitzt alles?), ganzes Buch gegen die Berichte der Analyse. Findet die KI Fehler oder Verbesserungen, werden sie **behoben und noch einmal kontrolliert**.
 - Danach **Abspeichern auf dem Laptop**, **mit Metadaten**, damit der Auftraggeber weiß, was er bei Amazon Kindle eintragen soll.
 - Umgesetzt im Plan: Abschnitte 9a (Endkontrolle, max. 3 Runden) und 9b (Ausgabeordner und `kdp-eintragen.md`).
+
+## Runde 12 (10.11.2026): Bilder und Pipeline-Bild
+- **Bilder:** Der Auftraggeber macht sie selbst, oder der Workflow sucht öffentlich erlaubte Bilder zum Thema/Griff. Sie müssen als **Aufklärungsbild richtig** sein. Lizenz wird pro Bild protokolliert.
+- **Wunsch:** Die Pipeline als **Bild**, in dem man sieht, wer wofür zuständig ist, und in dem man **Teile verschieben** kann.

@@ -117,7 +117,7 @@ Preisrechnung und Kategorien sind Vorschläge aus dem Konkurrenzbericht. Amazon 
 
 ## 11. Offene Fragen
 1. ❓ Welche KI-Zugänge sind wirklich da und kostenlos nutzbar (Claude, Perplexity, Gemini, OmniRoute/„Free LLMs API")?
-2. ❓ Bilder für Selbstverteidigung: eigene Fotos, Zeichnungen oder freie Bilder zuerst?
+2. ✅ Bilder (entschieden): Der Auftraggeber macht Bilder **selbst**, oder der Workflow sucht **öffentlich erlaubte** Bilder im Netz zum jeweiligen Griff/Thema (mit Lizenzprotokoll). Der Workflow liefert dazu eine Bildliste: Welches Bild wird gebraucht, was muss darauf zu sehen sein, damit es als Aufklärungsbild stimmt.
 3. ❓ Fachprüfung bei Selbstverteidigung (Trainer oder Jurist)?
 4. ❓ Stilvorlage: ein Textbeispiel, das der Auftraggeber „menschlich" findet.
 5. ❓ Ablauf der Freigaben im Telegram-Chat (Knöpfe oder Text)?
