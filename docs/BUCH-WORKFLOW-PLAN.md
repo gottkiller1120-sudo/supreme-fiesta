@@ -171,6 +171,12 @@ Einordnung (aus einem Bild abgeleitet, nicht geprüft):
 
 **Nachtrag 10.11.2026, 22:47 (Foto der Anthropic-Seite in OmniRoute):** 16 von 22 Anthropic-Modellen sind aktiv, ein Test lief gerade. Sichtbar grün: `anthropic/claude-sonnet-5`, `claude-opus-5`, `claude-fable-5`, `claude-fable-5-2`, `claude-opus-4.5`, `claude-haiku-5-5`. Die ältere Fehlermeldung (`claude-sonnet-5-5`, vor 2 Tagen) ist damit wahrscheinlich ein einmaliger Ausfall oder eine Mengengrenze gewesen. **Nicht sichtbar:** ob diese Modelle gratis sind oder über Abo-Kontingent, Schlüssel oder Guthaben laufen. Die Seite hat dafür die Filter „Nur kostenlose" und „Nur kostenpflichtige". Das Ergebnis des Filters entscheidet, wie wir die Kosten in der Vorschau anzeigen.
 
+### OmniRoute: Endpunkt (Screenshot 10.11.2026, 22:59)
+- **Adresse:** `http://localhost:20128/v1`, OpenAI-kompatibel. Das passt zum alten Workflow (`http://host.docker.internal:20128` aus n8n im Docker). Der lokale Server läuft (intern `172.18.0.2:20128`, also in Docker).
+- **Tunnel:** „Cloud OmniRoute" ist **aktiv**. Cloudflare Quick Tunnel gestoppt, Tailscale nicht installiert, Ngrok braucht eine Anmeldung.
+- **Sicherheit:** Ein aktiver Cloud-Zugang macht den Router von außen erreichbar. Dahinter hängen deine Anbieter-Konten. Im **API-Manager** sollte ein Schlüssel für den Zugriff Pflicht sein, und die Cloud-Adresse nicht weitergeben. Das ist von hier nicht prüfbar.
+- OmniRoute bietet außer APIs auch MCP und A2A (Agent-zu-Agent). Für den Plan nicht nötig, aber später für die KI-Kette denkbar.
+
 **Zusätzlicher Zugang: „Free LLM API" (lokal auf dem Laptop).** Vom Auftraggeber genannt. Details sind noch unbekannt: Name des Programms, Adresse und Port, welche Modelle, ob OpenAI-kompatibel. Sobald das bekannt ist, wird sie wie OmniRoute als weiterer Zugang in der Einstellungsdatei eingetragen. Eine Ausweichkette ist denkbar: erst OmniRoute, bei Fehler Free LLM API.
 
 Vorschlag zur Rollenverteilung (Modell je Rolle festnageln, vor dem Bau mit einem Testkapitel prüfen):

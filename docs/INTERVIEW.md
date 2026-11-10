@@ -180,3 +180,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 26 (10.11.2026): Free LLM API
 - Auftraggeber will **auch die Free LLM API** (lokal auf dem Laptop) als Zugang nutzen. Gefunden wurde dazu nichts (Mails, Drive, Gemini-Export). Im Plan (2f) als Zusatz-Zugang vermerkt. Offen: Name, Adresse/Port, Modelle.
 - Notiz: Drive-Datei „m_6a91b33d…" ist ein ChatGPT-Export mit dem Titel „Goldene Mitch-Group-Embleme auf Schwarz", aber ohne lesbaren Chat-Text.
+
+## Runde 27 (10.11.2026, 22:59): OmniRoute-Endpunkt
+- Screenshot der OmniRoute-Endpunktseite: `http://localhost:20128/v1` (OpenAI-kompatibel), Server läuft in Docker, „Cloud OmniRoute" aktiv, andere Tunnel aus. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2f).
+- Hinweis zur Sicherheit: Cloud-Zugang aktiv, im API-Manager sollte ein Schlüssel Pflicht sein.
+- Offen: Ist die „Free LLM API" dasselbe wie OmniRoute?
