@@ -21,7 +21,8 @@ Telegram-Auftrag
   → 7 SCHREIBER (Kapitel für Kapitel, menschlicher Stil)
   → 8 FAKTENPRÜFER + LEKTOR (zweite, unabhängige KI)
   → 9 FORMATIERER (kein KI: Code, feste KDP-Maße)
-  → 10 KDP-PAKET                                                    ── FREIGABE 2 (du)
+  → 10 ENDKONTROLLE (Buch + Cover gegen Analyse, Fehler beheben, erneut prüfen)
+  → 11 AUSGABE auf den Laptop + Metadaten für Amazon                ── FREIGABE 2 (du)
 ```
 
 | Rolle | Aufgabe | Vorgeschlagene KI (je nach Zugang) |
@@ -80,7 +81,37 @@ Eine **andere** KI als der Schreiber prüft jede Tatsachenbehauptung gegen die g
 ## 9. Stufe 9: Formate und Cover-Maße (ohne KI)
 Damit du nie wieder Maße prüfen musst, gibt es eine **feste Formattabelle als Code**: Taschenbuch- und E-Book-Formate, Seitenlimits je Papierart, Beschnitt, Ränder, Rückenbreite aus Seitenzahl. Cover und Innen-PDF werden daraus berechnet und automatisch geprüft. Die Tabelle trägt ein Prüfdatum, weil Amazon Regeln ändert. Ein Vorbild liegt im alten Workflow (`archiv/n8n/…`, Knoten „KDP FORMATKATALOG").
 
-## 10. Gesetzt aus den Vorgaben
+## 9a. Stufe 10: Endkontrolle mit Verbesserungsschleife
+Wenn Buch, Cover und Bilder fertig sind, geht alles noch einmal durch eine **Endkontrolle**:
+
+1. **Buch gegen die Analyse:** Hält das Buch, was das Konzept versprochen hat? Sind die Lücken aus dem Konkurrenzbericht geschlossen? Fehlen Kapitel, gibt es Wiederholungen, Widersprüche oder Stilbrüche?
+2. **Inhalt und Fakten:** letzter Durchgang gegen Quellen und Bildprotokoll.
+3. **Cover:** Maße, Beschnitt, Ränder und Rücken per Code. Dazu ein Blick einer Bild-KI: Titel auch als Daumenbild lesbar, nichts schneidet in den Rand, Rücken und Rückseite sitzen.
+4. **Innen-PDF:** Seitenumbrüche, Bilder an der richtigen Stelle, keine leeren oder halben Seiten, Inhaltsverzeichnis stimmt.
+5. **Verbessern und neu prüfen:** Findet die Kontrolle etwas, wird genau das behoben und **danach nochmal geprüft**. Höchstens 3 Runden. Bleibt nach Runde 3 etwas offen, meldet der Bot es im Telegram-Chat, statt endlos weiterzuarbeiten.
+
+Ergebnis: ein **Prüfbericht** (`kontrolle.md`) mit dem, was gefunden und behoben wurde.
+
+Eine letzte Sicht bleibt bei dir: Amazon hat vor dem Veröffentlichen eine eigene Vorschau (KDP-Vorschau). Die kann kein Workflow ersetzen. Die Checkliste sagt dir, worauf du dort achtest.
+
+## 9b. Stufe 11: Ausgabe auf dem Laptop und Metadaten für Amazon
+Am Ende wird alles in einem Ordner auf dem Laptop gespeichert (`books/<slug>/ausgabe/`):
+
+| Datei | Inhalt |
+|---|---|
+| `interior.pdf` | Innenteil Taschenbuch |
+| `ebook.epub` (oder Dokument für Kindle) | E-Book-Fassung |
+| `cover-print.pdf` | komplettes Taschenbuch-Cover |
+| `cover-ebook.jpg` | E-Book-Cover |
+| `kdp-eintragen.md` | **Eintrag-Anleitung in der Reihenfolge der KDP-Seiten** |
+| `kdp-metadata.yaml` | dieselben Angaben maschinenlesbar |
+| `kontrolle.md` | Prüfbericht der Endkontrolle |
+| `bilder-lizenzen.md` | Quellen und Lizenzen aller Bilder |
+
+`kdp-eintragen.md` enthält, zum Abschreiben und Einfügen: Titel, Untertitel, Reihe, Autorenname, Beschreibung (fertig formatiert), **7 Suchbegriffe**, **Kategorien** (mit Pfad), Sprache, Altersempfehlung, Preis je Land (mit Gewinnrechnung), Format, Papier (weiß/creme), Innenseiten (Schwarz-Weiß/Farbe), Beschnitt, Cover-Oberfläche (matt/glänzend), ISBN-Wahl, KI-Angabe, Kindle-Optionen (z. B. Kindle+/KDP Select) und Rechteangaben.
+Preisrechnung und Kategorien sind Vorschläge aus dem Konkurrenzbericht. Amazon kann Regeln und Kategorien ändern, deshalb steht das Datum dabei.
+
+## 10. Vorgaben von Amazon
 - Amazon verlangt bei KDP die Angabe, wenn Texte oder Bilder von KI erzeugt wurden. Der Workflow erzeugt dafür eine Angabe im KDP-Paket.
 - Kein Hochladen durch den Workflow, da Amazon keine Schnittstelle bietet. Der Auftraggeber lädt mit Checkliste hoch.
 
