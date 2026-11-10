@@ -280,7 +280,9 @@ Der Auftraggeber hat Bilder als Vorlage geschickt (Google-Bildersuche): Marvel- 
 - **Format:** KDP bietet meines Wissens ein eigenes Comic-Format (etwa 6,625 × 10,25 Zoll). Das wird in der Formattabelle geprüft.
 - **Menge:** Ein Comicheft braucht sehr viele Einzelbilder. Das ist die aufwendigste Buchart im Plan. Darum erst nach dem Sachbuch und den Malbüchern (Phase 9).
 
-❓ Offen: Richtung (Superhelden, Humor oder beides), für Kinder oder Erwachsene, Schwarz-Weiß oder Farbe, eigene Figurenideen.
+✅ **Innenteil in Schwarz-Weiß** (entschieden 10.11.2026). Das senkt die Druckkosten bei KDP deutlich und vereinfacht die Bilder: Strichzeichnungen mit Rasterpunkten und Schraffur sind für KI und Code leichter gleichzuhalten als Farbbilder. Das **Cover** bleibt farbig (wird bei KDP getrennt gedruckt).
+
+❓ Offen: Richtung (Superhelden, Humor oder beides), für Kinder oder Erwachsene, eigene Figurenideen.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.

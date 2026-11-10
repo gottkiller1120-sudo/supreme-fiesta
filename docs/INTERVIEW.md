@@ -194,3 +194,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Auftraggeber schickte 5 Screenshots von Google-Bildersuchen (Marvel Comics, DC Comics, Marvel-Innenseiten, Werner, allgemein Comics) als **Stilvorlage** für Comic-Bücher.
 - Ausgewertet in `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2k (Stil, eigener Ablauf, Einschränkungen). Nur Stil, keine geschützten Figuren.
 - Offen: Richtung (Superhelden/Humor), Zielgruppe, Farbe oder Schwarz-Weiß, eigene Figuren.
+
+## Runde 30 (10.11.2026): Comics in Schwarz-Weiß
+- Auftraggeber: **Schwarz-Weiß geht auch.** Comic-Innenteil in Schwarz-Weiß, Cover farbig. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2k).
+- Offen: Richtung, Zielgruppe, eigene Figurenideen (nicht blockierend, Comics sind Phase 9).
