@@ -117,3 +117,9 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - **Cover/Buch:** Auf dem Cover soll ein **erklärender Text mit Logo** stehen.
 - **Aufteilung:** Der Planer verteilt den Auftrag gleichzeitig an Recherche/Analyse, Cover und Bilder. Alles läuft an die Sammel-KI (bündelt), danach schreibt der Schreiber.
 - Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (Abschnitt 2a) und im Pipeline-Bild.
+
+## Runde 14 (10.11.2026): Speicherpunkte und Seitenziele
+- **Speicherpunkte:** Der Workflow soll an Punkten (z. B. nach der Analyse) speichern, damit man nicht von vorn beginnt. Wenn der Auftraggeber „los" sagt, schreibt er das **komplette Buch** ab dem letzten Punkt.
+- **Seitenziele (Wunsch):** Geschichtsbücher 300 bis 400 Seiten, Dokumentationsbücher ca. 100, normale Taschenbücher 60 bis 100 oder 40 bis 70 Seiten. **Viele Seiten sind wichtig.**
+- Umgesetzt in `BUCH-WORKFLOW-PLAN.md` (2b, 2c) und im Pipeline-Bild.
+- Offen: Wann gilt 60–100 und wann 40–70 Seiten?

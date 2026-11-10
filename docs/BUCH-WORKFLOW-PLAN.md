@@ -57,6 +57,42 @@ Telegram-Auftrag
 
 Das Pipeline-Bild (Arbeitsfläche) zeigt diesen Ablauf.
 
+## 2b. Speicherpunkte: nie wieder von vorn anfangen
+Der Workflow speichert nach jeder wichtigen Stufe einen **Speicherpunkt** im Buchordner (`books/<slug>/state.json` plus die Ergebnisdateien). Fällt etwas aus oder willst du etwas ändern, geht es **ab dem letzten Punkt** weiter, nicht von vorn.
+
+| Speicherpunkt | Danach liegt vor |
+|---|---|
+| 0 Auftrag | Thema, Buchtyp, Seitenziel |
+| 1 Vorschau bestätigt (`/ok`) | Plan und Kostenschätzung |
+| 2 Recherche | 10 Bücher, Quellen |
+| 3 Analyse | Bericht und Einschätzung |
+| 4 Konzept (Freigabe 1) | Gliederung, Titel, Bildbedarf |
+| 5 Briefing | alles gebündelt für den Schreiber |
+| 6 Kapitel 1 … n | jedes fertige Kapitel einzeln |
+| 7 Prüfung/Endkontrolle | geprüftes Buch |
+| 8 Ausgabe | Dateien und KDP-Eintragsliste |
+
+Befehle dazu: `/los` (schreibt **ab dem letzten Punkt das ganze Buch**), `/ab analyse`, `/ab konzept`, `/ab kapitel 7`, `/status` (zeigt den aktuellen Punkt). Ein Kapitel, das schon fertig ist, wird nicht neu geschrieben, wenn du nichts daran änderst.
+
+Ein weiterer Nutzen: Recherche und Analyse bleiben gespeichert. Für ein ähnliches Buch (zum Beispiel Selbstverteidigung für Männer) startet man ab Punkt 3 mit angepasstem Bericht.
+
+## 2c. Seitenziele je Buchtyp
+Vorgaben des Auftraggebers: **viele Seiten**.
+
+| Buchtyp | Seitenziel | grob in Wörtern* |
+|---|---|---|
+| Geschichtsbuch | 300 bis 400 und mehr | ca. 90.000 bis 120.000 |
+| Dokumentationsbuch | ca. 100 | ca. 30.000 |
+| Taschenbuch (normal) | 60 bis 100, oder 40 bis 70 (❓ welche Art wann?) | ca. 12.000 bis 30.000 |
+
+*Schätzung für das Format 6 × 9 Zoll, Schrift 11 Punkt, nur Text, etwa 300 Wörter pro Seite. Mit Bildern sind es weniger Wörter. Die Umrechnung macht der Formatierer pro Buch mit dem echten Format.
+
+Wichtig dazu:
+- **Seiten dürfen nicht mit Füllmaterial entstehen.** Leere Seiten, Wiederholungen oder aufgeblähte Sätze fallen Lesern auf und senken die Bewertung. Bilder, Zeitleisten, Merkkästen, Übungen und Quellenverzeichnis zählen dagegen als echter Inhalt.
+- **Ein Geschichtsbuch mit 300 bis 400 Seiten ist ein großes Projekt.** Es braucht sehr viele Quellen, eine strenge Faktenprüfung und deutlich mehr KI-Aufrufe als ein 60-Seiten-Buch. Mit rein kostenlosen KI-Zugängen ist das wegen der Mengenbegrenzungen schwer. Darum: erst ein kürzeres Buch als Pilot.
+- **Mehr Seiten kosten bei KDP mehr Druckkosten.** Der Verkaufspreis muss mitwachsen, sonst bleibt kaum Gewinn.
+- KDP verlangt mindestens 24 Seiten für Taschenbücher. Ein Rückenbild oder Rückentext geht erst ab einer bestimmten Seitenzahl (meines Wissens etwa 79 Seiten, wird im Formatierer geprüft).
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 
