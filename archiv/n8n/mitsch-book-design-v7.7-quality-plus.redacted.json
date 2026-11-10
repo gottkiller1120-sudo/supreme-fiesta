@@ -1,0 +1,1604 @@
+{
+  "name": "Mitsch Book Design V7.7 – Quality+",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1cb4360e-045d-4bde-aa02-bd83a92db2b3",
+      "name": "CHAT – BUCHAUFTRAG",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -560,
+        400
+      ],
+      "webhookId": "8dfc4357-04a2-46c1-981d-d220db81eb38"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "buchauftrag",
+              "value": "={{ $json.chatInput || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "gemini_api_key",
+              "value": "={{ $env.GEMINI_API_KEY || 'DEIN_GEMINI_KEY_HIER' }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "opencode_api_key",
+              "value": "={{ $env.OPENCODE_API_KEY || 'DEIN_OPENCODE_KEY_HIER' }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "gemini_model_primary",
+              "value": "gemini-2.0-flash",
+              "type": "string"
+            },
+            {
+              "id": "a5",
+              "name": "gemini_model_fallback",
+              "value": "gemini-2.0-flash-lite",
+              "type": "string"
+            },
+            {
+              "id": "a6",
+              "name": "gemini_image_model",
+              "value": "gemini-2.0-flash-preview-image-generation",
+              "type": "string"
+            },
+            {
+              "id": "a7",
+              "name": "opencode_model",
+              "value": "big-pickle",
+              "type": "string"
+            },
+            {
+              "id": "a8",
+              "name": "sprache",
+              "value": "Deutsch",
+              "type": "string"
+            },
+            {
+              "id": "a9",
+              "name": "zielumfang",
+              "value": "ca. 10000 bis 14000 Wörter",
+              "type": "string"
+            },
+            {
+              "id": "a10",
+              "name": "kdp_format_automatisch",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "a11",
+              "name": "kdp_format_wunsch",
+              "value": "AUTO",
+              "type": "string"
+            },
+            {
+              "id": "a12",
+              "name": "kdp_bindung_wunsch",
+              "value": "AUTO",
+              "type": "string"
+            },
+            {
+              "id": "a13",
+              "name": "kdp_druck_wunsch",
+              "value": "AUTO",
+              "type": "string"
+            },
+            {
+              "id": "a14",
+              "name": "kdp_beschnitt_wunsch",
+              "value": "AUTO",
+              "type": "string"
+            },
+            {
+              "id": "a15",
+              "name": "kdp_seiten_schaetzung",
+              "value": 90,
+              "type": "number"
+            },
+            {
+              "id": "a16",
+              "name": "autorenname",
+              "value": "AUTORENNAME_EINTRAGEN",
+              "type": "string"
+            },
+            {
+              "id": "a17",
+              "name": "autorenfoto_container",
+              "value": "/buch/autorenfoto.png.jpg",
+              "type": "string"
+            },
+            {
+              "id": "a18",
+              "name": "ausgabeordner_container",
+              "value": "/buch",
+              "type": "string"
+            },
+            {
+              "id": "a19",
+              "name": "quellenanalyse_aktiv",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "a20",
+              "name": "fehleranalyse_aktiv",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "a21",
+              "name": "schnellmodus",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "a22",
+              "name": "ebook_cover_breite_px",
+              "value": 1600,
+              "type": "number"
+            },
+            {
+              "id": "a23",
+              "name": "ebook_cover_hoehe_px",
+              "value": 2560,
+              "type": "number"
+            },
+            {
+              "id": "a24",
+              "name": "ebook_cover_jpeg_qualitaet",
+              "value": 92,
+              "type": "number"
+            },
+            {
+              "id": "a25",
+              "name": "max_tokens_recherche",
+              "value": 11000,
+              "type": "number"
+            },
+            {
+              "id": "a26",
+              "name": "max_tokens_manuskript",
+              "value": 30000,
+              "type": "number"
+            },
+            {
+              "id": "a27",
+              "name": "max_tokens_lektorat",
+              "value": 24000,
+              "type": "number"
+            },
+            {
+              "id": "a28",
+              "name": "modellkette",
+              "value": "Gemini-2.0-Flash (Quality+) → Flash-Lite Fallback",
+              "type": "string"
+            },
+            {
+              "id": "q-qualitaetsmodus",
+              "name": "qualitaetsmodus",
+              "value": "hoch",
+              "type": "string"
+            },
+            {
+              "id": "q-leichte_nachpruefung",
+              "name": "leichte_nachpruefung",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00-settings-v76",
+      "name": "00 – EINSTELLUNGEN",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst auftrag = String(s.buchauftrag || '').toLowerCase();\n\nconst paperbackGlobal = [\n  {id:'5x8', inch:[5,8], mm:[127,203.2], large:false, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'5.06x7.81', inch:[5.06,7.81], mm:[128.5,198.4], large:false, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'5.25x8', inch:[5.25,8], mm:[133.4,203.2], large:false, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'5.5x8.5', inch:[5.5,8.5], mm:[139.7,215.9], large:false, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'6x9', inch:[6,9], mm:[152.4,228.6], large:false, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'6.14x9.21', inch:[6.14,9.21], mm:[156,233.9], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'6.69x9.61', inch:[6.69,9.61], mm:[169.9,244.1], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'7x10', inch:[7,10], mm:[177.8,254], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'7.44x9.69', inch:[7.44,9.69], mm:[189,246.1], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'7.5x9.25', inch:[7.5,9.25], mm:[190.5,235], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'8x10', inch:[8,10], mm:[203.2,254], large:true, pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}},\n  {id:'8.25x6', inch:[8.25,6], mm:[209.6,152.4], large:true, pages:{bwWhite:[24,800],bwCream:[24,750],bwGroundwood:[24,784],standardColor:[72,600],premiumColor:[24,800]}},\n  {id:'8.25x8.25', inch:[8.25,8.25], mm:[209.6,209.6], large:true, pages:{bwWhite:[24,800],bwCream:[24,750],bwGroundwood:[24,784],standardColor:[72,600],premiumColor:[24,800]}},\n  {id:'8.5x8.5', inch:[8.5,8.5], mm:[215.9,215.9], large:true, pages:{bwWhite:[24,590],bwCream:[24,550],bwGroundwood:[24,576],standardColor:[72,600],premiumColor:[24,590]}},\n  {id:'8.5x11', inch:[8.5,11], mm:[215.9,279.4], large:true, pages:{bwWhite:[24,590],bwCream:[24,550],bwGroundwood:[24,576],standardColor:[72,600],premiumColor:[24,590]}},\n  {id:'8.27x11.69_A4', inch:[8.27,11.69], mm:[210,297], large:true, pages:{bwWhite:[24,780],bwCream:[24,730],bwGroundwood:[24,764],standardColor:null,premiumColor:[24,590]}}\n];\n\nconst paperbackJapan = [\n  {id:'JP_4.06x7.17', inch:[4.06,7.17], mm:[103,182]},\n  {id:'JP_4.13x6.81', inch:[4.13,6.81], mm:[105,173]},\n  {id:'JP_4.41x6.85', inch:[4.41,6.85], mm:[112,174]},\n  {id:'JP_5x7.4', inch:[5,7.4], mm:[127,188]},\n  {id:'JP_5.04x7.17', inch:[5.04,7.17], mm:[128,182]},\n  {id:'JP_5.83x8.27', inch:[5.83,8.27], mm:[148,210]},\n  {id:'JP_5.98x8.58', inch:[5.98,8.58], mm:[152,218]},\n  {id:'JP_5.98x8.94', inch:[5.98,8.94], mm:[152,227]},\n  {id:'JP_7.17x10.12', inch:[7.17,10.12], mm:[182,257]},\n  {id:'JP_7.17x8.11', inch:[7.17,8.11], mm:[182,206]},\n  {id:'JP_8.27x10.12', inch:[8.27,10.12], mm:[210,257]},\n  {id:'JP_8.27x11.69', inch:[8.27,11.69], mm:[210,297]}\n].map(x => ({...x, marketplace:'Amazon.co.jp', pages:{bwWhite:[24,828],bwCream:[24,776],bwGroundwood:[24,812],standardColor:[72,600],premiumColor:[24,828]}}));\n\nconst hardcover = [\n  {id:'HC_5.5x8.5', inch:[5.5,8.5], mm:[139.7,215.9], pages:{bwWhite:[75,550],bwCream:[75,550],standardColor:null,premiumColor:[75,550]}},\n  {id:'HC_6x9', inch:[6,9], mm:[152.4,228.6], pages:{bwWhite:[75,550],bwCream:[75,550],standardColor:null,premiumColor:[75,550]}},\n  {id:'HC_6.14x9.21', inch:[6.14,9.21], mm:[156,233.9], pages:{bwWhite:[75,550],bwCream:[75,550],standardColor:null,premiumColor:[75,550]}},\n  {id:'HC_7x10', inch:[7,10], mm:[177.8,254], pages:{bwWhite:[75,550],bwCream:[75,550],standardColor:null,premiumColor:[75,550]}},\n  {id:'HC_8.25x11', inch:[8.25,11], mm:[209.6,279.4], pages:{bwWhite:[75,550],bwCream:[75,550],standardColor:null,premiumColor:[75,550]}}\n];\n\nconst kindle = {\n  layout:'reflowable_or_fixed',\n  trimSize:'Kein festes Papierformat bei reflowable eBooks',\n  cover:{preferredPx:[1600,2560],minimumPx:[625,1000],maximumPx:[10000,10000],ratio:'1:1.6',format:['JPEG','TIFF'],colorProfile:'RGB',recommendedPpi:300}\n};\n\nfunction gutterMm(pages) {\n  if (pages <= 150) return 9.6;\n  if (pages <= 300) return 12.7;\n  if (pages <= 500) return 15.9;\n  if (pages <= 700) return 19.1;\n  return 22.3;\n}\n\nconst isColoring = /(malbuch|ausmal|coloring|aktivitätsbuch|activity book)/.test(auftrag);\nconst isChildren = /(kinder|kindergarten|vorschule|bis zu 6|3.?6 jahre|4.?6 jahre)/.test(auftrag);\nconst isWorkbook = /(arbeitsbuch|workbook|tagebuch|journal|notizbuch|übungsbuch)/.test(auftrag);\nconst isCookbook = /(kochbuch|rezepte|cookbook)/.test(auftrag);\nconst isNovel = /(roman|thriller|krimi|fantasy|liebesgeschichte|novel)/.test(auftrag);\n\nlet selectedId = String(s.kdp_format_wunsch || 'AUTO');\nif (s.kdp_format_automatisch !== false || selectedId === 'AUTO') {\n  if (isColoring || isChildren || isWorkbook) selectedId = '8.5x11';\n  else if (isCookbook) selectedId = '8x10';\n  else if (isNovel) selectedId = '5.5x8.5';\n  else selectedId = '6x9';\n}\n\nlet binding = String(s.kdp_bindung_wunsch || 'AUTO').toUpperCase();\nif (binding === 'AUTO') binding = 'TASCHENBUCH';\n\nlet selected;\nif (binding === 'HARDCOVER') {\n  selected = hardcover.find(x => x.id.replace('HC_','') === selectedId) || hardcover.find(x => x.id === 'HC_6x9');\n} else {\n  selected = paperbackGlobal.find(x => x.id === selectedId) || paperbackGlobal.find(x => x.id === '6x9');\n  binding = 'TASCHENBUCH';\n}\n\nlet printType = String(s.kdp_druck_wunsch || 'AUTO').toUpperCase();\nif (printType === 'AUTO') printType = (isColoring ? 'SCHWARZWEISS_WEISS' : (isChildren || isCookbook ? 'PREMIUMFARBE_WEISS' : 'SCHWARZWEISS_CREME'));\n\nlet bleed = String(s.kdp_beschnitt_wunsch || 'AUTO').toUpperCase();\nif (bleed === 'AUTO') bleed = (isChildren || isColoring || isCookbook) ? 'MIT_BESCHNITT' : 'OHNE_BESCHNITT';\n\nconst pages = Math.max(24, Number(s.kdp_seiten_schaetzung || 100));\nconst trimW = selected.inch[0];\nconst trimH = selected.inch[1];\nconst interiorPdf = bleed === 'MIT_BESCHNITT'\n  ? {widthIn:Number((trimW + 0.125).toFixed(3)), heightIn:Number((trimH + 0.25).toFixed(3)), note:'3,2 mm oben, unten und außen; kein Beschnitt an der Bindekante'}\n  : {widthIn:trimW, heightIn:trimH};\n\nconst margins = {\n  insideGutterMm:gutterMm(pages),\n  outsideNoBleedMm:6.4,\n  outsideWithBleedMm:9.6,\n  recommendedSafeMm:12.7\n};\n\nconst catalog = {\n  sourceVersion:'KDP-Spezifikationen, gespeichert 2026-07-23',\n  paperbackGlobal,\n  paperbackJapan,\n  hardcover,\n  customPaperback:{widthIn:[4,8.5],heightIn:[6,11.69]},\n  kindle,\n  universal:{\n    interiorImagesMinDpi:300,\n    interiorFontMinPt:7,\n    coverBleedMm:3.2,\n    coverSafeDistanceFromOuterEdgeMm:6.4,\n    coverFormula:'Breite = 2×Schnittbreite + Rückenbreite + 2×3,2 mm; Höhe = Schnitthöhe + 2×3,2 mm',\n    spineBwWhiteMmPerPage:0.0572,\n    spineBwCreamMmPerPage:0.0635,\n    note:'Endgültige Covermaße immer nach finaler Seitenzahl mit dem offiziellen KDP-Coverrechner bestätigen.'\n  }\n};\n\nreturn [{\n  json:{\n    ...s,\n    kdp_catalog:catalog,\n    kdp_selected:{\n      binding,\n      formatId:selected.id,\n      trimIn:selected.inch,\n      trimMm:selected.mm,\n      printType,\n      bleed,\n      estimatedPages:pages,\n      interiorPdf,\n      margins,\n      ebookCover:kindle.cover\n    }\n  }\n}];"
+      },
+      "id": "1fbb9b89-4ba5-471a-bd58-cbd3454e0de9",
+      "name": "00A – KDP FORMATKATALOG",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst auftrag = String(s.buchauftrag || '').trim();\nif (!auftrag) throw new Error('Kein Buchauftrag vorhanden.');\n\nconst modus = String(s.qualitaetsmodus || 'hoch').toLowerCase();\nconst schnell = s.schnellmodus === true;\nlet maxTok = Number(s.max_tokens_recherche) || 11000;\nif (schnell) maxTok = Math.min(maxTok, 7000);\nif (modus === 'maximal') maxTok = Math.max(maxTok, 14000);\n\nconst qualityExtra = modus === 'standard' ? '' : `\nQUALITÄTSANFORDERUNGEN (erhöht):\n- Jede wichtige Zahlenangabe oder Studie braucht eine nachvollziehbare Quelle oder wird als ungesichert markiert.\n- Formuliere riskante oder medizinisch/rechtlich/finanzielle Aussagen ausdrücklich vorsichtig.\n- Keine absoluten Heilsversprechen oder Garantien.\n- Bevorzuge aktuelle und seriöse Quellen.`;\n\nconst prompt = `Du bist unabhängiger Rechercheanalyst und Faktenprüfer für ein deutschsprachiges Sachbuch.\n\nAUFGABE:\n1. Analysiere den Buchauftrag gründlich und quellenbasiert.\n2. Nutze Google Search für aktuelle Belege, wo sinnvoll.\n3. Trenne strikt:\n   - VERIFIZIERTE FAKTEN (mit Quelle/URL)\n   - PLAUSIBLE ANNAHMEN\n   - WIDERSPRÜCHE\n   - OFFENE FRAGEN\n   - RISKANTE AUSSAGEN (dürfen nicht als sichere Tatsache erscheinen)\n4. Erstelle eine klare, strukturierte Wissensbasis für den späteren Autor.\n5. Erfinde niemals Quellen, Zahlen, Studien oder Zitate.\n6. Markiere Unsicherheit ausdrücklich.\n\nBeende die Antwort zwingend mit diesen Abschnitten:\nQUELLENBASIS\nWIDERSPRÜCHE\nOFFENE FRAGEN\nFAKTEN-CHECKLISTE\nSICHERE SCHREIBREGELN\n${qualityExtra}\n\nBUCHAUFTRAG:\n${auftrag}\n\nZielumfang: ${s.zielumfang || 'ca. 12000 Wörter'}\nSprache: ${s.sprache || 'Deutsch'}`;\n\nreturn [{\n  json: {\n    requestBody: {\n      contents: [{ role: 'user', parts: [{ text: prompt }] }],\n      tools: s.quellenanalyse_aktiv !== false ? [{ google_search: {} }] : [],\n      generationConfig: {\n        maxOutputTokens: maxTok,\n        temperature: modus === 'maximal' ? 0.25 : 0.3\n      }\n    },\n    schnellmodus: schnell,\n    qualitaetsmodus: modus\n  }\n}];"
+      },
+      "id": "01-research-body",
+      "name": "01 – RECHERCHE + QUELLEN BODY",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_model_primary + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "01-gemini-research",
+      "name": "01A – GEMINI RECHERCHE + GROUNDING",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        400
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1500,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst parts = $json?.candidates?.[0]?.content?.parts;\nconst text = Array.isArray(parts) ? parts.map(p => p.text || '').join('').trim() : '';\nconst meta = $json?.candidates?.[0]?.groundingMetadata || {};\nconst chunks = Array.isArray(meta.groundingChunks) ? meta.groundingChunks : [];\nconst sources = [];\nconst seen = new Set();\nfor (const c of chunks) {\n  const w = c?.web;\n  if (w?.uri && !seen.has(w.uri)) {\n    seen.add(w.uri);\n    sources.push({ title: (w.title || '').slice(0, 120), uri: w.uri });\n  }\n}\nconst valid = text.length > 200;\nconst appendix = sources.length\n  ? '\\n\\nVERWENDETE QUELLEN:\\n' + sources.map((s, i) => `${i + 1}. ${s.title} – ${s.uri}`).join('\\n')\n  : '';\nconst response = valid\n  ? (text + appendix).slice(0, 18000)   // hard cap for downstream memory\n  : `NOTFALL-RECHERCHE:\\n${String(s.buchauftrag || '').slice(0, 4000)}`;\n\nreturn [{\n  json: {\n    ok: true,\n    response,\n    notebookAnalyseStatus: valid ? 'Quellenanalyse mit Google Search übernommen' : 'Fallback – Auftrag als Basis',\n    sources: sources.slice(0, 25),\n    groundingQueries: (meta.webSearchQueries || []).slice(0, 10),\n    provider: valid ? 'Gemini-Flash+Grounding' : 'Notfall'\n  }\n}];"
+      },
+      "id": "01-research-check",
+      "name": "01B – RECHERCHE PRÜFEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst research = String($('01B – RECHERCHE PRÜFEN').first().json.response || '').slice(0, 11000);\nconst modus = String(s.qualitaetsmodus || 'hoch').toLowerCase();\nconst schnell = s.schnellmodus === true;\nlet maxTok = Number(s.max_tokens_manuskript) || 30000;\nif (schnell) maxTok = Math.min(maxTok, 18000);\n\nconst qualityBlock = {\n  standard: `- Klare Kapitelstruktur\n- Keine erfundenen Fakten\n- Sparsame Verwendung von [FAKT PRÜFEN]`,\n  hoch: `- Feste Struktur: Titel, kurze Einleitung, 6–12 Kapitel, klares Fazit/Schluss\n- Einheitliche Perspektive und einheitliches Tempus\n- Keine Meta-Floskeln („In diesem Kapitel…“, „Wie wir sehen werden…“)\n- Kurze, klare Sätze und gut lesbare Absätze\n- Keine erfundenen Quellen, Zahlen oder Studien\n- [FAKT PRÜFEN] nur bei wirklich offenen Punkten\n- Fachbegriffe bei erster Nennung verständlich einführen`,\n  maximal: `- Feste Struktur: Titel, Einleitung, 8–14 Kapitel, Fazit, optional kurzer Ausblick\n- Strikt einheitliche Perspektive und Tempus\n- Hohe stilistische Konsistenz (Anrede, Begriffswahl, Ton)\n- Keine Floskeln, keine Füllsätze, keine Wiederholungen\n- Keine erfundenen Fakten; Unsicherheiten klar kennzeichnen\n- [FAKT PRÜFEN] nur wenn unvermeidbar\n- Besonders sorgfältige Formulierung bei medizinischen, rechtlichen oder finanziellen Themen\n- Gute Lesbarkeit und professioneller Sachbuch-Ton`\n}[modus] || '';\n\nconst prompt = `Du bist ein professioneller deutschsprachiger Sachbuch-Autor mit Lektoratsanspruch.\n\nSchreibe ein vollständiges, veröffentlichungsreifes Manuskript.\n\nPFLICHTREGELN:\n- Sprache: ${s.sprache || 'Deutsch'}\n- Zielumfang: ${s.zielumfang || 'ca. 12000 Wörter'}\n- Nur Überschriften mit # und ##, sonst kein Markdown\n- Kein Meta-Kommentar, direkter Beginn mit dem Buchtitel\n${qualityBlock}\n\nBUCHAUFTRAG:\n${s.buchauftrag}\n\nRECHERCHE / QUELLENBASIS:\n${research}`;\n\nreturn [{\n  json: {\n    requestBody: {\n      contents: [{ role: 'user', parts: [{ text: prompt }] }],\n      generationConfig: {\n        maxOutputTokens: maxTok,\n        temperature: modus === 'maximal' ? 0.45 : 0.55\n      }\n    },\n    qualitaetsmodus: modus\n  }\n}];"
+      },
+      "id": "02-ms-body",
+      "name": "02 – MANUSKRIPT BODY",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_model_primary + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 480000
+        }
+      },
+      "id": "02-gemini-ms",
+      "name": "02A – GEMINI MANUSKRIPT",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        400
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2500,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const asText = (v) => {\n  if (typeof v === 'string') return v.trim();\n  if (Array.isArray(v)) return v.map(asText).filter(Boolean).join('\\n').trim();\n  if (v && typeof v === 'object') return asText(v.text ?? v.content ?? v.output_text ?? '');\n  return '';\n};\nconst raw = asText($json?.candidates?.[0]?.content?.parts) || asText($json?.response) || '';\nconst clean = raw.replace(/^\\s*```(?:markdown|text)?\\s*/i, '').replace(/\\s*```\\s*$/, '').trim();\nconst ok = clean.length >= 1500;\nreturn [{ json: { ok, response: clean, manuscriptFallbackUsed: false, charCount: clean.length } }];"
+      },
+      "id": "02-ms-norm",
+      "name": "02B – MANUSKRIPT NORMALISIEREN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "02-ms-ok",
+      "name": "02C – MANUSKRIPT OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst research = String($('01B – RECHERCHE PRÜFEN').first().json.response || '').slice(0, 7000);\nconst prompt = `Schreibe ein vollständiges deutschsprachiges Sachbuch-Manuskript.\nZielumfang: ${s.zielumfang || 'ca. 10000 Wörter'}.\nKeine erfundenen Fakten. Direkter Beginn mit Titel.\n\nAUFTRAG:\n${s.buchauftrag}\n\nRECHERCHE:\n${research}`;\nreturn [{\n  json: {\n    requestBody: {\n      contents: [{ role: 'user', parts: [{ text: prompt }] }],\n      generationConfig: { maxOutputTokens: 18000, temperature: 0.5 }\n    }\n  }\n}];"
+      },
+      "id": "02d-fallback-body",
+      "name": "02D – MANUSKRIPT FALLBACK BODY",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_model_fallback + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 360000
+        }
+      },
+      "id": "02e-lite-ms",
+      "name": "02E – GEMINI LITE MANUSKRIPT",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        600
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "continueOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "jsCode": "const asText = (v) => {\n  if (typeof v === 'string') return v.trim();\n  if (Array.isArray(v)) return v.map(asText).filter(Boolean).join('\\n').trim();\n  if (v && typeof v === 'object') return asText(v.text ?? v.content ?? '');\n  return '';\n};\nlet text = asText($json?.candidates?.[0]?.content?.parts) || '';\ntext = text.replace(/^\\s*```(?:markdown|text)?\\s*/i, '').replace(/\\s*```\\s*$/, '').trim();\nif (text.length < 800) {\n  const s = $('00 – EINSTELLUNGEN').first().json;\n  text = `TECHNISCHE NOTFALL-ZWISCHENFASSUNG\\n\\nTitel: ${String(s.buchauftrag||'').slice(0,80)}\\nAutor: ${s.autorenname}\\n\\n${String(s.buchauftrag||'')}\\n\\n(Beide Schreibmodelle ohne verwertbares Ergebnis.)`;\n}\nreturn [{ json: { ok: true, response: text, manuscriptFallbackUsed: true, charCount: text.length } }];"
+      },
+      "id": "02f-fallback-norm",
+      "name": "02F – FALLBACK MANUSKRIPT NORMALISIEREN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nlet ms = '';\ntry {\n  const a = $('02B – MANUSKRIPT NORMALISIEREN').first().json;\n  if (a?.ok && a.response) ms = a.response;\n} catch (_) {}\nif (!ms || ms.length < 500) {\n  try { ms = $('02F – FALLBACK MANUSKRIPT NORMALISIEREN').first().json.response || ''; } catch (_) {}\n}\nif (!ms) throw new Error('Kein Manuskript für Lektorat vorhanden.');\n\nconst modus = String(s.qualitaetsmodus || 'hoch').toLowerCase();\nconst schnell = s.schnellmodus === true;\nlet maxTok = Number(s.max_tokens_lektorat) || 24000;\nif (schnell) maxTok = Math.min(maxTok, 15000);\n\nconst maxIn = modus === 'maximal' ? 52000 : 45000;\nconst msForPrompt = ms.length > maxIn\n  ? ms.slice(0, maxIn) + '\\n\\n[... Text für Prompt-Limit gekürzt ...]'\n  : ms;\n\nconst qualityExtra = {\n  standard: `- Rechtschreibung, Grammatik und Zeichensetzung korrigieren\n- Offensichtliche Brüche und Markdown-Reste entfernen`,\n  hoch: `- Rechtschreibung, Grammatik, Zeichensetzung und Stil glätten\n- Doppelte Sätze und Wiederholungen streichen\n- Namen, Begriffe und Zeitformen vereinheitlichen\n- Abgebrochene oder unklare Sätze reparieren\n- Markdown-Artefakte vollständig entfernen\n- Inhalt, Kapitelreihenfolge und Aussage nicht verändern`,\n  maximal: `- Vollständige Schlusskorrektur auf Verlagniveau\n- Stil, Rhythmus und Lesbarkeit spürbar verbessern, ohne den Inhalt zu ändern\n- Absolute Konsistenz bei Namen, Begriffen, Anrede und Tempus\n- Alle Doppelungen, Brüche und Formatierungsreste entfernen\n- Schwache Übergänge zwischen Absätzen glätten\n- Keine neuen Fakten, keine neuen Kapitel, keine Sinnänderung`\n}[modus] || '';\n\nconst prompt = `Du bist erfahrener Lektor und Schlusskorrektor für deutschsprachige Sachbücher.\n\nErstelle die endgültige, veröffentlichungsreife Fassung.\n\nREGELN:\n1. Handlung, Struktur, Kapitel und Kernaussage bleiben erhalten.\n2. Keine neuen Inhalte, Fakten oder Szenen erfinden.\n3. Titel und Autorenhinweis beibehalten.\n4. Gib AUSSCHLIESSLICH den fertigen Buchtext zurück (keine Erklärung, kein Bericht).\n${qualityExtra}\n\nMANUSKRIPT:\n${msForPrompt}`;\n\nreturn [{\n  json: {\n    originalManuscript: ms,\n    originalLength: ms.length,\n    qualitaetsmodus: modus,\n    requestBody: {\n      contents: [{ role: 'user', parts: [{ text: prompt }] }],\n      generationConfig: {\n        maxOutputTokens: maxTok,\n        temperature: 0.2\n      }\n    }\n  }\n}];"
+      },
+      "id": "03-lektor-body",
+      "name": "03 – LEKTORAT + ENDFASSUNG BODY",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_model_primary + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 480000
+        }
+      },
+      "id": "03-gemini-lektor",
+      "name": "03A – GEMINI LEKTORAT + ENDFASSUNG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2560,
+        400
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2500,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const asText = (v) => {\n  if (typeof v === 'string') return v.trim();\n  if (Array.isArray(v)) return v.map(asText).filter(Boolean).join('\\n').trim();\n  if (v && typeof v === 'object') return asText(v.text ?? v.content ?? '');\n  return '';\n};\nconst fixed = asText($json?.candidates?.[0]?.content?.parts) || '';\nconst body = $('03 – LEKTORAT + ENDFASSUNG BODY').first().json;\nconst original = body.originalManuscript || '';\nlet response = (fixed.length >= 800 ? fixed : original)\n  .replace(/^\\s*```(?:markdown|text)?\\s*/i, '')\n  .replace(/\\s*```\\s*$/, '')\n  .trim();\nif (!response) throw new Error('Endfassung ist leer.');\n\n// --- Leichte Qualitätsprüfung (0 €) ---\nconst markers = [];\nconst warnings = [];\nconst lower = response.toLowerCase();\n\nif (/\\b\\[fakt prüfen\\]/i.test(response)) markers.push('[FAKT PRÜFEN]');\nif (/\\bTODO\\b|\\bFIXME\\b|\\bXXX\\b/i.test(response)) markers.push('TODO/FIXME');\nif (/```/.test(response)) warnings.push('Markdown-Codeblöcke noch vorhanden');\nif ((response.match(/^#{1,3}\\s/gm) || []).length < 4) warnings.push('Weniger als 4 erkennbare Überschriften');\nif (response.length < 3000) warnings.push('Text ungewöhnlich kurz');\n// abgeschnitten wirkende Enden\nif (/\\b(der|die|das|und|oder|ein|eine)\\s*$/i.test(response.slice(-80))) {\n  warnings.push('Möglicherweise abgeschnittener Schlusssatz');\n}\n\nconst needsAttention = markers.length > 0 || warnings.length > 0;\n\nreturn [{\n  json: {\n    ok: true,\n    response,\n    lektoratFallbackVerwendet: fixed.length < 800,\n    rechtschreibungStatus: fixed.length >= 800\n      ? 'Lektorat + Korrektur angewendet'\n      : 'Originalmanuskript (Lektorat-Fallback)',\n    charCount: response.length,\n    qualityMarkers: markers,\n    qualityWarnings: warnings,\n    needsQualityAttention: needsAttention\n  }\n}];"
+      },
+      "id": "03-lektor-norm",
+      "name": "03B – ENDFASSUNG NORMALISIEREN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst end = $('03B – ENDFASSUNG NORMALISIEREN').first().json || {};\nconst text = String(end.response || '');\nconst research = $('01B – RECHERCHE PRÜFEN').first().json || {};\n\nconst lines = text.split('\\n').map(l => l.trim()).filter(Boolean);\nlet titel = (lines[0] || '').replace(/^#+\\s*/, '').slice(0, 120);\nif (titel.length < 5) titel = String(s.buchauftrag || '').slice(0, 80) || 'Unbenanntes Buch';\n\nconst autor = s.autorenname || 'AUTORENNAME_EINTRAGEN';\nconst slug = titel.normalize('NFKD')\n  .replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g, '_')\n  .replace(/^_+|_+$/g, '')\n  .slice(0, 80) || 'Buchprojekt';\n\nreturn [{\n  json: {\n    titel,\n    autor,\n    untertitel: '',\n    buch_de: text,\n    slug,\n    hinweis: 'V7.7 Quality+',\n    kdp_auswahl: {\n      format: s.kdp_format_wunsch || 'AUTO',\n      bindung: s.kdp_bindung_wunsch || 'AUTO',\n      druck: s.kdp_druck_wunsch || 'AUTO'\n    },\n    quellenanalyse: research.notebookAnalyseStatus || '',\n    sources: research.sources || [],\n    charCount: text.length,\n    qualityMarkers: end.qualityMarkers || [],\n    qualityWarnings: end.qualityWarnings || [],\n    qualitaetsmodus: s.qualitaetsmodus || 'hoch'\n  }\n}];"
+      },
+      "id": "05-kdp",
+      "name": "05 – KDP PAKET",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3040,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst p = $('05 – KDP PAKET').first().json;\nconst end = $('03B – ENDFASSUNG NORMALISIEREN').first().json || {};\nconst modus = String(s.qualitaetsmodus || 'hoch').toLowerCase();\nconst lightOn = s.leichte_nachpruefung !== false;\nconst fullAudit = s.fehleranalyse_aktiv === true || modus === 'maximal';\n\nconst markers = end.qualityMarkers || [];\nconst warnings = end.qualityWarnings || [];\nconst needsAttention = end.needsQualityAttention === true;\n\n// Standard: keine teure Prüfung\nif (!fullAudit && !(lightOn && needsAttention && (modus === 'hoch' || modus === 'maximal'))) {\n  return [{\n    json: {\n      ...p,\n      skipAudit: true,\n      qualitaetsfreigabe: markers.length === 0,\n      qualitaetsstatus: needsAttention\n        ? 'Leichte Prüfung: Hinweise vorhanden (kein Modell-Call)'\n        : 'Leichte Prüfung ohne Auffälligkeiten',\n      qualitaetsaudit: {\n        freigabe: markers.length === 0,\n        schwere_fehler: [],\n        warnungen: warnings,\n        gefundene_marker: markers,\n        zusammenfassung: needsAttention\n          ? 'Kostenlose Struktur-/Marker-Prüfung hat Hinweise gefunden.'\n          : 'Kostenlose Prüfung ohne kritische Marker.'\n      }\n    }\n  }];\n}\n\n// Teurer Call nur wenn nötig\nconst excerpt = String(p.buch_de || '').slice(0, 14000);\nconst prompt = `Du bist unabhängiger Qualitätsprüfer für ein Sachbuch.\nPrüfe gezielt auf:\n- offene Marker wie [FAKT PRÜFEN]\n- Widersprüche und abgeschnittene Sätze\n- schwere Rechtschreib-/Grammatikfehler\n- störende Wiederholungen\n\nGib NUR gültiges JSON zurück:\n{\"freigabe\":true,\"schwere_fehler\":[],\"warnungen\":[],\"gefundene_marker\":[],\"empfohlene_korrekturen\":[],\"zusammenfassung\":\"\"}\n\nBEKANNTE HINWEISE AUS DER VORPRÜFUNG:\nMarker: ${JSON.stringify(markers)}\nWarnungen: ${JSON.stringify(warnings)}\n\nBUCHTEXT (Ausschnitt):\n${excerpt}`;\n\nreturn [{\n  json: {\n    ...p,\n    skipAudit: false,\n    auditRequest: {\n      contents: [{ role: 'user', parts: [{ text: prompt }] }],\n      generationConfig: {\n        responseMimeType: 'application/json',\n        maxOutputTokens: 3500,\n        temperature: 0.1\n      }\n    }\n  }\n}];"
+      },
+      "id": "05a-audit-body",
+      "name": "05A – FEHLERSUCHE BODY",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3280,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "c2",
+              "leftValue": "={{ $json.skipAudit }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "05a2-if",
+      "name": "05A2 – FEHLERSUCHE SKIP?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3520,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_model_fallback + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.auditRequest }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "05b-audit",
+      "name": "05B – KI FEHLERSUCHE",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3520,
+        600
+      ],
+      "continueOnFail": true,
+      "retryOnFail": true,
+      "maxTries": 1,
+      "waitBetweenTries": 1000
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05A – FEHLERSUCHE BODY').first().json;\nif (p.skipAudit) return [{ json: p }];\nlet raw = ($json?.candidates?.[0]?.content?.parts || []).map(x => x.text || '').join('').trim();\nraw = raw.replace(/^```(?:json)?\\s*/i, '').replace(/```\\s*$/i, '').trim();\nlet audit;\ntry { audit = JSON.parse(raw); } catch {\n  audit = { freigabe: true, schwere_fehler: [], warnungen: ['Audit nicht parsebar'], zusammenfassung: 'Fallback' };\n}\nconst severe = Array.isArray(audit.schwere_fehler) ? audit.schwere_fehler : [];\nconst release = audit.freigabe === true && severe.length === 0;\nreturn [{\n  json: {\n    ...p,\n    qualitaetsfreigabe: release,\n    qualitaetsaudit: audit,\n    qualitaetsstatus: release ? 'Audit bestanden' : 'Audit mit Hinweisen'\n  }\n}];"
+      },
+      "id": "05c-audit-eval",
+      "name": "05C – FEHLERSUCHE AUSWERTEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3760,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05 – KDP PAKET').first().json;\nconst cfg = $('00 – EINSTELLUNGEN').first().json;\nconst prompt = `Erzeuge ausschließlich das professionelle Covermotiv ohne Schrift für ein Amazon-KDP-Buch.\nTitel: ${p.titel}\nBuchinhalt: ${String(p.buch_de || '').slice(0, 5000)}\nZiel: visuell stark, hochwertig, verkaufsfähig, passend zur Zielgruppe und Buchart. Hochformat, klare zentrale Bildidee, gute Kontraste, oben und unten ruhige Flächen für spätere Typografie. Keine Wörter, keine Buchstaben, kein Logo, kein Wasserzeichen, kein Rahmen.`;\nreturn [{json:{...p, imageRequest:{contents:[{parts:[{text:prompt}]}],generationConfig:{responseModalities:['TEXT','IMAGE']}}}}];"
+      },
+      "id": "1d0569a0-63fd-489d-b626-d5dd18dbf7e0",
+      "name": "06 – COVER PROMPT BAUEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6988,
+        784
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://generativelanguage.googleapis.com/v1/models/' + $('00 – EINSTELLUNGEN').first().json.gemini_image_model + ':generateContent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "={{ $('00 – EINSTELLUNGEN').first().json.gemini_api_key }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.imageRequest }}",
+        "options": {
+          "timeout": 180000,
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "d6420ad4-8578-4139-a1d9-5738dbe85e63",
+      "name": "06A – NANO BANANA COVER",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7228,
+        784
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05 – KDP PAKET').first().json;\nconst parts = $json?.candidates?.[0]?.content?.parts || [];\nconst img = parts.find(x => x.inlineData?.data || x.inline_data?.data);\nif (!img) throw new Error('Gemini hat kein Coverbild geliefert.');\nconst b64 = img.inlineData?.data || img.inline_data?.data;\nconst mime = img.inlineData?.mimeType || img.inline_data?.mime_type || 'image/png';\nconst coverBinary = await this.helpers.prepareBinaryData(\n  Buffer.from(b64, 'base64'),\n  'cover-motiv.png',\n  mime\n);\nreturn [{ json: { ...p }, binary: { cover: coverBinary } }];"
+      },
+      "id": "7087e8ff-3c21-430e-ab01-2e82575a119d",
+      "name": "06B – COVERBILD NORMALISIEREN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7500,
+        608
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "/buch/autorenfoto.png.jpg",
+        "options": {
+          "dataPropertyName": "author"
+        }
+      },
+      "id": "df6e6504-5c24-4273-849b-34b8b15aaa0f",
+      "name": "06C – AUTORENFOTO LESEN",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        7708,
+        784
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "d93e6864-ee9e-4849-9194-e624c17086d8",
+      "name": "06C2 – COVER + AUTORENFOTO MERGEN",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        7948,
+        784
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05 – KDP PAKET').first().json;\nconst cfg = $('00 – EINSTELLUNGEN').first().json;\n\nconst input = items[0];\n\nif (!input?.binary) {\n\tthrow new Error('Keine Binärdaten am Eingang dieses Nodes vorhanden.');\n}\n\nconst availableKeys = Object.keys(input.binary);\n\n// Automatisch passende Binärfelder erkennen\nconst coverKey = input.binary.cover\n\t? 'cover'\n\t: input.binary.image\n\t\t? 'image'\n\t\t: input.binary.data\n\t\t\t? 'data'\n\t\t\t: null;\n\nconst authorKey = input.binary.author\n\t? 'author'\n\t: input.binary.autorenfoto\n\t\t? 'autorenfoto'\n\t\t: null;\n\nif (!coverKey) {\n\tthrow new Error(\n\t\t`Coverbild fehlt. Vorhandene Binärfelder: ${availableKeys.join(', ') || 'keine'}`\n\t);\n}\n\nif (!authorKey) {\n\tthrow new Error(\n\t\t`Autorenfoto fehlt. Vorhandene Binärfelder: ${availableKeys.join(', ') || 'keine'}. ` +\n\t\t`Vor diesem Node müssen Cover und Autorenfoto zusammengeführt werden.`\n\t);\n}\n\nconst coverBuf = await this.helpers.getBinaryDataBuffer(0, coverKey);\nconst authorBuf = await this.helpers.getBinaryDataBuffer(0, authorKey);\n\nconst coverMime = input.binary[coverKey]?.mimeType || 'image/png';\nconst authorMime = input.binary[authorKey]?.mimeType || 'image/jpeg';\n\nconst coverData =\n\t`data:${coverMime};base64,${coverBuf.toString('base64')}`;\n\nconst authorData =\n\t`data:${authorMime};base64,${authorBuf.toString('base64')}`;\n\n\nconst logoData =\n    cfg.markenlogo_base64\n        ? `data:${cfg.markenlogo_mime || 'image/jpeg'};base64,${cfg.markenlogo_base64}`\n        : '';\n\nconst title = String(p.titel || 'Unbenanntes_Buch');\nconst author = String(\n\tp.autor ||\n\tcfg.autorenname ||\n\t'Mitch Book Design'\n);\n\nconst clean = (value) =>\n\tString(value || '').replace(\n\t\t/[&<>\"]/g,\n\t\t(character) => ({\n\t\t\t'&': '&amp;',\n\t\t\t'<': '&lt;',\n\t\t\t'>': '&gt;',\n\t\t\t'\"': '&quot;',\n\t\t})[character]\n\t);\n\nconst words = String(p.buch_de || '')\n\t.replace(/[#*_>`]/g, ' ')\n\t.replace(/\\s+/g, ' ')\n\t.trim();\n\nconst blurb =\n\twords.slice(0, 900) +\n\t(words.length > 900 ? '…' : '');\n\nconst trim = p.kdp_auswahl?.trimMm || [152.4, 228.6];\nconst spine = p.vorlaeufiges_print_cover?.spineMm || 5.72;\n\nconst W = trim[0] * 2 + spine + 6.4;\nconst H = trim[1] + 6.4;\nconst backW = trim[0];\nconst frontLeft = trim[0] + spine + 3.2;\n\nconst html = `<!doctype html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n@page {\n\tsize: ${W}mm ${H}mm;\n\tmargin: 0;\n}\n\n* {\n\tbox-sizing: border-box;\n}\n\nhtml,\nbody {\n\tmargin: 0;\n\twidth: ${W}mm;\n\theight: ${H}mm;\n\tfont-family: Arial, sans-serif;\n\tbackground: #111;\n\tcolor: #fff;\n}\n\nbody {\n\tposition: relative;\n\toverflow: hidden;\n}\n\n.front {\n\tposition: absolute;\n\tleft: ${frontLeft}mm;\n\ttop: 3.2mm;\n\twidth: ${trim[0]}mm;\n\theight: ${trim[1]}mm;\n\tbackground: url('${coverData}') center / cover no-repeat;\n}\n\n.shade {\n\tposition: absolute;\n\tinset: 0;\n\tbackground:\n\t\tlinear-gradient(\n\t\t\t180deg,\n\t\t\trgba(0,0,0,.52),\n\t\t\ttransparent 36%,\n\t\t\ttransparent 65%,\n\t\t\trgba(0,0,0,.65)\n\t\t);\n}\n\n.title {\n\tposition: absolute;\n\ttop: 16mm;\n\tleft: 12mm;\n\tright: 12mm;\n\ttext-align: center;\n\tfont-family: Georgia, serif;\n\tfont-size: 24pt;\n\tline-height: 1.08;\n\tfont-weight: 700;\n\ttext-shadow: 0 2px 8px #000;\n}\n\n.author-front {\n\tposition: absolute;\n\tbottom: 14mm;\n\tleft: 12mm;\n\tright: 12mm;\n\ttext-align: center;\n\tfont-size: 12pt;\n\tletter-spacing: 1.8px;\n}\n\n.spine {\n\tposition: absolute;\n\tleft: ${trim[0] + 3.2}mm;\n\ttop: 3.2mm;\n\twidth: ${spine}mm;\n\theight: ${trim[1]}mm;\n\tbackground: #171717;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.spine span {\n\twriting-mode: vertical-rl;\n\ttransform: rotate(180deg);\n\tfont-size: 8pt;\n\twhite-space: nowrap;\n\toverflow: hidden;\n}\n\n.back {\n\tposition: absolute;\n\tleft: 3.2mm;\n\ttop: 3.2mm;\n\twidth: ${backW}mm;\n\theight: ${trim[1]}mm;\n\tbackground: linear-gradient(145deg, #161616, #342414);\n\tpadding: 14mm 12mm;\n}\n\n.back h2 {\n\tfont-family: Georgia, serif;\n\tfont-size: 16pt;\n\tmargin: 0 0 8mm;\n}\n\n\n.brand-logo {\n\tposition: absolute;\n\tright: 8mm;\n\tbottom: 42mm;\n\twidth: 24mm;\n\theight: 24mm;\n\tobject-fit: contain;\n\tborder-radius: 1.5mm;\n\tbox-shadow: 0 1.2mm 3mm rgba(0,0,0,.38);\n\tz-index: 3;\n}\n\n.back.has-logo h2 {\n\tpadding-right: 0;\n}\n\n.blurb {\n\tfont-size: 10pt;\n\tline-height: 1.45;\n\tmax-height: 105mm;\n\toverflow: hidden;\n}\n\n.bio {\n\tposition: absolute;\n\tleft: 12mm;\n\tright: 66mm;\n\tbottom: 16mm;\n\tdisplay: flex;\n\tgap: 7mm;\n\talign-items: center;\n}\n\n.bio img {\n\twidth: 28mm;\n\theight: 36mm;\n\tobject-fit: cover;\n\tborder: 1px solid #d8bd83;\n}\n\n.bio div {\n\tfont-size: 8.5pt;\n\tline-height: 1.35;\n}\n\n.barcode {\n\tposition: absolute;\n\tright: 8mm;\n\tbottom: 8mm;\n\twidth: 50.8mm;\n\theight: 30.5mm;\n\tbackground: #fff;\n}\n\n.safe {\n\tposition: absolute;\n\tinset: 6.4mm;\n\tborder: .2mm dashed rgba(255,255,255,.2);\n\tpointer-events: none;\n}\n</style>\n</head>\n\n<body>\n\t<div class=\"back ${logoData ? 'has-logo' : ''}\">\n\t\t${logoData ? `<img class=\"brand-logo\" src=\"${logoData}\" alt=\"Mitsch Book Design\">` : ''}\n\t\t<h2>${clean(title)}</h2>\n\n\t\t<div class=\"blurb\">\n\t\t\t${clean(blurb)}\n\t\t</div>\n\n\t\t<div class=\"bio\">\n\t\t\t<img src=\"${authorData}\">\n\t\t\t<div>\n\t\t\t\t<strong>${clean(author)}</strong><br>\n\t\t\t\tAutor und Herausgeber. Dieses Buch wurde mit sorgfältiger\n\t\t\t\tRecherche, mehrstufigem Lektorat und abschließender\n\t\t\t\tQualitätskontrolle erstellt.\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"barcode\"></div>\n\t</div>\n\n\t<div class=\"spine\">\n\t\t${Number(p.kdp_auswahl?.estimatedPages||0)>=79 ? `<span>${clean(title)} · ${clean(author)}</span>` : ``}\n\t</div>\n\n\t<div class=\"front\">\n\t\t<div class=\"shade\"></div>\n\t\t<div class=\"title\">${clean(title)}</div>\n\t\t<div class=\"author-front\">${clean(author)}</div>\n\t\t<div class=\"safe\"></div>\n\t</div>\n</body>\n</html>`;\n\nconst slug =\n\ttitle\n\t\t.normalize('NFKD')\n\t\t.replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g, '_')\n\t\t.replace(/^_+|_+$/g, '')\n\t\t.slice(0, 80) ||\n\t'Unbenanntes_Buch';\n\n// n8n-kompatible Binärdatei erzeugen\nconst htmlBinary =\n\tawait this.helpers.prepareBinaryData(\n\t\tBuffer.from(html, 'utf8'),\n\t\t'index.html',\n\t\t'text/html'\n\t);\n\nreturn [\n\t{\n\t\tjson: {\n\t\t\t...p,\n\t\t\tslug,\n\t\t\tcoverPath: `/buch/${slug}_COVER.pdf`,\n\t\t},\n\t\tbinary: {\n\t\t\tdata: htmlBinary,\n\t\t},\n\t\tpairedItem: {\n\t\t\titem: 0,\n\t\t},\n\t},\n];"
+      },
+      "id": "fe449694-578f-4758-8df4-2c001b6a0073",
+      "name": "06D – COVER HTML BAUEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9388,
+        784
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3000/forms/chromium/convert/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "printBackground",
+              "value": "true"
+            },
+            {
+              "name": "preferCssPageSize",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 300000
+        }
+      },
+      "id": "e2d6094b-88e9-4b2d-b6a4-dfd905f37cc2",
+      "name": "06E – COVER PDF MIT GOTENBERG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9628,
+        784
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = items[0];\nif (!input?.binary?.data) throw new Error('Gotenberg hat keine Datei im Binärfeld data geliefert.');\nconst buf = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst header = buf.subarray(0, 5).toString('ascii');\nif (header !== '%PDF-') {\n  const preview = buf.subarray(0, 200).toString('utf8').replace(/\\s+/g, ' ');\n  throw new Error(`Gotenberg-Antwort ist keine echte PDF. Dateikopf: ${JSON.stringify(header)}. Antwort beginnt mit: ${preview}`);\n}\nconst slug = $('06D – COVER HTML BAUEN').first().json.slug || 'Unbenanntes_Buch';\nconst pdf = await this.helpers.prepareBinaryData(buf, `${slug}_COVER.pdf`, 'application/pdf');\nreturn [{json:{...$('06D – COVER HTML BAUEN').first().json,pdfValid:true},binary:{data:pdf}}];"
+      },
+      "id": "e7127c5d-4439-4ba0-a1e1-3228d0d9e6b6",
+      "name": "06E2 – COVER PDF PRÜFEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -776,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('06D – COVER HTML BAUEN').first().json.coverPath }}",
+        "options": {}
+      },
+      "id": "3fa07c68-5947-4c5e-bb43-223c6230540d",
+      "name": "06F – COVER PDF SPEICHERN",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -536,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05 – KDP PAKET').first().json;\nconst cfg = $('00 – EINSTELLUNGEN').first().json;\nconst source = items[0];\n\nif (!source?.binary) {\n  throw new Error('Die Cover-Binärdaten für das E-Book-Cover fehlen.');\n}\n\nconst coverKey = source.binary.cover\n  ? 'cover'\n  : source.binary.image\n    ? 'image'\n    : source.binary.data\n      ? 'data'\n      : null;\n\nif (!coverKey) {\n  throw new Error(`Kein Covermotiv gefunden. Binärfelder: ${Object.keys(source.binary).join(', ') || 'keine'}`);\n}\n\nconst coverBuf = await this.helpers.getBinaryDataBuffer(0, coverKey);\nconst coverMime = source.binary[coverKey]?.mimeType || 'image/png';\nconst coverData = `data:${coverMime};base64,${coverBuf.toString('base64')}`;\n\nconst width = Math.max(625, Number(cfg.ebook_cover_breite_px || 1600));\nconst height = Math.max(1000, Number(cfg.ebook_cover_hoehe_px || 2560));\nconst title = String(p.titel || 'Unbenanntes Buch');\nconst subtitle = String(p.untertitel || p.subtitle || '');\nconst author = String(p.autor || cfg.autorenname || 'Mitsch Book Design');\n\nconst clean = (value) => String(value || '').replace(/[&<>\"]/g, c => ({\n  '&': '&amp;',\n  '<': '&lt;',\n  '>': '&gt;',\n  '\"': '&quot;'\n})[c]);\n\nconst slug = title\n  .normalize('NFKD')\n  .replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g, '_')\n  .replace(/^_+|_+$/g, '')\n  .slice(0, 80) || 'Unbenanntes_Buch';\n\nconst html = `<!doctype html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n* { box-sizing: border-box; }\nhtml, body {\n  margin: 0;\n  padding: 0;\n  width: ${width}px;\n  height: ${height}px;\n  overflow: hidden;\n  background: #111;\n  font-family: Arial, sans-serif;\n}\n.cover {\n  position: relative;\n  width: ${width}px;\n  height: ${height}px;\n  background: url('${coverData}') center center / cover no-repeat;\n  overflow: hidden;\n}\n.overlay {\n  position: absolute;\n  inset: 0;\n  background:\n    linear-gradient(180deg,\n      rgba(0,0,0,.62) 0%,\n      rgba(0,0,0,.24) 28%,\n      rgba(0,0,0,.05) 52%,\n      rgba(0,0,0,.50) 100%);\n}\n.title {\n  position: absolute;\n  left: 8%;\n  right: 8%;\n  top: 7%;\n  text-align: center;\n  color: #fff;\n  font-family: Georgia, serif;\n  font-weight: 700;\n  font-size: clamp(86px, 7.4vw, 126px);\n  line-height: 1.03;\n  text-shadow: 0 8px 24px rgba(0,0,0,.95);\n  overflow-wrap: anywhere;\n}\n.subtitle {\n  position: absolute;\n  left: 11%;\n  right: 11%;\n  top: 29%;\n  text-align: center;\n  color: #fff;\n  font-size: clamp(38px, 3.1vw, 56px);\n  line-height: 1.18;\n  text-shadow: 0 5px 18px rgba(0,0,0,.95);\n}\n.author {\n  position: absolute;\n  left: 8%;\n  right: 8%;\n  bottom: 6%;\n  text-align: center;\n  color: #fff;\n  font-size: clamp(38px, 3vw, 54px);\n  font-weight: 600;\n  letter-spacing: 4px;\n  text-transform: uppercase;\n  text-shadow: 0 5px 18px rgba(0,0,0,.95);\n}\n.safe {\n  position: absolute;\n  inset: 3%;\n  border: 2px solid transparent;\n  pointer-events: none;\n}\n</style>\n</head>\n<body>\n  <div class=\"cover\">\n    <div class=\"overlay\"></div>\n    <div class=\"title\">${clean(title)}</div>\n    ${subtitle ? `<div class=\"subtitle\">${clean(subtitle)}</div>` : ''}\n    <div class=\"author\">${clean(author)}</div>\n    <div class=\"safe\"></div>\n  </div>\n</body>\n</html>`;\n\nconst data = await this.helpers.prepareBinaryData(\n  Buffer.from(html, 'utf8'),\n  'index.html',\n  'text/html'\n);\n\nreturn [{\n  json: {\n    ...p,\n    slug,\n    ebookCoverWidth: width,\n    ebookCoverHeight: height,\n    ebookCoverPath: `/buch/${slug}_EBOOK_COVER.jpg`\n  },\n  binary: { data }\n}];"
+      },
+      "id": "9a37c68a28bb4dc0b1b4a5f409929e21",
+      "name": "06G – EBOOK COVER HTML BAUEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10560,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3000/forms/chromium/screenshot/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "width",
+              "value": "={{ String($('06G – EBOOK COVER HTML BAUEN').first().json.ebookCoverWidth) }}"
+            },
+            {
+              "name": "height",
+              "value": "={{ String($('06G – EBOOK COVER HTML BAUEN').first().json.ebookCoverHeight) }}"
+            },
+            {
+              "name": "clip",
+              "value": "true"
+            },
+            {
+              "name": "format",
+              "value": "jpeg"
+            },
+            {
+              "name": "quality",
+              "value": "={{ String($('00 – EINSTELLUNGEN').first().json.ebook_cover_jpeg_qualitaet || 95) }}"
+            },
+            {
+              "name": "deviceScaleFactor",
+              "value": "1"
+            },
+            {
+              "name": "optimizeForSpeed",
+              "value": "false"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 180000
+        }
+      },
+      "id": "efc251c05a0a4b3e9faedd2cec3007b0",
+      "name": "06H – EBOOK COVER JPEG MIT GOTENBERG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10800,
+        160
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1500,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = items[0];\nif (!input?.binary?.data) {\n  throw new Error('Gotenberg hat kein E-Book-Cover geliefert.');\n}\n\nconst buf = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst isJpeg = buf.length > 4 &&\n  buf[0] === 0xFF &&\n  buf[1] === 0xD8 &&\n  buf[buf.length - 2] === 0xFF &&\n  buf[buf.length - 1] === 0xD9;\n\nif (!isJpeg) {\n  const preview = buf.subarray(0, 160).toString('utf8').replace(/\\s+/g, ' ');\n  throw new Error(`Die E-Book-Cover-Antwort ist kein gültiges JPEG. Antwort beginnt mit: ${preview}`);\n}\n\nconst source = $('06G – EBOOK COVER HTML BAUEN').first().json;\nconst minBytes = 20 * 1024;\nif (buf.length < minBytes) {\n  throw new Error(`Das E-Book-Cover ist ungewöhnlich klein (${buf.length} Byte).`);\n}\n\nconst jpeg = await this.helpers.prepareBinaryData(\n  buf,\n  `${source.slug}_EBOOK_COVER.jpg`,\n  'image/jpeg'\n);\n\nreturn [{\n  json: {\n    ...source,\n    ebookCoverValid: true,\n    ebookCoverBytes: buf.length,\n    ebookCoverFormat: 'JPEG',\n    ebookCoverDimensions: `${source.ebookCoverWidth} × ${source.ebookCoverHeight} px`\n  },\n  binary: { data: jpeg }\n}];"
+      },
+      "id": "85d63e6b66d14a50ba1a86ef910d043d",
+      "name": "06I – EBOOK COVER PRÜFEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11040,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('06G – EBOOK COVER HTML BAUEN').first().json.ebookCoverPath }}",
+        "options": {}
+      },
+      "id": "62c225255f8a4173ac2c751290343069",
+      "name": "06J – EBOOK COVER SPEICHERN",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        11280,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "cae7d113279544b8a2953b0fc0d18049",
+      "name": "06K – BEIDE COVER FERTIG",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        11520,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05 – KDP PAKET').first().json;\nconst title = String(p.titel || 'Unbenanntes_Buch');\nconst author = String(p.autor || 'Mitch Book Design');\nconst trim = p.kdp_auswahl?.trimMm || [152.4,228.6];\nconst margins = p.mindestraender || {};\nconst gutter = Number(margins.insideGutterMm || 12.7);\nconst outer = Math.max(10, Number(margins.outsideNoBleedMm || 6.4));\nconst esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));\nconst md=String(p.buch_de||'');\nconst lines=md.split(/\\r?\\n/);let body='';\nfor(const raw of lines){const line=raw.trim();if(!line){body+='<p class=\"sp\"></p>';continue;}if(/^###\\s+/.test(line))body+=`<h3>${esc(line.replace(/^###\\s+/,''))}</h3>`;else if(/^##\\s+/.test(line))body+=`<h2>${esc(line.replace(/^##\\s+/,''))}</h2>`;else if(/^#\\s+/.test(line))body+=`<h1>${esc(line.replace(/^#\\s+/,''))}</h1>`;else body+=`<p>${esc(line.replace(/^[-*]\\s+/,''))}</p>`;}\nconst html=`<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\"><style>@page{size:${trim[0]}mm ${trim[1]}mm;margin:18mm ${outer}mm 18mm ${gutter}mm;@bottom-center{content:counter(page);font-size:9pt;color:#555}}*{box-sizing:border-box}body{font-family:Georgia,'Times New Roman',serif;font-size:11pt;line-height:1.52;color:#171717;hyphens:auto}h1{font-size:24pt;line-height:1.12;text-align:center;margin:35mm 0 12mm;page-break-before:always}h1:first-child{page-break-before:auto}h2{font-size:18pt;line-height:1.2;margin:12mm 0 5mm;page-break-after:avoid}h3{font-size:13pt;margin:8mm 0 3mm;page-break-after:avoid}p{margin:0 0 3.2mm;text-align:justify;orphans:3;widows:3}.sp{height:2mm}.titlepage{height:180mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;page-break-after:always}.titlepage h1{page-break-before:auto;margin:0 0 12mm}.titlepage .author{font-size:14pt;letter-spacing:1px}</style></head><body><section class=\"titlepage\"><h1>${esc(title)}</h1><div class=\"author\">${esc(author)}</div></section>${body}</body></html>`;\nconst slug=title.normalize('NFKD').replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g,'_').replace(/^_+|_+$/g,'').slice(0,80)||'Unbenanntes_Buch';\nconst htmlBinary = await this.helpers.prepareBinaryData(Buffer.from(html,'utf8'),'index.html','text/html');\nreturn [{json:{...p,slug,interiorPath:`/buch/${slug}_INNEN.pdf`},binary:{data:htmlBinary}}];"
+      },
+      "id": "075eef33-4281-4edf-bafc-b48be38b0cb6",
+      "name": "07 – INNEN HTML BAUEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -296,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3000/forms/chromium/convert/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "printBackground",
+              "value": "true"
+            },
+            {
+              "name": "preferCssPageSize",
+              "value": "true"
+            },
+            {
+              "name": "generateDocumentOutline",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 420000
+        }
+      },
+      "id": "74c16b18-16e2-4a85-8fbc-4ef97dd6ef8c",
+      "name": "07A – INNEN PDF MIT GOTENBERG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -56,
+        416
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2500,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = items[0];\nif (!input?.binary?.data) throw new Error('Gotenberg hat keine Datei im Binärfeld data geliefert.');\nconst buf = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst header = buf.subarray(0, 5).toString('ascii');\nif (header !== '%PDF-') {\n  const preview = buf.subarray(0, 200).toString('utf8').replace(/\\s+/g, ' ');\n  throw new Error(`Gotenberg-Antwort ist keine echte PDF. Dateikopf: ${JSON.stringify(header)}. Antwort beginnt mit: ${preview}`);\n}\nconst slug = $('07 – INNEN HTML BAUEN').first().json.slug || 'Unbenanntes_Buch';\nconst pdf = await this.helpers.prepareBinaryData(buf, `${slug}_INNEN.pdf`, 'application/pdf');\nreturn [{json:{...$('07 – INNEN HTML BAUEN').first().json,pdfValid:true},binary:{data:pdf}}];"
+      },
+      "id": "6301dfa0-aebd-42b4-8188-38b8e1382d5a",
+      "name": "07A2 – INNEN PDF PRÜFEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        184,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('07 – INNEN HTML BAUEN').first().json.interiorPath }}",
+        "options": {}
+      },
+      "id": "6e5685a8-b293-4eb9-8fd7-0f5e0fe17635",
+      "name": "07B – INNEN PDF SPEICHERN",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        424,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const s = $('00 – EINSTELLUNGEN').first().json;\nconst p = $('05C – FEHLERSUCHE AUSWERTEN').first().json;\n\nconst title = String(p.titel || 'Buchprojekt');\nconst slug = title.normalize('NFKD')\n  .replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g, '_')\n  .replace(/^_+|_+$/g, '')\n  .slice(0, 80) || 'Buchprojekt';\n\nconst safeNode = (name) => {\n  try {\n    const node = $(name).first();\n    return node ? node.json : null;\n  } catch {\n    return null;\n  }\n};\n\nconst research = safeNode('01B – RECHERCHE PRÜFEN');\nconst sourceAnalysisBody = safeNode('01G – NOTEBOOKLM QUELLENANALYSE BODY');\nconst manuscriptCheck = safeNode('03 – LEKTORAT BODY');\nconst spelling = safeNode('03B – ENDFASSUNG NORMALISIEREN');\nconst endfassungBody = safeNode('04 – ENDFASSUNG BODY');\nconst coverCheck = safeNode('06E2 – COVER PDF PRÜFEN');\nconst interiorCheck = safeNode('07A2 – INNEN PDF PRÜFEN');\nconst ebookCheck = safeNode('06I – EBOOK COVER PRÜFEN');\nconst finalProduct = safeNode('08 – FERTIGES PRODUKT');\n\nconst warnings = [];\nconst errors = [];\n\nif (!research) warnings.push('Quellenanalyse konnte im Protokoll nicht gelesen werden.');\nif (manuscriptCheck?.manuscriptFallbackUsed === true) {\n  warnings.push('Beide Schreibmodelle lieferten kein verwertbares Manuskript. Eine technische Notfall-Zwischenfassung wurde erzeugt.');\n}\nif (sourceAnalysisBody?.researchFallbackUsed === true) {\n  warnings.push('Die erste Recherche und ihr API-Fallback lieferten keine verwertbare Antwort. Die Quellenanalyse wurde direkt aus dem Buchauftrag aufgebaut.');\n}\nif (!spelling) warnings.push('Rechtschreibprüfung konnte im Protokoll nicht gelesen werden.');\nif (endfassungBody?.lektoratFallbackVerwendet === true) {\n  warnings.push('Beide externen Lektoratsprüfer lieferten keinen Bericht. Die Endfassung verwendete das automatische Notfall-Selbstlektorat.');\n}\nif (!coverCheck) warnings.push('Cover-PDF-Prüfung konnte im Protokoll nicht gelesen werden.');\nif (!interiorCheck) warnings.push('Innen-PDF-Prüfung konnte im Protokoll nicht gelesen werden.');\nif (!ebookCheck) warnings.push('E-Book-Cover-Prüfung konnte im Protokoll nicht gelesen werden.');\n\nif (research?.notebookAnalyseStatus?.toLowerCase().includes('fallback')) {\n  warnings.push('Die Recherche verwendete einen Fallback.');\n}\nif (spelling?.rechtschreibungStatus &&\n    !String(spelling.rechtschreibungStatus).toLowerCase().includes('bestanden')) {\n  warnings.push(`Rechtschreibung: ${spelling.rechtschreibungStatus}`);\n}\nif (p.qualitaetsfreigabe !== true) {\n  warnings.push('Die unabhängige Fehleranalyse hat keine vollständige Freigabe erteilt.');\n}\nif (coverCheck?.pdfValid === false || coverCheck?.valid === false) {\n  errors.push('Cover-PDF ist nicht gültig.');\n}\nif (interiorCheck?.pdfValid === false || interiorCheck?.valid === false) {\n  errors.push('Innen-PDF ist nicht gültig.');\n}\n\nconst audit = p.qualitaetsaudit || {};\nconst severe = Array.isArray(audit.schwere_fehler) ? audit.schwere_fehler : [];\nconst auditWarnings = Array.isArray(audit.warnungen) ? audit.warnungen : [];\nconst markers = Array.isArray(audit.gefundene_marker) ? audit.gefundene_marker : [];\n\nerrors.push(...severe.map(x => `Qualitätsprüfung: ${x}`));\nwarnings.push(...auditWarnings.map(x => `Qualitätswarnung: ${x}`));\nwarnings.push(...markers.map(x => `Offener Marker: ${x}`));\n\nconst steps = [\n  {\n    schritt: 'Auftrag und Einstellungen',\n    status: s.buchauftrag ? 'OK' : 'WARNUNG',\n    details: s.buchauftrag ? 'Buchauftrag vorhanden.' : 'Buchauftrag fehlt oder ist leer.'\n  },\n  {\n    schritt: 'OpenCode-Recherche',\n    status: 'AUSGEFÜHRT',\n    details: 'Erstrecherche wurde ausgeführt; bei Fehlern greift der bestehende Fallback.'\n  },\n  {\n    schritt: 'NotebookLM-ähnliche Quellenanalyse',\n    status: research?.notebookAnalyseStatus || 'UNBEKANNT',\n    details: research?.sources?.length\n      ? `${research.sources.length} Quellen im Grounding-Bericht.`\n      : 'Keine oder nicht auslesbare Quellenliste.'\n  },\n  {\n    schritt: 'Manuskript',\n    status: safeNode('02C – MANUSKRIPT OK?') ? 'AUSGEFÜHRT' : 'NICHT LESBAR',\n    details: 'Manuskriptstufe und Fallback-Pfad geprüft.'\n  },\n  {\n    schritt: 'Lektorat und finale Fassung',\n    status: safeNode('04 – FINALE VERSION') ? 'AUSGEFÜHRT' : 'NICHT LESBAR',\n    details: 'Lektorat, finale Fassung und vorhandene Korrekturstufen.'\n  },\n  {\n    schritt: 'Rechtschreibprüfung',\n    status: spelling?.rechtschreibungStatus || 'UNBEKANNT',\n    details: spelling?.rechtschreibungDetails || ''\n  },\n  {\n    schritt: 'Unabhängige Fehlersuche',\n    status: p.qualitaetsstatus || 'UNBEKANNT',\n    details: audit.zusammenfassung || ''\n  },\n  {\n    schritt: 'Cover-Erstellung',\n    status: coverCheck?.pdfValid === false || coverCheck?.valid === false ? 'FEHLER' : 'OK',\n    details: 'Logo klein oberhalb des Barcode-Bereichs positioniert.'\n  },\n  {\n    schritt: 'E-Book-Cover',\n    status: ebookCheck?.ebookCoverValid === true ? 'OK' : 'WARNUNG',\n    details: ebookCheck?.ebookCoverValid === true\n      ? `${ebookCheck.ebookCoverDimensions}, JPEG, ${ebookCheck.ebookCoverBytes} Byte.`\n      : 'E-Book-Cover konnte nicht vollständig geprüft werden.'\n  },\n  {\n    schritt: 'Innen-PDF',\n    status: interiorCheck?.pdfValid === false || interiorCheck?.valid === false ? 'FEHLER' : 'OK',\n    details: 'Innen-PDF wurde mit Gotenberg erzeugt und geprüft.'\n  },\n  {\n    schritt: 'Abschluss',\n    status: errors.length ? 'FEHLER' : warnings.length ? 'MIT WARNUNGEN' : 'OK',\n    details: finalProduct?.hinweis || 'Abschlussdaten wurden erstellt.'\n  }\n];\n\nconst report = {\n  workflowVersion: '7.5',\n  modellkette: s.modellkette,\n  copilotVerwendet: false,\n  erstelltAm: new Date().toISOString(),\n  titel: title,\n  gesamtergebnis: errors.length ? 'FEHLER' : warnings.length ? 'MIT WARNUNGEN' : 'OK',\n  zusammenfassung: {\n    fehlerAnzahl: errors.length,\n    warnungenAnzahl: warnings.length,\n    qualitaetsfreigabe: p.qualitaetsfreigabe === true\n  },\n  fehler: errors,\n  warnungen: warnings,\n  schritte: steps,\n  dateien: {\n    coverPdf: `${slug}_COVER.pdf`,\n    ebookCover: `${slug}_EBOOK_COVER.jpg`,\n    innenPdf: `${slug}_INNEN.pdf`,\n    rechercheUndFehlerbericht: `${slug}_RECHERCHE_UND_FEHLERBERICHT.json`,\n    ablaufprotokoll: `${slug}_ABLAUFPROTOKOLL.json`\n  },\n  hinweis: 'Das Ablaufprotokoll zeigt technische und inhaltliche Auffälligkeiten. Die endgültige Prüfung im KDP Previewer bleibt notwendig.'\n};\n\nconst data = await this.helpers.prepareBinaryData(\n  Buffer.from(JSON.stringify(report, null, 2), 'utf8'),\n  `${slug}_ABLAUFPROTOKOLL.json`,\n  'application/json'\n);\n\nreturn [{\n  json: {\n    ...p,\n    ablaufprotokollStatus: report.gesamtergebnis,\n    ablaufprotokollFehler: errors.length,\n    ablaufprotokollWarnungen: warnings.length,\n    ablaufprotokollPath: `/buch/${slug}_ABLAUFPROTOKOLL.json`\n  },\n  binary: { data }\n}];"
+      },
+      "id": "6ac2f5beb69240e78fc60cc66f3f7c86",
+      "name": "07Z – ABLAUFPROTOKOLL BAUEN",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        13400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('07Z – ABLAUFPROTOKOLL BAUEN').first().json.ablaufprotokollPath }}",
+        "options": {}
+      },
+      "id": "47fecc69867048cd8071344389bed30d",
+      "name": "07Z2 – ABLAUFPROTOKOLL SPEICHERN",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        13640,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('05C – FEHLERSUCHE AUSWERTEN').first().json;\nconst log = $('07Z – ABLAUFPROTOKOLL BAUEN').first().json;\nconst title = String(p.titel || 'Buchprojekt');\nconst slug = title.normalize('NFKD')\n  .replace(/[^a-zA-Z0-9äöüÄÖÜß]+/g, '_')\n  .replace(/^_+|_+$/g, '')\n  .slice(0, 80) || 'Buchprojekt';\n\nreturn [{\n  json: {\n    status: log.ablaufprotokollStatus === 'FEHLER' ? 'FERTIG MIT FEHLERN' :\n      log.ablaufprotokollStatus === 'MIT WARNUNGEN' ? 'FERTIG MIT WARNUNGEN' : 'FERTIG',\n    titel: title,\n    modellkette: $('00 – EINSTELLUNGEN').first().json.modellkette,\n    copilot: 'nicht eingebaut',\n    ordner: 'C:\\\\Users\\\\NUTZER\\\\Desktop\\\\Die Firma\\\\Buch Ergebnisse',\n    innen_pdf: `${slug}_INNEN.pdf`,\n    cover_pdf: `${slug}_COVER.pdf`,\n    ebook_cover: `${slug}_EBOOK_COVER.jpg`,\n    ebook_cover_format: '1600 × 2560 px, JPEG',\n    pruefbericht: `${slug}_RECHERCHE_UND_FEHLERBERICHT.json`,\n    ablaufprotokoll: `${slug}_ABLAUFPROTOKOLL.json`,\n    ablaufprotokoll_status: log.ablaufprotokollStatus,\n    kleine_fehler_gefunden: log.ablaufprotokollFehler,\n    warnungen_gefunden: log.ablaufprotokollWarnungen,\n    quellenanalyse: $('01B – RECHERCHE PRÜFEN').first().json.notebookAnalyseStatus,\n    rechtschreibung: $('03B – ENDFASSUNG NORMALISIEREN').first().json.rechtschreibungStatus,\n    qualitaetsstatus: p.qualitaetsstatus,\n    qualitaetsfreigabe: p.qualitaetsfreigabe,\n    hinweis: log.ablaufprotokollStatus === 'OK'\n      ? 'Alle Dateien wurden gespeichert. Das Ablaufprotokoll enthält keine erkannten Auffälligkeiten.'\n      : 'Alle Dateien wurden gespeichert. Bitte zuerst das Ablaufprotokoll lesen; dort stehen Fehler und Warnungen nach Arbeitsschritt.'\n  }\n}];"
+      },
+      "id": "105c7c09-f6ec-444f-805b-4f90d4e3f642",
+      "name": "08 – FERTIGES PRODUKT",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        664,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## EINMALIG VOR DEM ERSTEN START\nGotenberg muss laufen.\n\nDie Ausgabe und das Autorenfoto werden über `/home/node/.n8n-files` verarbeitet. Dieser Ordner muss mit deinem Windows-Ordner `Buch Ergebnisse` verbunden sein.\n\nAutorenfoto-Dateiname: `autorenfoto.png.jpg`",
+        "height": 300,
+        "width": 620,
+        "color": 5
+      },
+      "id": "609e0720-2d43-4205-8233-4ac53bb069cc",
+      "name": "HINWEIS – GOTENBERG",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        7900,
+        368
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Fix in V7.5.3:\n- Workflow stoppt nicht mehr, wenn beide Schreibmodelle leer antworten\n- automatische Notfall-Zwischenfassung aus Buchauftrag und Recherche\n- Lektorat, Rechtschreibung und Qualitätsprüfung laufen danach weiter\n- der Ausfall wird im Ablaufprotokoll dokumentiert\n\nFix in V7.5.2:\n- Workflow stoppt nicht mehr bei leerer Ausgangsrecherche\n- automatische Notfall-Recherchegrundlage aus dem Buchauftrag\n- Google-Quellenanalyse läuft danach trotzdem weiter\n- der Fallback wird im Ablaufprotokoll als Warnung festgehalten\n- nur ein fehlender Buchauftrag bleibt ein kritischer Fehler\n\nFix in V7.5.1:\n- E-Book-Cover liest das Coverbild jetzt direkt aus dem eigenen Eingang\n- Fehler durch Zugriff auf frühere Binärdaten im Dateisystemmodus behoben\n- Taschenbuch- und E-Book-Cover werden parallel erstellt\n- Innen-PDF startet erst, wenn beide Cover gespeichert wurden\n\nNeu in V7.5:\n- Gemini 3.6 Flash als Hauptmodell\n- gemini-flash-latest als automatischer Ersatz\n- Gemini 3.5 Flash-Lite als günstiger Notfall-Fallback\n- vorhandener OpenCode-Notfallpfad bleibt erhalten\n- Copilot bewusst nicht eingebaut\n- veraltete Sampling-Parameter für neue Gemini-Versionen entfernt\n- verwendete Modellkette steht im Ablaufprotokoll\n\nFix in V7.4.2:\n- Workflow stoppt nicht mehr, wenn beide Lektoratsdienste ausfallen\n- automatische Endredaktion mit Notfall-Selbstlektorat\n- Ausfall wird als Warnung im Ablaufprotokoll dokumentiert\n\nFix in V7.4.1:\n- Ablaufprotokoll-Fehler behoben: 'warnungen is not defined'\n- Variable korrekt auf das vorhandene warnings-Array gemappt\n\nNeu in V7.4:\n- Taschenbuch-Cover bleibt als vollständige Druck-PDF mit Rückseite, Buchrücken und Vorderseite\n- zusätzliches E-Book-Cover nur als Vorderseite\n- E-Book-Ausgabe: 1600 × 2560 Pixel als JPEG\n- automatische JPEG-Prüfung und Speicherung im Buch-Ergebnisordner\n\n## MITSCH BOOK DESIGN V7.1\n\nDieser Workflow basiert direkt auf deiner hochgeladenen Version:\n**OpenCode + stabile KDP-PDF**\n\nNeu in V7.3:\n- Ablaufprotokoll als JSON\n- Status pro Arbeitsschritt\n- kleine Fehler, Warnungen und Fallbacks sichtbar\n- Gesamtstatus: OK / MIT WARNUNGEN / FEHLER\n\nCover-Anpassung V7.2:\n- Markenlogo kleiner\n- Markenlogo direkt oberhalb des Barcode-Bereichs\n- Autorenbio bleibt links und überlappt Logo/Barcode nicht\n\nNeu ergänzt:\n- NotebookLM-ähnliche Quellenanalyse\n- Google Search Grounding\n- Erkennung von Widersprüchen und Wissenslücken\n- unabhängige Schluss- und Fehlersuche\n- Recherche- und Fehlerbericht als JSON\n- vorhandene Rechtschreib- und PDF-Prüfung bleibt erhalten\n\nEinstellungen:\n1. API-Schlüssel kontrollieren\n2. `quellenanalyse_aktiv` und `fehleranalyse_aktiv` nach Bedarf ein-/ausschalten\n3. Gotenberg und `/buch` müssen erreichbar sein",
+        "height": 300,
+        "width": 520,
+        "color": 5
+      },
+      "id": "666e2142-e21c-4743-837c-24c597b86e5d",
+      "name": "HINWEIS – START HIER",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## V7.7 Quality+\n\n**Qualität**\n- qualitaetsmodus: standard | hoch | maximal\n- Default = hoch\n- Schärfere Prompts (Recherche, Manuskript, Lektorat)\n- Kostenlose Marker-/Struktur-Prüfung immer aktiv\n- Modell-Audit nur bei Bedarf oder modus=maximal\n\n**Kosten & Performance**\n- Recherche + Grounding = 1 Call\n- Lektorat + Endfassung = 1 Call\n- Flash-Modelle, reduzierte Tokens\n- Manuskript-Cache bewusst AUS (Qualität)\n\nEnv: GEMINI_API_KEY\n",
+        "height": 420,
+        "width": 460,
+        "color": 3
+      },
+      "id": "sticky-cost",
+      "name": "HINWEIS – QUALITY+",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        80
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "CHAT – BUCHAUFTRAG": {
+      "main": [
+        [
+          {
+            "node": "00 – EINSTELLUNGEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "00 – EINSTELLUNGEN": {
+      "main": [
+        [
+          {
+            "node": "00A – KDP FORMATKATALOG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "00A – KDP FORMATKATALOG": {
+      "main": [
+        [
+          {
+            "node": "01 – RECHERCHE + QUELLEN BODY",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01 – RECHERCHE + QUELLEN BODY": {
+      "main": [
+        [
+          {
+            "node": "01A – GEMINI RECHERCHE + GROUNDING",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01A – GEMINI RECHERCHE + GROUNDING": {
+      "main": [
+        [
+          {
+            "node": "01B – RECHERCHE PRÜFEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01B – RECHERCHE PRÜFEN": {
+      "main": [
+        [
+          {
+            "node": "02 – MANUSKRIPT BODY",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 – MANUSKRIPT BODY": {
+      "main": [
+        [
+          {
+            "node": "02A – GEMINI MANUSKRIPT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02A – GEMINI MANUSKRIPT": {
+      "main": [
+        [
+          {
+            "node": "02B – MANUSKRIPT NORMALISIEREN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02B – MANUSKRIPT NORMALISIEREN": {
+      "main": [
+        [
+          {
+            "node": "02C – MANUSKRIPT OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02C – MANUSKRIPT OK?": {
+      "main": [
+        [
+          {
+            "node": "03 – LEKTORAT + ENDFASSUNG BODY",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "02D – MANUSKRIPT FALLBACK BODY",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02D – MANUSKRIPT FALLBACK BODY": {
+      "main": [
+        [
+          {
+            "node": "02E – GEMINI LITE MANUSKRIPT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02E – GEMINI LITE MANUSKRIPT": {
+      "main": [
+        [
+          {
+            "node": "02F – FALLBACK MANUSKRIPT NORMALISIEREN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02F – FALLBACK MANUSKRIPT NORMALISIEREN": {
+      "main": [
+        [
+          {
+            "node": "03 – LEKTORAT + ENDFASSUNG BODY",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 – LEKTORAT + ENDFASSUNG BODY": {
+      "main": [
+        [
+          {
+            "node": "03A – GEMINI LEKTORAT + ENDFASSUNG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03A – GEMINI LEKTORAT + ENDFASSUNG": {
+      "main": [
+        [
+          {
+            "node": "03B – ENDFASSUNG NORMALISIEREN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03B – ENDFASSUNG NORMALISIEREN": {
+      "main": [
+        [
+          {
+            "node": "05 – KDP PAKET",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05 – KDP PAKET": {
+      "main": [
+        [
+          {
+            "node": "05A – FEHLERSUCHE BODY",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05A – FEHLERSUCHE BODY": {
+      "main": [
+        [
+          {
+            "node": "05A2 – FEHLERSUCHE SKIP?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05A2 – FEHLERSUCHE SKIP?": {
+      "main": [
+        [
+          {
+            "node": "05C – FEHLERSUCHE AUSWERTEN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "05B – KI FEHLERSUCHE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05B – KI FEHLERSUCHE": {
+      "main": [
+        [
+          {
+            "node": "05C – FEHLERSUCHE AUSWERTEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05C – FEHLERSUCHE AUSWERTEN": {
+      "main": [
+        [
+          {
+            "node": "06 – COVER PROMPT BAUEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06 – COVER PROMPT BAUEN": {
+      "main": [
+        [
+          {
+            "node": "06A – NANO BANANA COVER",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06A – NANO BANANA COVER": {
+      "main": [
+        [
+          {
+            "node": "06B – COVERBILD NORMALISIEREN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06B – COVERBILD NORMALISIEREN": {
+      "main": [
+        [
+          {
+            "node": "06C – AUTORENFOTO LESEN",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "06C2 – COVER + AUTORENFOTO MERGEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06C – AUTORENFOTO LESEN": {
+      "main": [
+        [
+          {
+            "node": "06C2 – COVER + AUTORENFOTO MERGEN",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "06C2 – COVER + AUTORENFOTO MERGEN": {
+      "main": [
+        [
+          {
+            "node": "06D – COVER HTML BAUEN",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "06G – EBOOK COVER HTML BAUEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06D – COVER HTML BAUEN": {
+      "main": [
+        [
+          {
+            "node": "06E – COVER PDF MIT GOTENBERG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06E – COVER PDF MIT GOTENBERG": {
+      "main": [
+        [
+          {
+            "node": "06E2 – COVER PDF PRÜFEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06E2 – COVER PDF PRÜFEN": {
+      "main": [
+        [
+          {
+            "node": "06F – COVER PDF SPEICHERN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06F – COVER PDF SPEICHERN": {
+      "main": [
+        [
+          {
+            "node": "06K – BEIDE COVER FERTIG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06G – EBOOK COVER HTML BAUEN": {
+      "main": [
+        [
+          {
+            "node": "06H – EBOOK COVER JPEG MIT GOTENBERG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06H – EBOOK COVER JPEG MIT GOTENBERG": {
+      "main": [
+        [
+          {
+            "node": "06I – EBOOK COVER PRÜFEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06I – EBOOK COVER PRÜFEN": {
+      "main": [
+        [
+          {
+            "node": "06J – EBOOK COVER SPEICHERN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06J – EBOOK COVER SPEICHERN": {
+      "main": [
+        [
+          {
+            "node": "06K – BEIDE COVER FERTIG",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "06K – BEIDE COVER FERTIG": {
+      "main": [
+        [
+          {
+            "node": "07 – INNEN HTML BAUEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07 – INNEN HTML BAUEN": {
+      "main": [
+        [
+          {
+            "node": "07A – INNEN PDF MIT GOTENBERG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07A – INNEN PDF MIT GOTENBERG": {
+      "main": [
+        [
+          {
+            "node": "07A2 – INNEN PDF PRÜFEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07A2 – INNEN PDF PRÜFEN": {
+      "main": [
+        [
+          {
+            "node": "07B – INNEN PDF SPEICHERN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07B – INNEN PDF SPEICHERN": {
+      "main": [
+        [
+          {
+            "node": "07Z – ABLAUFPROTOKOLL BAUEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07Z – ABLAUFPROTOKOLL BAUEN": {
+      "main": [
+        [
+          {
+            "node": "07Z2 – ABLAUFPROTOKOLL SPEICHERN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07Z2 – ABLAUFPROTOKOLL SPEICHERN": {
+      "main": [
+        [
+          {
+            "node": "08 – FERTIGES PRODUKT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "",
+    "saveManualExecutions": true,
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "timezone": "Europe/Berlin"
+  },
+  "tags": [],
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "cost-optimized-v76"
+  }
+}
