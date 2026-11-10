@@ -160,3 +160,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Gefunden im alten Workflow: Windows `Desktop\Die Firma\Buch Ergebnisse`, in Docker `/data/firma/Buch Ergebnisse`.
 - Stand Zugriff: Der Rechner „Mitsch" bietet Cloud-Sitzungen weiterhin nur den Ordner `backup-vor-update-2026-10-01_22-20` an (nicht nutzbar). `Die Firma` bzw. `Buch Ergebnisse` ist in der Remote-Control-Liste noch nicht freigegeben.
 - Plan: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2i.
+
+## Runde 22 (10.11.2026): Alles über OmniRoute
+- Auftraggeber: Der Workflow läuft auch über Cloud und **OmniRoute** und funktioniert, **ohne dass Guthaben aufgeladen werden muss**.
+- **Entscheidung:** Alle KI-Aufrufe des neuen Workflows laufen über OmniRoute. Modell pro Rolle festlegen (nicht `auto`). Plan: `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
+- Offen: Welche Anbieter/Modelle hängen dort, Mengengrenzen, Bedingungen der Anbieter.

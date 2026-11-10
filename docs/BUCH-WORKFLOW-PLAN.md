@@ -136,6 +136,19 @@ Wege für das Schreiben (zur Entscheidung):
 - **B. Claude Code mit dem Pro-Abo als Schreiber auf dem Laptop.** Das spart API-Kosten, aber das Abo hat Nutzungsgrenzen, und meines Wissens darf man die Abo-Anmeldung nicht in fremden Programmen wie n8n als API verwenden. Das wird vor dem Bauen in den aktuellen Bedingungen geprüft.
 - **C. Nur Gratis-Modelle** (Gemini-Gratiskontingent, Ollama, OmniRoute). Kostet nichts, ist aber bei langen Büchern begrenzt und schwächer.
 
+**Entscheidung 10.11.2026 (Auftraggeber): Alle KI-Aufrufe laufen über OmniRoute.** Der bisherige Workflow läuft damit nach Aussage des Auftraggebers **ohne Aufladen** von API-Guthaben. Die Wege A, B und C oben sind damit zunächst nicht nötig.
+
+So wird es umgesetzt:
+- **Ein Zugang für alles:** Der neue Workflow ruft nur OmniRoute auf (`http://host.docker.internal:20128`, OpenAI-kompatibel). Welche Anbieter dahinter hängen, regelt OmniRoute.
+- **Eine Einstellungsdatei** ordnet jeder Rolle ein Modell zu (Planer, Rechercheur, Analyst, Schreiber, Prüfer, Bild). Wechselt ein Anbieter oder fällt aus, ändert man eine Zeile, nicht den Workflow.
+- **Modell pro Rolle festnageln statt `auto`.** Bei `auto` kann mitten im Buch das Modell wechseln, und dann ändern sich Stil und Qualität zwischen den Kapiteln. Nur für Planer und Redaktion ist `auto` unkritisch.
+- **Kosten- und Mengenanzeige in der Vorschau bleibt**, auch bei Gratis-Anbietern. Sie zeigt dort die Menge (Tokens) und die Gefahr, an Grenzen zu stoßen.
+
+Was offen und zu prüfen ist (ich sehe die OmniRoute-Einstellungen nicht):
+- **Welche Anbieter und Modelle** dort hängen und welche für lange deutsche Texte taugen.
+- **Mengenbegrenzungen:** Gratis- und Abo-Zugänge haben Grenzen. Ein Buch mit 40 bis 70 Seiten sollte gehen. Geschichtsbücher mit 300 Seiten stoßen eher an Grenzen.
+- **Bedingungen der Anbieter:** Ob ein Abo-Zugang über einen Router erlaubt ist, hängt vom Anbieter ab. Das sollte der Auftraggeber bei seinen Anbietern prüfen, damit Konten nicht gesperrt werden.
+
 Daraus für den Plan:
 - **Gratis genügt nicht für lange Bücher.** Kleine lokale Modelle und Gratis-Kontingente taugen für Vorschau, Planer und Redaktion. Für Schreiber, Analyst und Lektor braucht es ein starkes Modell. Das kostet Geld, auch wenn wenig. Der Plan bleibt: günstig wo möglich, stark wo nötig, und jede Stufe zeigt vorher die geschätzten Kosten.
 - **Schritt zur Klärung:** den Stand der Anthropic-Rechnung prüfen und ein Bild der OmniRoute-Anbieterliste (ohne Schlüssel) ansehen, um zu wissen, was dahinter wirklich gratis läuft.
