@@ -62,3 +62,16 @@ Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und
 - Telegram-Inhalte, ChatGPT- und Gemini-Chats außerhalb des einen Exports: kein Zugriff.
 
 **Zugangsdaten:** Passwörter und Schlüssel sammle ich nicht ein und lege sie nirgends ab. Die verbundenen Dienste (Drive, Canva, Facebook, Instagram, Shopify) sind schon über Anmeldungen angebunden. Für Telegram brauchen wir später einen Bot-Token von @BotFather, den du selbst als n8n-Credential einträgst.
+
+## Runde 6 (10.11.2026): Wo läuft n8n?
+- n8n läuft bisher nur auf dem **Laptop**. Kein Server. Ein **alter Computer** steht noch herum und könnte als Server dienen.
+
+### Einordnung (von Claude)
+- **Start auf dem Laptop reicht.** Das Bauen der Bücher ist Stapelarbeit: Auftrag geben, warten, Ergebnis prüfen. Das geht ohne Dauerbetrieb.
+- **Alter PC als Server wird nötig,** sobald etwas **zeitgesteuert** laufen soll (tägliche Posts, Telegram-Bot, Warteliste). Dann muss der Rechner rund um die Uhr an sein.
+- **Kosten:** Software ist gratis (n8n selbst gehostet, Docker, Gotenberg). Strom kostet bei einem alten PC grob 8–15 € im Monat, bei einem Mini-PC oder Laptop weniger. Das ist die einzige laufende Ausgabe.
+- **Mindestanforderung (Schätzung):** 4 GB RAM, 64-Bit-Prozessor, etwa 20 GB freier Speicher, stabile Internetverbindung. Ideal: Linux (Ubuntu Server) mit Docker.
+- **Von außen erreichbar:** Telegram und Facebook können Nachrichten an einen Heim-Rechner nicht direkt zustellen. Lösung ohne Kosten: der Bot fragt selbst regelmäßig nach (Polling) oder ein kostenloser Tunnel (z. B. Cloudflare Tunnel).
+- **Sicherheit:** Der Server hält Schlüssel (Telegram, Facebook, KI). Deshalb: Passwort setzen, Updates, keine offenen Ports ins Internet.
+
+**Entscheidung:** Phase 1 auf dem Laptop. Der alte PC wird in Phase 4 (Werbung/Zeitsteuerung) zum Server.

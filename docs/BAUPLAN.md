@@ -90,6 +90,6 @@ Ein **Webseiten-Agent** baut und pflegt eine eigene Seite nur für die Bücher. 
 2. ❓ Welche Kanäle zählen für die Werbung: Facebook-Seite, Instagram, YouTube, Shopify? (Telegram „Deal-Radar" ist ein anderes Projekt.)
 3. ❓ Brand-Kit: Farben und Schriften vorgeben oder aus dem Logo ableiten?
 4. ❓ Gibt es ein Autorenfoto fürs Cover, und welcher Autorenname soll erscheinen?
-5. ❓ Läuft n8n weiter lokal auf dem Windows-PC (mit Docker und Gotenberg) oder auf einem Server?
+5. ✅ n8n läuft zuerst auf dem Laptop. Der alte PC wird später zum Server (Zeitsteuerung, Telegram-Bot). Details: `docs/INTERVIEW.md`, Runde 6.
 6. ❓ Werbebudget: nur organisch (Posts) oder auch bezahlte Anzeigen (Meta Ads)?
 7. ❓ Schlüssel aus dem alten Workflow schon erneuert und Repo auf privat gestellt? (siehe `docs/sammlung/sicherheit.md`)
