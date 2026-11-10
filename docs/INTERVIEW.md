@@ -87,3 +87,17 @@ Auftraggeber: Telegram-Gruppen usw. existieren schon, Claude soll alle Chats und
 ## Runde 9 (10.11.2026): Reihenfolge
 - Auftraggeber: **Erst Bauplan, bevor gebaut wird.** Das n8n-Skelett wurde daraufhin wieder entfernt (bleibt in der Git-Historie). Bis zur Freigabe des Bauplans wird nichts gebaut.
 - `docs/PIPELINE.md` bleibt als Teil des Bauplans (Entwurf, keine Umsetzung).
+
+## Runde 10 (10.11.2026): Wunsch-Ablauf des Buch-Workflows
+Nur der Buch-Workflow wird zuerst geplant (nicht Werbung, Webseite, Gruppen).
+- Bedienung per **Telegram-Chat**. Beispielauftrag: „Buch über Selbstverteidigung für Frauen".
+- Die erste KI nimmt den Auftrag an, **teilt in Aufgaben auf** und gibt sie weiter.
+- **Recherche:** die 10 besten Bücher zum Thema suchen, gründlich auseinandernehmen, Bericht und Einschätzung.
+- **Analyse und Konzept:** nächste KI analysiert den Bericht und plant ein **besseres** Buch als die Konkurrenz.
+- **Bilder:** Bei Selbstverteidigung braucht man Bilder zu Griffen. Richtige, öffentlich erlaubte Bilder suchen oder korrekt erstellen. **Nie etwas Falsches.** Nicht jedes Buch braucht Bilder (anders bei Geschichte, Atlas, Dokumentation: echte Fotos).
+- Optional: eine **Sammel-KI**, die Recherche, Bilder, Cover usw. zusammenstellt und an den Schreiber gibt.
+- **Schreiber:** muss **richtig menschlich** klingen, gut lesbar, genug Text.
+- **Formate:** Maße für E-Book, Taschenbuch und alles, was Kindle bietet, müssen **automatisch stimmen**, ohne dass der Auftraggeber Cover immer neu kontrolliert.
+- **KI-Auswahl:** jeweils die beste KI pro Aufgabe (Claude als Schreiber, Perplexity für Recherche, Gemini für Recherche/Kontrolle), alle nutzen. Anbindung über die „Free LLMs API" auf dem Laptop oder über OmniRoute.
+
+Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
