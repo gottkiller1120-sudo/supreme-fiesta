@@ -2,6 +2,7 @@
 slug: der-34a-schein
 status: neustart            # neustart | konzept | manuskript | cover | kdp-paket | live
 buchtyp: sachbuch
+faktenmodus: streng            # streng | frei | gemischt (siehe BUCH-WORKFLOW-PLAN 2h)
 sprache: de
 titel_arbeitstitel: "Der 34a-Schein"
 untertitel_arbeitstitel: "Die komplette Sachkundepruefung nach § 34a GewO"

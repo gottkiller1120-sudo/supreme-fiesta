@@ -151,6 +151,28 @@ So läuft das Ende, wie vom Auftraggeber beschrieben:
 
 Vorschlag zur Tokenersparnis: Während des Schreibens läuft pro Kapitel nur ein **billiger Schnellcheck** (Länge, Aufbau, Quellenverweise). Die gründliche Faktenprüfung kommt einmal am Ende. Nachteil: Ein Fehler in einem frühen Kapitel kann spätere beeinflussen. Dafür ist der Schnellcheck da.
 
+## 2h. Wahrheitsregel (Faktenmodus)
+**Grundregel des Auftraggebers: In allen Büchern darf nur Wahres stehen. Erfunden werden darf nur dort, wo es Fantasy oder eine erfundene Geschichte ist.**
+
+Jedes Buch bekommt in `book.yaml` ein Feld `faktenmodus`:
+
+| Modus | Gilt für | Regel |
+|---|---|---|
+| **streng** | Sachbuch, Ratgeber, Anleitung, Dokumentation, **Geschichtsbuch** (wirkliche Geschichte), Prüfungsbuch, Atlas | Nur belegte Tatsachen. Nichts erfinden. |
+| **frei** | Roman, Fantasy, erfundene Geschichten, Kinderbuchgeschichten | Erfinden ist erlaubt. Reale Fakten darin (Orte, Gesetze, Technik) bleiben trotzdem richtig. |
+| **gemischt** | z. B. historischer Roman | Erfundene Handlung, aber echte historische Rahmendaten stimmen. Wird im Buch kenntlich gemacht. |
+
+Wie der Workflow die Regel im Modus **streng** durchsetzt:
+1. **Quellenpflicht:** Jede Tatsachenaussage im Text hat einen Eintrag im **Quellenregister** (`quellen.json`): Aussage, Quelle, Fundstelle, Datum des Abrufs. Ohne Eintrag darf die Aussage nicht ins Buch.
+2. **Keine erfundenen Belege:** Keine erfundenen Zitate, Studien, Zahlen, Personen, Rezensionen oder Fußnoten. Der Prüfer ruft die Quelle wirklich ab (Code) und vergleicht die Stelle mit der Aussage. Wird die Quelle nicht gefunden oder sagt etwas anderes, fliegt die Aussage raus oder wird umformuliert.
+3. **Zweite KI prüft:** Der Faktenprüfer ist ein **anderes Modell** als der Schreiber.
+4. **Unsicher heißt sagen, nicht raten:** Ist etwas umstritten oder unklar, steht das so im Text („laut …", „nach heutigem Stand …"), oder es wird gestrichen.
+5. **Stand und Datum:** Bei Gesetzen, Preisen und Regeln steht der Rechtsstand mit Datum im Buch.
+6. **Bilder:** Ein Bild darf nur zeigen, was stimmt (siehe Bildregeln). Keine KI-Bilder von echten Ereignissen oder Personen als „Foto".
+7. **Du als letzte Instanz:** In der Freigabe 2 bekommst du eine Liste der **unsicheren oder schwach belegten Aussagen** zur Entscheidung.
+
+Ehrlich dazu: Keine KI kann hundert Prozent Wahrheit garantieren. Die Regeln oben senken das Risiko stark, aber bei Rechts-, Gesundheits- und Sicherheitsthemen bleibt eine Prüfung durch einen Menschen vom Fach ratsam.
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 

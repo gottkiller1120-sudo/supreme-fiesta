@@ -149,3 +149,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 19 (10.11.2026): Claude-Guthaben und Laptop-Zugriff
 - **Anthropic-API-Guthaben:** leer. **Claude Pro** ist vorhanden. Pro gilt für App und Claude Code, die API wird separat bezahlt. Drei Wege (A Guthaben aufladen, B Claude Code mit Pro-Abo, C nur Gratis-Modelle) stehen in `BUCH-WORKFLOW-PLAN.md`, Abschnitt 2f.
 - **Laptop-Ordner:** Auftraggeber fragt, was Claude mit dem Zugriff macht. Antwort im Chat: Zugriff nur auf einen freigegebenen Ordner, jetzt noch nicht nötig (Planung), später für Workflow-Dateien und Ausgabe.
+
+## Runde 20 (10.11.2026): Wahrheitsregel
+- **Grundregel:** In allen Büchern darf **nur Wahres** stehen. Erfinden ist nur bei **Fantasy bzw. erfundenen Geschichten** erlaubt.
+- Umgesetzt als Faktenmodus (streng / frei / gemischt) in `BUCH-WORKFLOW-PLAN.md` (2h), `book.yaml` und im Pipeline-Bild.
+- Annahme: Mit „Geschichtsbuch, wo Fantasy ist" waren erfundene Geschichten/Fantasy gemeint. Ein Geschichtsbuch über wirkliche Geschichte gilt als **streng**. Zur Bestätigung offen.
