@@ -198,3 +198,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 30 (10.11.2026): Comics in Schwarz-Weiß
 - Auftraggeber: **Schwarz-Weiß geht auch.** Comic-Innenteil in Schwarz-Weiß, Cover farbig. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2k).
 - Offen: Richtung, Zielgruppe, eigene Figurenideen (nicht blockierend, Comics sind Phase 9).
+
+## Runde 31 (12.11.2026): Comic-Richtung
+- Auftraggeber: Richtung bei Comics **beides** (Superhelden und Humor). Vorschlag: zwei getrennte Reihen mit eigenem Logo und Rücken. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2k).
+- Offen: Kinder oder Erwachsene, eigene Figurenideen.

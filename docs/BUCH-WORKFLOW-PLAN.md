@@ -282,7 +282,9 @@ Der Auftraggeber hat Bilder als Vorlage geschickt (Google-Bildersuche): Marvel- 
 
 ✅ **Innenteil in Schwarz-Weiß** (entschieden 10.11.2026). Das senkt die Druckkosten bei KDP deutlich und vereinfacht die Bilder: Strichzeichnungen mit Rasterpunkten und Schraffur sind für KI und Code leichter gleichzuhalten als Farbbilder. Das **Cover** bleibt farbig (wird bei KDP getrennt gedruckt).
 
-❓ Offen: Richtung (Superhelden, Humor oder beides), für Kinder oder Erwachsene, eigene Figurenideen.
+✅ **Richtung: beides** (entschieden 12.11.2026). Vorschlag: **zwei getrennte Reihen**, eine Superhelden-Reihe und eine Humor-Reihe, jede mit eigenem Logo, eigenen Figuren und eigenem Rücken-Bild. Innerhalb eines Hefts nicht mischen, weil Leser bei einem Titel einen klaren Ton erwarten.
+
+❓ Offen: für Kinder oder Erwachsene, eigene Figurenideen.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
