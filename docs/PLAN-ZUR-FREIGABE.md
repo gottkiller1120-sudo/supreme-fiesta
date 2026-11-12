@@ -6,7 +6,7 @@ Stand: 10.11.2026. Gesammelt aus allen Gesprächen (Details in `INTERVIEW.md`, E
 Ein Workflow, der aus einem Telegram-Auftrag ein **verkaufsfertiges KDP-Buch** macht: Text, Bilder, Cover, Formate, Metadaten. Er schreibt nur Wahres (außer bei erfundenen Geschichten). Du gibst an den wichtigen Stellen frei. Das Ziel ist, damit Geld zu verdienen, langsam wachsend, mit mehreren Büchern.
 
 ## 2. Bedienung per Telegram
-`/neu <Thema>` startet. Der Bot schickt zuerst eine **Vorschau** (Titel, Gliederung, Bildbedarf, Seiten, geschätzter Verbrauch). `/ok` bestätigt, `/aendern <Wunsch>` ändert, `/los` schreibt das ganze Buch, `/freigeben` gibt das Ergebnis frei, `/status`, `/stopp`.
+`/neu +18 <Thema>` oder `/neu -18 <Thema>` startet. Die **Altersstufe (+18 oder -18) ist Pflicht** und steuert Ton, Themen, Bilder und die KDP-Altersangabe. Der Bot schickt zuerst eine **Vorschau** (Titel, Gliederung, Bildbedarf, Seiten, geschätzter Verbrauch). `/ok` bestätigt, `/aendern <Wunsch>` ändert, `/los` schreibt das ganze Buch, `/freigeben` gibt das Ergebnis frei, `/status`, `/stopp`.
 
 ## 3. Der Ablauf
 1. **Planer** nimmt den Auftrag an und verteilt die Aufgaben.

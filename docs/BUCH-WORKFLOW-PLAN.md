@@ -5,7 +5,7 @@ Status: **PLAN, nicht gebaut.** Grundlage sind die Wünsche des Auftraggebers vo
 ## 1. Bedienung: Telegram-Chat
 Der Auftraggeber schreibt dem Bot einen Auftrag, zum Beispiel: „Buch über Selbstverteidigung für Frauen". Der Bot meldet sich mit Zwischenständen und fragt bei Freigaben nach.
 
-Befehle (Vorschlag): `/neu <Thema>`, `/ok` (Vorschau bestätigen oder freigeben), `/aendern <Wunsch>`, `/status`, `/stopp`.
+Befehle (Vorschlag): `/neu +18 <Thema>` oder `/neu -18 <Thema>` (Altersstufe ist Pflicht, siehe 2l), `/ok` (Vorschau bestätigen oder freigeben), `/aendern <Wunsch>`, `/status`, `/stopp`.
 Technik: Telegram-Bot (Token von @BotFather) und n8n. Auf dem Laptop braucht n8n dafür einen kostenlosen Tunnel oder fragt Telegram regelmäßig selbst ab.
 
 ## 2. Die Kette der KI-Rollen
@@ -285,6 +285,17 @@ Der Auftraggeber hat Bilder als Vorlage geschickt (Google-Bildersuche): Marvel- 
 ✅ **Richtung: beides** (entschieden 12.11.2026). Vorschlag: **zwei getrennte Reihen**, eine Superhelden-Reihe und eine Humor-Reihe, jede mit eigenem Logo, eigenen Figuren und eigenem Rücken-Bild. Innerhalb eines Hefts nicht mischen, weil Leser bei einem Titel einen klaren Ton erwarten.
 
 ❓ Offen: für Kinder oder Erwachsene, eigene Figurenideen.
+
+## 2l. Altersstufe im Befehl: +18 oder -18
+Der Auftraggeber verlangt, dass **jeder Auftrag** angibt, ob das Buch für **Erwachsene (+18)** oder für **unter 18 (-18)** ist.
+
+**Befehl:** `/neu +18 Selbstverteidigung für Frauen` oder `/neu -18 Malbuch Dinosaurier`. Optional feiner mit Zusatz, zum Beispiel `/neu -18 alter:6-9 Tiergeschichten`. **Fehlt die Angabe, fragt der Bot nach.** Er nimmt nichts an.
+
+**Was die Stufe ändert:** Ton und Wortwahl, Themen, Bilder, Cover, Schwierigkeit und die Altersempfehlung in den KDP-Angaben.
+- **-18:** jugendgerecht. Keine drastische Gewalt, keine sexuellen Inhalte, keine Verherrlichung von Drogen. Bei Anleitungen mit Risiko (Werkzeuge, Selbstverteidigung) besondere Sicherheitshinweise und der Hinweis auf Aufsicht durch Erwachsene. Für kleine Kinder einfache Sprache.
+- **+18:** härterer Ton und ernste Themen möglich. Es bleibt trotzdem innerhalb der KDP-Inhaltsregeln (keine pornografischen, hasserfüllten oder rechtswidrigen Inhalte). Amazon kann Bücher ablehnen, wenn Regeln verletzt werden.
+- **Sichtbar:** Die Vorschau nennt die gewählte Stufe. Der Prüfbericht der Endkontrolle enthält die Zeile „altersgerecht: ja/nein".
+- **In `book.yaml`:** Feld `altersstufe: ab18 | unter18`.
 
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.

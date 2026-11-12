@@ -202,3 +202,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 31 (12.11.2026): Comic-Richtung
 - Auftraggeber: Richtung bei Comics **beides** (Superhelden und Humor). Vorschlag: zwei getrennte Reihen mit eigenem Logo und Rücken. Eingetragen in `BUCH-WORKFLOW-PLAN.md` (2k).
 - Offen: Kinder oder Erwachsene, eigene Figurenideen.
+
+## Runde 32 (12.11.2026): Altersstufe im Befehl
+- Auftraggeber: **Beides** (Kinder und Erwachsene). Das muss **im Befehl stehen: +18 oder -18.**
+- Umgesetzt: Pflichtangabe im Telegram-Befehl (`/neu +18 …` oder `/neu -18 …`), Bot fragt bei fehlender Angabe nach. `BUCH-WORKFLOW-PLAN.md` (2l), `PLAN-ZUR-FREIGABE.md`, `book.yaml` (`altersstufe`).
