@@ -1,0 +1,376 @@
+{
+  "name": "Mitsch Book Design - 01 Planer und Vorschau",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "282c8ce4-100f-5eb4-b8aa-ae52918412a5",
+      "name": "Chat: /neu +18 Thema",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "45a07cbe-0318-5691-b94f-7b30af12a3fd"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "050cd7b8-6a20-57f7-bd3b-da4abbec3271",
+              "name": "chatInput",
+              "value": "={{ $json.chatInput || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "737cb15d-4e7f-5878-822f-9d232a9e3064",
+              "name": "omniroute_base_url",
+              "value": "http://host.docker.internal:20128",
+              "type": "string"
+            },
+            {
+              "id": "faa738fe-59d0-5396-ba36-692369a1be79",
+              "name": "modell_planer",
+              "value": "anthropic/claude-haiku-5-5",
+              "type": "string"
+            },
+            {
+              "id": "3c62ad76-a8a7-54b7-82f4-17e57d4dd83f",
+              "name": "ausgabe_basis",
+              "value": "/data/firma/Buch Ergebnisse",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93d98ce2-5919-5cbb-b04a-6f3bd6f9fe2f",
+      "name": "00 Einstellungen",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "notes": "Hier stehen KEINE Schlüssel. Der OmniRoute-Schlüssel kommt als Credential (Header Auth) in den HTTP-Knoten.",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const cfg = $('00 Einstellungen').first().json;\nconst raw = String(cfg.chatInput || '').trim().replace(/[−–—]/g, '-');\n\nconst HILFE = 'Befehle in dieser Version:\\n/neu +18 <Thema>   oder   /neu -18 <Thema>   (Altersstufe ist Pflicht)\\nOptional: alter:6-9   typ:sachbuch|anleitung|geschichtsbuch|dokumentation|malbuch|raetsel|kinderbuch|roman|comic\\nBeispiel: /neu +18 Selbstverteidigung für Frauen';\n\n// Muss mit bibliothek/buchart.yaml übereinstimmen\nconst PROFILE = {\n  sachbuch:       { seiten: '40-70', mitte: 55,  faktenmodus: 'streng', bilder: 'nur wo sie erklären' },\n  anleitung:      { seiten: '40-70', mitte: 55,  faktenmodus: 'streng', bilder: 'viele; Pläne mit Maßen aus Code' },\n  geschichtsbuch: { seiten: '300-400 und mehr', mitte: 350, faktenmodus: 'streng', bilder: 'echte Fotos mit Lizenz' },\n  dokumentation:  { seiten: 'ca. 100', mitte: 100, faktenmodus: 'streng', bilder: 'echte Fotos mit Lizenz' },\n  malbuch:        { seiten: '24-30 (KDP-Minimum 24)', mitte: 27, faktenmodus: 'frei', bilder: 'Hauptinhalt; Malen nach Zahlen per Code' },\n  raetsel:        { seiten: '40-70 (Vorschlag, noch nicht festgelegt)', mitte: 55, faktenmodus: 'frei', bilder: 'Raster und Lösungen per Code' },\n  kinderbuch:     { seiten: '40-70 (Vorschlag, noch nicht festgelegt)', mitte: 55, faktenmodus: 'frei', bilder: 'viele Zeichnungen' },\n  roman:          { seiten: '40-70 (Vorschlag, noch nicht festgelegt)', mitte: 55, faktenmodus: 'frei', bilder: 'kaum' },\n  comic:          { seiten: '40-70 (Vorschlag), Innenteil Schwarz-Weiß', mitte: 55, faktenmodus: 'frei', bilder: 'Hauptinhalt; Beschriftung per Code' }\n};\n\nif (!/^\\/neu\\b/i.test(raw)) {\n  return [{ json: { ok: false, antwort: 'Ich verstehe in dieser Version nur /neu.\\n\\n' + HILFE } }];\n}\nconst rest = raw.replace(/^\\/neu\\s*/i, '');\nconst m = rest.match(/^([+-]18)(?!\\d)\\s*([\\s\\S]*)$/);\nif (!m) {\n  return [{ json: { ok: false, antwort: 'Die Altersstufe fehlt. Bitte +18 oder -18 angeben, ich nehme nichts an.\\n\\n' + HILFE } }];\n}\nlet thema = m[2];\nconst alterszusatz = (thema.match(/\\balter:(\\S+)/i) || [])[1] || '';\nthema = thema.replace(/\\balter:\\S+/ig, '');\nlet typ = ((thema.match(/\\btyp:(\\S+)/i) || [])[1] || '').toLowerCase();\nthema = thema.replace(/\\btyp:\\S+/ig, '').replace(/\\s+/g, ' ').trim();\nif (!thema) {\n  return [{ json: { ok: false, antwort: 'Das Thema fehlt.\\n\\n' + HILFE } }];\n}\nif (!PROFILE[typ]) {\n  const t = thema.toLowerCase();\n  if (/comic|manga|superhelden/.test(t)) typ = 'comic';\n  else if (/malbuch|ausmal|malen nach zahlen|anmalbuch/.test(t)) typ = 'malbuch';\n  else if (/sudoku|rätsel|raetsel|kreuzwort|suchsel|labyrinth/.test(t)) typ = 'raetsel';\n  else if (/anleitung|bauplan|selber bauen|selbst bauen|diy|holz|handwerk|reparatur/.test(t)) typ = 'anleitung';\n  else if (/geschichtsbuch|geschichte der|mittelalter|weltkrieg|antike|jahrhundert/.test(t)) typ = 'geschichtsbuch';\n  else if (/dokumentation|chronik|atlas/.test(t)) typ = 'dokumentation';\n  else if (/kinderbuch|bilderbuch|vorlesegeschichte|kindergeschichte/.test(t)) typ = 'kinderbuch';\n  else if (/roman|fantasy|krimi|thriller|erzählung|novelle|kurzgeschichte/.test(t)) typ = 'roman';\n  else typ = 'sachbuch';\n}\nconst d = new Date();\nconst ymd = d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0');\nconst slug = ymd + '-' + thema.toLowerCase()\n  .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')\n  .normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50);\n\nreturn [{ json: {\n  ok: true,\n  alter: m[1] === '+18' ? 'ab18' : 'unter18',\n  alterszusatz, typ, thema, slug,\n  ordner: String(cfg.ausgabe_basis),\n  profil: PROFILE[typ]\n} }];"
+      },
+      "id": "ec0b62f1-f324-593d-8597-5d21ae83c7b8",
+      "name": "01 Befehl lesen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cccf4a56-6eb1-504b-881e-3c81f473b8a0",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c9139b77-26b4-5a7d-aedd-fec28a164f85",
+      "name": "Angabe ok?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const cfg = $('00 Einstellungen').first().json;\nconst a = $json;\n\nconst system = [\n  'Du bist der Planer eines Buch-Workflows für Amazon KDP. Du erstellst NUR eine kurze Vorschau, kein Buch.',\n  'Antworte ausschließlich mit einem JSON-Objekt, ohne Text davor oder danach, mit genau diesen Feldern:',\n  'arbeitstitel (Text), untertitel (Text), zielgruppe (Text), versprechen (ein Satz),',\n  'gliederung (Liste von Objekten mit kapitel und inhalt, höchstens 12),',\n  'bilder (Objekt mit noetig: true oder false, art, hinweis),',\n  'seiten_schaetzung (Zahl), risiken (Liste von Texten), rueckfragen (Liste von Texten, höchstens 3).',\n  'Regeln:',\n  '1. Erfinde keine Fakten, Zahlen, Quellen oder Konkurrenzbücher. Marktdaten hast du nicht, schreibe dazu nichts Konkretes. Die Marktprüfung folgt in einer späteren Stufe.',\n  '2. Ist das Thema rechtlich, medizinisch oder sicherheitsrelevant, nenne das unter risiken.',\n  '3. Halte dich an die Altersstufe: bei unter 18 jugendgerecht, ohne drastische Gewalt und ohne sexuelle Inhalte; bei +18 innerhalb der Amazon-KDP-Inhaltsrichtlinien.',\n  '4. Faktenmodus streng: plane nur belegbare Inhalte. Faktenmodus frei: die Handlung darf erfunden sein.',\n  '5. Keine geschützten Figuren oder Marken (zum Beispiel aus Marvel, DC, Disney).',\n  '6. Schreibe auf Deutsch.'\n].join('\\n');\n\nconst user = [\n  'Auftrag:',\n  '- Thema: ' + a.thema,\n  '- Buchart: ' + a.typ,\n  '- Altersstufe: ' + (a.alter === 'ab18' ? '+18 (Erwachsene)' : '-18 (unter 18)') + (a.alterszusatz ? ' (' + a.alterszusatz + ')' : ''),\n  '- Faktenmodus: ' + a.profil.faktenmodus,\n  '- Seitenziel: ' + a.profil.seiten,\n  '- Bilder: ' + a.profil.bilder\n].join('\\n');\n\nreturn [{ json: { ...a, requestBody: {\n  model: cfg.modell_planer,\n  temperature: 0.3,\n  messages: [ { role: 'system', content: system }, { role: 'user', content: user } ]\n} } }];"
+      },
+      "id": "793b12f7-9608-5054-a3db-5c1c354a157b",
+      "name": "02 Prompt bauen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('00 Einstellungen').first().json.omniroute_base_url + '/v1/chat/completions' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "163586d9-f402-5092-9005-7064c1c906a0",
+      "name": "03 OmniRoute: Planer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OMNIROUTE_CRED",
+          "name": "OmniRoute (Authorization)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const base = $('02 Prompt bauen').first().json;\nconst resp = $json;\nconst text = resp && resp.choices && resp.choices[0] && resp.choices[0].message && resp.choices[0].message.content;\nif (!text) {\n  const msg = (resp && resp.error && (resp.error.message || resp.error)) || (resp && resp.message) || JSON.stringify(resp || {}).slice(0, 300);\n  return [{ json: { ok: false, antwort: 'Der Planer hat nicht geantwortet (OmniRoute): ' + msg + '\\nPrüfe: Läuft OmniRoute? Stimmt der Schlüssel im Credential? Ist das Modell ' + base.requestBody.model + ' aktiv?' } }];\n}\nlet t = String(text).trim().replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```$/, '');\nlet v;\ntry { v = JSON.parse(t); }\ncatch (e) {\n  const i = t.indexOf('{'), j = t.lastIndexOf('}');\n  try { v = JSON.parse(t.slice(i, j + 1)); }\n  catch (e2) { return [{ json: { ok: false, antwort: 'Die Antwort des Planers war kein lesbares JSON. Anfang: ' + t.slice(0, 200) } }]; }\n}\n\nconst g = Array.isArray(v.gliederung) ? v.gliederung : [];\nconst L = [];\nL.push('VORSCHAU (es wurde noch nichts geschrieben)');\nL.push('Titel: ' + (v.arbeitstitel || '?') + (v.untertitel ? ' - ' + v.untertitel : ''));\nL.push('Altersstufe: ' + (base.alter === 'ab18' ? '+18' : '-18') + (base.alterszusatz ? ' (' + base.alterszusatz + ')' : ''));\nL.push('Buchart: ' + base.typ + ' | Faktenmodus: ' + base.profil.faktenmodus);\nif (v.zielgruppe) L.push('Zielgruppe: ' + v.zielgruppe);\nif (v.versprechen) L.push('Versprechen: ' + v.versprechen);\nL.push('');\nL.push('Gliederung (' + g.length + ' Kapitel):');\ng.forEach((k, i) => L.push((i + 1) + '. ' + (k.kapitel || '') + (k.inhalt ? ' - ' + k.inhalt : '')));\nL.push('');\nL.push('Seitenziel: ' + base.profil.seiten);\nconst b = v.bilder || {};\nL.push('Bilder: ' + (b.noetig === false ? 'nicht nötig' : 'nötig') + (b.art ? ' (' + b.art + ')' : '') + (b.hinweis ? ' - ' + b.hinweis : ''));\nconst tok = Math.round(base.profil.mitte * 300 * 1.6);\nL.push('Verbrauch grob (Schätzung): Rohtext ca. ' + tok.toLocaleString('de-DE') + ' Tokens Ausgabe; mit Prüfung und Überarbeitung etwa das 3- bis 4-fache.');\nif (Array.isArray(v.risiken) && v.risiken.length) { L.push(''); L.push('Risiken:'); v.risiken.forEach(r => L.push('- ' + r)); }\nif (Array.isArray(v.rueckfragen) && v.rueckfragen.length) { L.push(''); L.push('Rückfragen an dich:'); v.rueckfragen.forEach(r => L.push('- ' + r)); }\nL.push('');\nL.push('Die Marktprüfung (Konkurrenz, Preise, Suchbegriffe) folgt in der nächsten Stufe.');\nL.push('Hinweis: /ok, /aendern und /stopp werden im nächsten Baustein verdrahtet. Dieser Baustein erzeugt nur die Vorschau und den Speicherpunkt.');\nconst antwort = L.join('\\n');\n\nconst state = {\n  version: 1, slug: base.slug, speicherpunkt: 1, status: 'vorschau_wartet_auf_ok',\n  auftrag: { thema: base.thema, typ: base.typ, alter: base.alter, alterszusatz: base.alterszusatz, faktenmodus: base.profil.faktenmodus, seiten: base.profil.seiten },\n  erstellt: new Date().toISOString()\n};\nconst mk = (name, obj) => ({\n  json: { ok: true, pfad: base.ordner + '/' + base.slug + '__' + name, antwort },\n  binary: { data: { data: Buffer.from(JSON.stringify(obj, null, 2), 'utf8').toString('base64'), mimeType: 'application/json', fileName: base.slug + '__' + name, fileExtension: 'json' } }\n});\nreturn [ mk('vorschau.json', { auftrag: state.auftrag, vorschau: v }), mk('state.json', state) ];"
+      },
+      "id": "8c77c6a1-b51c-57b2-963e-2a30ab94e29e",
+      "name": "04 Vorschau auslesen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "41f47473-f6ba-5e12-af6a-fa4a602a84e7",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ed95b4e5-3738-5c0e-add5-d3e94736b543",
+      "name": "Vorschau ok?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.pfad }}",
+        "options": {}
+      },
+      "id": "6197ff68-4eb3-5255-83ff-d01e427f0b3b",
+      "name": "Speichern",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { output: $('04 Vorschau auslesen').first().json.antwort + '\\n\\nGespeichert: ' + $('04 Vorschau auslesen').first().json.pfad.replace(/__vorschau\\.json$/, '') + '__vorschau.json und __state.json' } }];"
+      },
+      "id": "ceb302a1-eef7-5d68-9fde-1483e81e708e",
+      "name": "05 Antwort mit Pfad",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { output: $json.antwort } }];"
+      },
+      "id": "dde72fac-051d-5771-b938-374e822e8677",
+      "name": "Antwort: nur Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Baustein 01: Planer und Vorschau\n\nStart: Chat öffnen und eingeben:\n`/neu +18 Selbstverteidigung für Frauen`\n`/neu -18 alter:6-9 Tiergeschichten`\n\nOhne +18 oder -18 fragt der Workflow nach.\n\nVorher einmal anlegen: Credential **Header Auth** mit Name `Authorization` und Wert `Bearer <OmniRoute-Schlüssel>` (aus dem OmniRoute-API-Manager), benannt **OmniRoute (Authorization)**.\n\nErzeugt: `<slug>__vorschau.json` und `<slug>__state.json` im Ordner Buch Ergebnisse.",
+        "height": 330,
+        "width": 460
+      },
+      "id": "7208d8fe-8167-5a17-a997-392992d012cc",
+      "name": "Hinweis",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        20
+      ]
+    }
+  ],
+  "connections": {
+    "Chat: /neu +18 Thema": {
+      "main": [
+        [
+          {
+            "node": "00 Einstellungen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "00 Einstellungen": {
+      "main": [
+        [
+          {
+            "node": "01 Befehl lesen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01 Befehl lesen": {
+      "main": [
+        [
+          {
+            "node": "Angabe ok?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Angabe ok?": {
+      "main": [
+        [
+          {
+            "node": "02 Prompt bauen",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Antwort: nur Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 Prompt bauen": {
+      "main": [
+        [
+          {
+            "node": "03 OmniRoute: Planer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 OmniRoute: Planer": {
+      "main": [
+        [
+          {
+            "node": "04 Vorschau auslesen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04 Vorschau auslesen": {
+      "main": [
+        [
+          {
+            "node": "Vorschau ok?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vorschau ok?": {
+      "main": [
+        [
+          {
+            "node": "Speichern",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Antwort: nur Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Speichern": {
+      "main": [
+        [
+          {
+            "node": "05 Antwort mit Pfad",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "pinData": {},
+  "tags": []
+}

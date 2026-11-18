@@ -1,0 +1,55 @@
+# Bibliothek der Buchart-Profile. Der Planer (Workflow 01) kennt dieselben Werte, siehe Code-Knoten "01 Befehl lesen".
+# Ändert man hier etwas, muss der Code-Knoten angepasst werden, bis die Profile aus dieser Datei geladen werden.
+stand: 2026-11-18
+profile:
+  sachbuch:
+    seiten: "40-70"
+    faktenmodus: streng
+    bilder: nur wo sie erklären
+    stil: verständlich, konkret, Beispiele statt Floskeln
+    pflicht: [Quellenregister, Rechtsstand mit Datum wenn Recht berührt wird]
+  anleitung:
+    seiten: "40-70"
+    faktenmodus: streng
+    bilder: viele; Pläne mit Maßen aus Code, Fotos eigene oder freie mit Lizenz
+    pflicht: [Material- und Werkzeugliste, Sicherheitsabschnitt, Haftungshinweis, Stückliste per Code]
+  geschichtsbuch:
+    seiten: "300-400 und mehr"
+    faktenmodus: streng
+    bilder: echte Fotos mit Lizenz, keine KI-Bilder als Foto
+    pflicht: [Quellenregister je Kapitel, Zeitleiste, Literaturverzeichnis]
+    hinweis: sehr großes Projekt, erst nach den kürzeren Büchern
+  dokumentation:
+    seiten: "ca. 100"
+    faktenmodus: streng
+    bilder: echte Fotos mit Lizenz
+    pflicht: [Quellenregister, Bildnachweis]
+  malbuch:
+    seiten: "24-30"            # KDP verlangt mindestens 24
+    faktenmodus: frei
+    bilder: Hauptinhalt; Ausmalbilder, Malen nach Zahlen (Nummern per Code), gemischt möglich
+    pflicht: [einseitig bedruckt, Linien geschlossen, 300 dpi]
+    zielgruppe: Kinder und Erwachsene (je Buch festlegen)
+  raetsel:
+    seiten: "40-70 (Vorschlag)"
+    faktenmodus: frei
+    bilder: Raster und Lösungen per Code
+    pflicht: [Lösungsteil, Lösungen per Code geprüft]
+  kinderbuch:
+    seiten: "40-70 (Vorschlag)"
+    faktenmodus: frei
+    bilder: viele Zeichnungen
+    pflicht: [altersgerechte Sprache, keine persönlichen Daten, Sicherheitshinweise bei Anleitungen]
+  roman:
+    seiten: "40-70 (Vorschlag)"
+    faktenmodus: frei       # Erfinden erlaubt; reale Fakten darin bleiben richtig
+    bilder: kaum
+    pflicht: [Stilvorlage des Auftraggebers]
+  comic:
+    seiten: "40-70 (Vorschlag)"
+    faktenmodus: frei
+    bilder: Hauptinhalt; Innenteil Schwarz-Weiß, Cover farbig; Beschriftung per Code
+    pflicht: [Figurenblatt, eigene Figuren, zwei Reihen (Superhelden, Humor), keine geschützten Figuren]
+altersstufen:
+  ab18: "härterer Ton möglich; bleibt in den KDP-Inhaltsregeln"
+  unter18: "jugendgerecht; keine drastische Gewalt, keine sexuellen Inhalte; Sicherheitshinweise bei Risiko"

@@ -297,6 +297,23 @@ Der Auftraggeber verlangt, dass **jeder Auftrag** angibt, ob das Buch für **Erw
 - **Sichtbar:** Die Vorschau nennt die gewählte Stufe. Der Prüfbericht der Endkontrolle enthält die Zeile „altersgerecht: ja/nein".
 - **In `book.yaml`:** Feld `altersstufe: ab18 | unter18`.
 
+## 2m. Markt und Nische prüfen (neue Stufe vor der Recherche)
+Aus der Werbung, die der Auftraggeber geschickt hat (Menü: „Markt und Nische wählen", „Keywords und Nachfrage messen", „Konkurrenz und Wirtschaftlichkeit"), fehlte unserem Plan eine Stufe: **Lohnt sich das Thema überhaupt?** Sie kommt nach deinem `/ok` auf die Vorschau und vor der Konkurrenzrecherche.
+
+Die Stufe liefert eine **Empfehlung mit Zahlen**:
+- **Nachfrage:** Welche Suchbegriffe gibt es, welche sind schwach oder stark besetzt.
+- **Konkurrenz:** Wie viele vergleichbare Bücher, Preise, Seitenzahlen, Bewertungen.
+- **Wirtschaftlichkeit:** Preisvorschlag, Druckkosten, Gewinn pro Verkauf, wie viele Verkäufe pro Monat für dein Ziel nötig sind.
+- **Ergebnis:** weitermachen, anpassen oder lieber ein anderes Thema.
+
+Ehrlich dazu: Amazon liefert **keine amtlichen Suchzahlen**. Die Werte sind Schätzungen aus der Amazon-Suche (Vorschläge, Anzahl Treffer, Verkaufsrang) und gelten als solche markiert. Sie zeigen eine Richtung, keine Garantie.
+
+## 2n. Bibliothek: Buchart-Profile und Stil
+Das Werbebild zeigt eine KI, die je Buchart „trainiert" ist (Roman, Ratgeber, Comic, Malbuch, Kochbuch und viele mehr), samt Stilbibliothek. Unsere Entsprechung ist keine Spezialausbildung der KI, sondern eine **Bibliothek aus Profilen**, die der Planer und der Schreiber vor jeder Arbeit laden:
+- **Buchart-Profile** (`bibliothek/buchart.yaml`): Seitenziel, Faktenmodus, Bildregeln, Pflichtabschnitte, Besonderheiten je Buchart.
+- **Stilbibliothek:** Stimmen und Beispiele für einen menschlichen Ton. Sie wächst mit deinem Textbeispiel, das du „menschlich" findest (noch offen).
+- **Altersstufen:** Regeln für +18 und -18 (siehe 2l).
+
 ## 3. Stufe 2–3: Recherche und Konkurrenzanalyse
 **Auftrag:** Die 10 besten Bücher zum Thema finden, gründlich auseinandernehmen, Bericht und Einschätzung.
 

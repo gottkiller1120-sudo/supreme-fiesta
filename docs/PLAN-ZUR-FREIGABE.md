@@ -43,7 +43,7 @@ Das Bild dazu: Pipeline-Arbeitsfläche (Link im Chat).
 | 0 | **Sicherheit:** Gemini- und OmniRoute-Schlüssel aus dem alten Workflow erneuern, Repo auf privat, API-Schlüssel im OmniRoute-API-Manager prüfen | sauberes Fundament |
 | 1 | Ordner, Speicherpunkte, Modell-Zuordnung, **Testkapitel** mit 2 bis 3 Modellen im Vergleich | belegte Modellwahl |
 | 2 | Telegram-Bot mit Vorschau (`/neu`, `/ok`, `/status`) | Bedienung steht |
-| 3 | Recherche, Analyse, Konzept, Freigabe 1 | Konzept für ein Buch |
+| 3 | **Markt und Nische prüfen** (Nachfrage, Konkurrenz, Wirtschaftlichkeit), Recherche, Analyse, Konzept, Freigabe 1 | Konzept für ein Buch mit Zahlen |
 | 4 | Schreiber, Prüfung, Endkontrolle, `/los`, `/freigeben` | geprüftes Manuskript |
 | 5 | Formatierer und Cover (KDP-Maße als Code), Ausgabe samt Eintragsliste | upload-fertiges Paket |
 | 6 | Pilotbuch „Der 34a-Schein" neu durchlaufen lassen | erstes echtes Buch |

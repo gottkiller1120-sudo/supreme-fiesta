@@ -206,3 +206,8 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 ## Runde 32 (12.11.2026): Altersstufe im Befehl
 - Auftraggeber: **Beides** (Kinder und Erwachsene). Das muss **im Befehl stehen: +18 oder -18.**
 - Umgesetzt: Pflichtangabe im Telegram-Befehl (`/neu +18 …` oder `/neu -18 …`), Bot fragt bei fehlender Angabe nach. `BUCH-WORKFLOW-PLAN.md` (2l), `PLAN-ZUR-FREIGABE.md`, `book.yaml` (`altersstufe`).
+
+## Runde 33 (18.11.2026): „Bau mir das"
+- Auftraggeber schickte eine Werbung (Facebook, „300 € pro Tag online verdienen", Buch-Werkzeug mit Menü Markt/Nische, Keywords, Konkurrenz, Konzept, Manuskript, Veröffentlichen, Bibliothek je Buchart) und sagte: **„Bau mir das."**
+- Ausgewertet: Deckt sich weitgehend mit dem Plan. Neu aufgenommen: Stufe **Markt und Nische prüfen** (2m) und **Bibliothek** (2n).
+- Gebaut: Baustein 01 (Planer und Vorschau, n8n), `config/modelle.yaml`, `bibliothek/buchart.yaml`, `docs/BAU-STAND.md`.

@@ -1,0 +1,28 @@
+# Welche Rolle welches Modell nutzt. Alle Aufrufe laufen über OmniRoute.
+# Stand 18.11.2026: VORSCHLAG. Vor dem Bau mit einem Testkapitel bestätigen (Plan 2f).
+# Keine Schlüssel hier eintragen. Der Schlüssel liegt als n8n-Credential "OmniRoute (Authorization)".
+zugang:
+  basis_url_aus_n8n: http://host.docker.internal:20128/v1
+  basis_url_im_browser: http://localhost:20128/v1
+rollen:
+  planer:         anthropic/claude-haiku-5-5     # Vorschau, Aufgabenverteilung (im Workflow 01 verdrahtet)
+  redaktion:      anthropic/claude-haiku-5-5
+  rechercheur:    OFFEN                          # Perplexity oder Gemini mit Suche: Modellname in OmniRoute prüfen
+  analyst:        anthropic/claude-sonnet-5
+  konzept:        anthropic/claude-sonnet-5
+  schreiber:      anthropic/claude-sonnet-5      # höchste Qualität: anthropic/claude-opus-5
+  lektor:         anthropic/claude-sonnet-5
+  faktenpruefer:  openai/gpt-oss-120b            # anderes Modell als der Schreiber; zweiter Prüfer: Gemini (Name offen)
+  bild:           gemini-3.1-flash-image         # in OmniRoute zuletzt Fehler, prüfen
+ausweich_kette:   # wenn ein Modell an eine Grenze stößt oder ausfällt
+  - anthropic/claude-sonnet-5
+  - openai/gpt-oss-120b
+  - qwen/qwen3.8-27b
+nicht_fuer_schreiber:   # inoffizielle oder unzuverlässige Zugänge
+  - g4f.space
+  - UncloseAI
+  - The Old LLM
+  - Felo
+  - DuckDuckGo AI Chat
+  - Chipotle Pepper
+  - AI Horde
