@@ -1,5 +1,7 @@
 # Mitsch Book Design: Plan zur Freigabe
 
+**STATUS: FREIGEGEBEN am 25.11.2026.** Bau läuft in Phasen, siehe `BAU-STAND.md`.
+
 Stand: 10.11.2026. Gesammelt aus allen Gesprächen (Details in `INTERVIEW.md`, Einzelheiten in `BUCH-WORKFLOW-PLAN.md`). **Gebaut wird erst nach deiner Freigabe.**
 
 ## 1. Ziel

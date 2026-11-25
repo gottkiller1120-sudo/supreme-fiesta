@@ -24,3 +24,7 @@ Im Workflow auf **Chat** (Open Chat) klicken und eingeben:
 
 ### Grenzen dieser Version
 `/ok`, `/aendern`, `/stopp` und die Telegram-Anbindung kommen im nächsten Baustein. Dateien liegen flach als `<slug>__vorschau.json` im Ordner, wie im alten Workflow. Eigene Buch-Unterordner folgen, sobald geprüft ist, dass n8n sie anlegen darf.
+
+
+## 00-modelltest.json (Phase 1)
+Schreibt dasselbe Testkapitel mit mehreren Modellen über OmniRoute und speichert alle Texte. Einrichten wie oben (Credential `OmniRoute (Authorization)`), dann im Chat `test` eingeben. Bewertung: `docs/TESTKAPITEL.md`. Der Code ist lokal getestet, der Aufruf von OmniRoute noch nicht.

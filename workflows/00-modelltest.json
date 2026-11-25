@@ -1,0 +1,299 @@
+{
+  "name": "Mitsch Book Design - 00 Modelltest",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "717879da-71c6-5fdf-ba2b-0c11829d4d5f",
+      "name": "Chat: test",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "893a21f6-9f09-528c-8d1f-4222219a2aa3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8968588f-a37c-521b-a0af-feadbb2ff3cc",
+              "name": "chatInput",
+              "value": "={{ $json.chatInput || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "07ba0cae-78ee-5870-bee1-09f2e6fb321f",
+              "name": "omniroute_base_url",
+              "value": "http://host.docker.internal:20128",
+              "type": "string"
+            },
+            {
+              "id": "a1d84b60-f184-5336-8239-4d3975d93ecc",
+              "name": "modelle",
+              "value": "[\"anthropic/claude-sonnet-5\", \"openai/gpt-oss-120b\", \"qwen/qwen3.8-27b\"]",
+              "type": "string"
+            },
+            {
+              "id": "4b1b5d70-b2a8-50c0-8536-c71a7a93f1be",
+              "name": "ausgabe_basis",
+              "value": "/data/firma/Buch Ergebnisse",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b90fc26-0cd1-5a3c-8e91-55bffbdba931",
+      "name": "00 Einstellungen",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "notes": "modelle: JSON-Liste der Modellnamen, genau wie in OmniRoute. Oder im Chat: test modelle:a,b,c",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const cfg = $('00 Einstellungen').first().json;\nlet modelle;\ntry { modelle = JSON.parse(cfg.modelle); } catch (e) { modelle = []; }\nconst opt = String(cfg.chatInput || '').match(/modelle:(\\S+)/i);\nif (opt) modelle = opt[1].split(',').map(s => s.trim()).filter(Boolean);\nif (!modelle.length) {\n  return [{ json: { fehler: 'Keine Modelle eingestellt. Im Knoten 00 Einstellungen die Liste \"modelle\" füllen.' } }];\n}\n\nconst system = [\n  'Du bist Autor eines Sachbuchs für Amazon KDP. Schreibe auf Deutsch, so dass es sich anhört wie von einem erfahrenen Menschen geschrieben: konkrete Beispiele, kurze und lange Sätze gemischt, direkte Ansprache, keine Floskeln.',\n  'Regel: Schreibe nur Tatsachen, die du sicher weißt. Erfinde keine Gerichtsurteile, Aktenzeichen, Zahlen, Studien oder Zitate. Wenn du etwas nicht sicher weißt, lass es weg oder schreibe, dass es geprüft werden muss.'\n].join('\\n');\nconst user = [\n  'Schreibe das Kapitel \"Notwehr: Was ich darf und was nicht\" für ein Buch \"Selbstverteidigung für Frauen\" (Altersstufe +18).',\n  'Umfang: etwa 600 bis 800 Wörter.',\n  'Inhalt: Notwehr nach § 32 StGB (gegenwärtiger rechtswidriger Angriff, Erforderlichkeit, Gebotenheit), Überschreitung der Notwehr nach § 33 StGB, ein kurzes Beispiel aus dem Alltag, ein Merkkasten mit drei Sätzen.',\n  'Am Ende ein Haftungshinweis, dass dies keine Rechtsberatung ist. Nenne keine Urteile.'\n].join('\\n');\n\nreturn modelle.map(m => ({ json: { modell: m, requestBody: {\n  model: m, temperature: 0.6,\n  messages: [ { role: 'system', content: system }, { role: 'user', content: user } ]\n} } }));"
+      },
+      "id": "f233f92a-de9b-5673-96f5-93f3d3cba1ce",
+      "name": "01 Aufträge bauen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "518c3d63-a768-56da-9062-69e2d02e9cb6",
+              "leftValue": "={{ $json.requestBody ? 'ja' : '' }}",
+              "rightValue": "ja",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "47f3f53c-179f-53d0-83ed-1316289447e0",
+      "name": "Modelle da?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('00 Einstellungen').first().json.omniroute_base_url + '/v1/chat/completions' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "bbc187d3-8a02-5371-8b02-a3617d7e009e",
+      "name": "02 OmniRoute: Testkapitel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "OMNIROUTE_CRED",
+          "name": "OmniRoute (Authorization)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const cfg = $('00 Einstellungen').first().json;\nconst auftraege = $('01 Aufträge bauen').all();\nconst antworten = $input.all();\n\nconst FLOSKELN = ['in der heutigen welt', 'zusammenfassend lässt sich sagen', 'tauchen wir ein', 'es ist wichtig zu beachten', 'in der heutigen zeit', 'zusammenfassend kann man sagen', 'letztendlich', 'spielt eine entscheidende rolle'];\nconst QUELLEN = /\\b(BGH|BVerfG|BAG|OLG|LG|AG)\\b|\\bAz\\.?\\s|\\b\\d+\\s*(StR|Ss|Ws|Js)\\s*\\d+|urteil vom|beschluss vom/i;\n\nconst ergebnisse = antworten.map((a, i) => {\n  const modell = (auftraege[i] && auftraege[i].json.modell) || ('Modell ' + (i + 1));\n  const j = a.json || {};\n  const text = j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;\n  if (!text) {\n    const msg = (j.error && (j.error.message || JSON.stringify(j.error))) || j.message || JSON.stringify(j).slice(0, 200);\n    return { modell, ok: false, fehler: String(msg) };\n  }\n  const t = String(text);\n  const woerter = (t.match(/\\S+/g) || []).length;\n  const low = t.toLowerCase();\n  const floskeln = FLOSKELN.filter(f => low.includes(f));\n  const pruefung = {\n    woerter,\n    laenge_ok: woerter >= 500 && woerter <= 950,\n    nennt_par32: /§\\s*32/.test(t),\n    nennt_par33: /§\\s*33/.test(t),\n    haftungshinweis: /keine rechtsberatung|ersetzt keine/i.test(t),\n    verdaechtige_quellen: QUELLEN.test(t),\n    floskeln,\n    tokens: j.usage || null\n  };\n  return { modell, ok: true, pruefung, text: t };\n});\n\nconst L = ['MODELLTEST Testkapitel \"Notwehr\" (automatische Vorprüfung, ersetzt dein Urteil nicht)', ''];\nfor (const e of ergebnisse) {\n  if (!e.ok) { L.push('- ' + e.modell + ': KEINE ANTWORT (' + e.fehler + ')'); continue; }\n  const p = e.pruefung;\n  L.push('- ' + e.modell + ': ' + p.woerter + ' Wörter' + (p.laenge_ok ? '' : ' (außerhalb 500-950)')\n    + ' | § 32: ' + (p.nennt_par32 ? 'ja' : 'NEIN') + ' | § 33: ' + (p.nennt_par33 ? 'ja' : 'NEIN')\n    + ' | Haftungshinweis: ' + (p.haftungshinweis ? 'ja' : 'NEIN')\n    + ' | verdächtige Quellen/Urteile: ' + (p.verdaechtige_quellen ? 'JA, prüfen' : 'nein')\n    + ' | Floskeln: ' + (p.floskeln.length ? p.floskeln.join(', ') : 'keine'));\n}\nL.push('');\nL.push('Die vollständigen Texte stehen in der Datei. Lies sie und bewerte nach docs/TESTKAPITEL.md: klingt es menschlich, stimmt es, ist es brauchbar?');\n\nconst d = new Date();\nconst stamp = d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + String(d.getHours()).padStart(2, '0') + String(d.getMinutes()).padStart(2, '0');\nconst name = 'modelltest__' + stamp + '.json';\nconst antwort = L.join('\\n');\nreturn [{\n  json: { pfad: cfg.ausgabe_basis + '/' + name, antwort },\n  binary: { data: { data: Buffer.from(JSON.stringify({ erstellt: d.toISOString(), ergebnisse }, null, 2), 'utf8').toString('base64'), mimeType: 'application/json', fileName: name, fileExtension: 'json' } }\n}];"
+      },
+      "id": "76453f83-3059-5226-888e-d8b292633083",
+      "name": "03 Auswerten",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.pfad }}",
+        "options": {}
+      },
+      "id": "055d6e46-67ed-53fd-baaa-b687a4e4613f",
+      "name": "Speichern",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const a = $('03 Auswerten').first().json;\nreturn [{ json: { output: a.antwort + '\\n\\nGespeichert: ' + a.pfad } }];"
+      },
+      "id": "4df04c35-c172-5f8b-bed6-db82b833a544",
+      "name": "04 Antwort",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { output: $json.fehler || 'Unbekannter Fehler' } }];"
+      },
+      "id": "73e43af1-25bf-5ef4-8821-7df8e335d11d",
+      "name": "Antwort: Fehler",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Baustein 00: Modelltest\n\nSchreibt dasselbe Testkapitel (Notwehr, 600-800 Wörter) mit mehreren Modellen über OmniRoute und speichert alle Texte zum Vergleichen.\n\nStart: Chat öffnen und `test` eingeben. Eigene Modelle: `test modelle:anthropic/claude-sonnet-5,openai/gpt-oss-120b`\n\nCredential wie bei Baustein 01: Header Auth `OmniRoute (Authorization)`.\n\nBewertung: `docs/TESTKAPITEL.md`",
+        "height": 300,
+        "width": 460
+      },
+      "id": "40ec9343-1b98-5225-9bf2-ab1b2237354a",
+      "name": "Hinweis",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        20
+      ]
+    }
+  ],
+  "connections": {
+    "Chat: test": {
+      "main": [
+        [
+          {
+            "node": "00 Einstellungen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "00 Einstellungen": {
+      "main": [
+        [
+          {
+            "node": "01 Aufträge bauen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01 Aufträge bauen": {
+      "main": [
+        [
+          {
+            "node": "Modelle da?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelle da?": {
+      "main": [
+        [
+          {
+            "node": "02 OmniRoute: Testkapitel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Antwort: Fehler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 OmniRoute: Testkapitel": {
+      "main": [
+        [
+          {
+            "node": "03 Auswerten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 Auswerten": {
+      "main": [
+        [
+          {
+            "node": "Speichern",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Speichern": {
+      "main": [
+        [
+          {
+            "node": "04 Antwort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "pinData": {},
+  "tags": []
+}

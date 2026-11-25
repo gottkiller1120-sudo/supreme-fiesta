@@ -211,3 +211,7 @@ Umsetzung als Plan: `docs/BUCH-WORKFLOW-PLAN.md`.
 - Auftraggeber schickte eine Werbung (Facebook, „300 € pro Tag online verdienen", Buch-Werkzeug mit Menü Markt/Nische, Keywords, Konkurrenz, Konzept, Manuskript, Veröffentlichen, Bibliothek je Buchart) und sagte: **„Bau mir das."**
 - Ausgewertet: Deckt sich weitgehend mit dem Plan. Neu aufgenommen: Stufe **Markt und Nische prüfen** (2m) und **Bibliothek** (2n).
 - Gebaut: Baustein 01 (Planer und Vorschau, n8n), `config/modelle.yaml`, `bibliothek/buchart.yaml`, `docs/BAU-STAND.md`.
+
+## Runde 34 (25.11.2026): Freigabe
+- Auftraggeber: **„Freigabe."** Der Plan zur Freigabe ist damit freigegeben. Start von Phase 0 und 1.
+- Gebaut: `workflows/00-modelltest.json`, `docs/TESTKAPITEL.md` (Bewertungsbogen), `docs/PHASE-0-SICHERHEIT.md` (Checkliste für den Auftraggeber).
