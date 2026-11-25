@@ -1,0 +1,5 @@
+[Unit]
+Description=n8n Agent – Update
+[Service]
+Type=oneshot
+ExecStart=/opt/n8n-agent/n8n-agent.sh update

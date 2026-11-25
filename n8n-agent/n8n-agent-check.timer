@@ -1,0 +1,7 @@
+[Unit]
+Description=n8n Gesundheitscheck alle 2 Minuten
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+[Install]
+WantedBy=timers.target

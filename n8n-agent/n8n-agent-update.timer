@@ -1,0 +1,8 @@
+[Unit]
+Description=n8n Update täglich nachts
+[Timer]
+OnCalendar=*-*-* 04:00:00
+RandomizedDelaySec=15min
+Persistent=true
+[Install]
+WantedBy=timers.target
